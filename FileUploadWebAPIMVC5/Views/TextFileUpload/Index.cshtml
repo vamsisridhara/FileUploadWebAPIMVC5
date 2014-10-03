@@ -1,0 +1,31 @@
+﻿@model FileUploadWebAPIMVC5.Models.ActionModel
+<script src="~/Scripts/dmprocessing.js"></script>
+<div style="width:100%">
+    <table border="1" style="width:100%">
+        <tr>
+            <th>
+                Input Files
+            </th>
+        </tr>
+        <tr>
+            <td>
+                <div id="divupload">
+                    <label>No Files Uploaded</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                @{
+                    Html.RenderPartial("~/Views/TextFileUpload/_FileUpload.cshtml");
+                }
+            </td>
+        </tr>
+    </table>
+</div>
+<br />
+<div>
+    @{
+        Html.RenderPartial("~/Views/TextFileUpload/_ResultSet.cshtml", Model);
+    }
+</div>

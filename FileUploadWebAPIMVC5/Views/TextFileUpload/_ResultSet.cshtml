@@ -1,0 +1,92 @@
+﻿@model FileUploadWebAPIMVC5.Models.ActionModel
+<div class="left-div">
+    <button id="btnComparision" value="Comparision" title="Comparsion" />Comparision<br />
+    <button id="btnUnique" value="Unique" />Unique<br />
+    <button id="btnContains" value="Contains" />Contains<br />
+    <button id="btnMinMax" value="Min/Max" />Min/Max<br />
+</div>
+<div class="right-div">
+    <div id="divComparision">
+        <fieldset>
+            <legend>
+            </legend>
+            <fieldset>
+                <legend>
+                    ResultSet1
+                </legend>
+                <div>
+                    <table>
+                        <tr>
+                            <td>
+                                <label>Comparision</label>
+                            </td>
+                            <td>
+                                &nbsp;
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <select id="selUnique">
+                                    <option></option>
+                                </select>
+                            </td>
+                            <td>
+                                <select id="selState">
+                                    <option></option>
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+                    <hr />
+                </div>
+            </fieldset>
+        </fieldset>
+    </div>
+    <div id="divunique">
+        <fieldset>
+            <legend>
+            </legend>
+            <fieldset>
+                <legend>
+                    ResultSet2
+                </legend>
+                <div>
+                    <table>
+                        <tr>
+                            <td>
+                                <label>Unique</label>
+                            </td>
+                            <td>
+                                &nbsp;
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.DropDownListFor(model => model.ActionId, Model.ActionsList)
+                            </td>
+                            <td>
+                                @Html.DropDownListFor(model => model.ActionId, Model.ActionsList)
+                            </td>
+                        </tr>
+                    </table>
+                    <hr />
+                </div>
+            </fieldset>
+        </fieldset>
+    </div>
+</div>
+<style>
+    .left-div {
+        float: left;
+        width: 100px;
+        height: 200px;
+        margin-right: 8px;
+    }
+
+    .right-div {
+        margin-left: 108px;
+    }
+</style>
+
+
+
