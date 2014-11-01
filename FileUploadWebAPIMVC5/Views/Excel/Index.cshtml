@@ -1,0 +1,78 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+<form id="theform" name="theform">
+    <div class="jumbotron">
+        <div class="row">
+            <select id="year" class="form-control" required>
+                <option value="">Select Year</option>
+                <option>2014</option>
+                <option>2015</option>
+            </select>
+        </div><br />
+        <div class="row">
+            <select id="state" class="form-control" required>
+                <option value="">Select State</option>
+                <option>VA</option>
+                <option>DC</option>
+            </select>
+        </div><br />
+        <div class="row">
+            <a id="clickbtn" class="btn btn-primary btn-sm" style="display:none;">Get District</a>
+            <button id="btnsearch" class="btn btn-primary btn-sm">Search</button>
+        </div>
+    </div>
+</form>
+<script src="~/Scripts/jquery-2.1.1.min.js"></script>
+<script src="~/Scripts/jquery-ui.min-1.11.1.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#theform").validate({
+            rules: {
+                year: {
+                    required: true
+                },
+                state: {
+                    required: true
+                }
+            },
+            showErrors: function (errorMap, errorList) {
+                $.each(this.successList, function (index, value) {
+                    return $(value).popover("hide");
+                });
+                return $.each(errorList, function (index, value) {
+                    var _popover;
+                    console.log(value.message);
+                    _popover = $(value.element).popover({
+                        trigger: "manual",
+                        placement: "top",
+                        content: value.message,
+                        template: "<div class=\"popover\"><div class=\"arrow\"></div><div class=\"popover-inner\"><div class=\"popover-content\"><p></p></div></div></div>"
+                    });
+                    _popover.data("popover").options.content = value.message;
+                    return $(value.element).popover("show");
+                });
+            }
+        });
+        $("#btnsearch").click(function () {
+            debugger;
+            $("#clickbtn").triggerHandler("click");
+        });
+        $("#clickbtn").click(function () {
+            debugger;
+            //$("#theform").triggerHandler("validate");
+            if ($("#theform").valid()) {
+                var dt = '2014';
+                var yr = 'va';
+                $('#clickbtn').attr('href', '/api/ExcelApi/getDistricts?district=' + yr + '&year=' + dt);
+            } else {
+                alert();
+            }
+        });
+    });
+</script>
+
+
+
+

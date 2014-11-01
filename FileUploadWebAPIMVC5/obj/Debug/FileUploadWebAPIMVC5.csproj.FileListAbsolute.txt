@@ -33,3 +33,9 @@ C:\GitHub\FileUploadWebAPIMVC5\FileUploadWebAPIMVC5\bin\System.Web.Http.xml
 C:\GitHub\FileUploadWebAPIMVC5\FileUploadWebAPIMVC5\bin\System.Web.Http.WebHost.xml
 C:\GitHub\FileUploadWebAPIMVC5\FileUploadWebAPIMVC5\obj\Debug\FileUploadWebAPIMVC5.dll
 C:\GitHub\FileUploadWebAPIMVC5\FileUploadWebAPIMVC5\obj\Debug\FileUploadWebAPIMVC5.pdb
+C:\GitHub\FileUploadWebAPIMVC5\FileUploadWebAPIMVC5\bin\Dapper.dll
+C:\GitHub\FileUploadWebAPIMVC5\FileUploadWebAPIMVC5\bin\Dapper.pdb
+C:\GitHub\FileUploadWebAPIMVC5\FileUploadWebAPIMVC5\bin\Dapper.xml
+C:\GitHub\FileUploadWebAPIMVC5\FileUploadWebAPIMVC5\bin\Ionic.Zip.dll
+C:\GitHub\FileUploadWebAPIMVC5\FileUploadWebAPIMVC5\bin\Ionic.Zip.xml
+C:\GitHub\FileUploadWebAPIMVC5\FileUploadWebAPIMVC5\obj\Debug\FileUploadWebAPIMVC5.csprojResolveAssemblyReference.cache
