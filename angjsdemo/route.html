@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html ng-app="exampleApp">
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="scripts/angular.min.js"></script>
+    <script src="scripts/angular-route.min.js"></script>
+    <script>
+        (function () {
+            var app = angular.module("exampleApp", ['ngRoute']);
+            app.config(['$routeProvider', function ($routeProvider) {
+                $routeProvider.when('/list', {
+                    templateUrl: 'list.html',
+                    controller: 'ListController'
+                }).
+                when('/create', {
+                    templateUrl: 'edit.html',
+                    controller: 'EditController'
+                }).
+                when('/edit/:id', {
+                    templateUrl: 'edit.html',
+                    controller: 'EditController'
+                }).
+                when('/delete/:id', {
+                    templateUrl: 'delete.html',
+                    controller: 'DeleteController'
+                }).
+                otherwise({
+                    redirectTo: '/list'
+                });
+            }]);
+            app.controller('ListController', function ($scope) {
+                $scope.title = "list html";
+            });
+        }());
+
+    </script>
+</head>
+<body>
+    <div ng-view></div>
+</body>
+</html>

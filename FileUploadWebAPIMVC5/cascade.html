@@ -1,0 +1,161 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="Scripts/jquery-2.1.1.min.js"></script>
+    <script src="Scripts/jquery-ui.min-1.11.1.js"></script>
+    <link rel="stylesheet" type="text/css" href="Content/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="Content/bootstrap-theme.min.css" />
+    <script>
+        $(document).ready(function () {
+            getmanagerlist();
+            var employees = [];
+            function getmanagerlist() {
+                $.ajax({
+                    type: "GET",
+                    url: '/cascade/getmanagers',
+                    cache: false,
+                    contentType: 'application/json; charset=utf-8',
+                    data: '',
+                    success: function (data) {
+                        if (data && data.length > 0) {
+                            $("#showlinesdata").empty();
+                            var table = $('<table style="width:50%" class="table table-bordered"><tr><th>Manager Name</th><th>Department</th><th>Location</th></tr></thead></table>');
+                            for (count = 0; count < data.length; count++) {
+                                var tr = $("<tr>");
+                                var td = $("<td>").appendTo(tr);
+                                td.html(data[count]["ManagerName"]);
+                                employees.push(data[count]["ManagerName"]);
+                                var td1 = $("<td>").appendTo(tr);
+                                td1.html(data[count]["DeptName"]);
+                                var td2 = $("<td>").appendTo(tr);
+                                td2.html(data[count]["Location"]);
+                                table.append(tr);
+                            }
+                            $("#showlinesdata").append(table);
+                            if (employees && employees.length > 0) {
+                                $("#selempl").empty();
+                                $("#selempl").append($("<option />").val('-1').text('Select Employee'));
+                                $.each(employees, function (index) {
+                                    var v = employees[index];
+                                    $("#selempl").append($("<option />").val(v).text(v));
+                                });
+                            }
+                        }
+                    },
+                    error: function (req, status, error) {
+                        alert("R: " + $(req) + " S: " + status + " E: " + error);
+                    }
+                });
+            }
+
+            $("#selempl").change(function () {
+                if ($('#selempl :selected').val() != '-1') {
+                    $.ajax({
+                        type: "GET",
+                        url: '/cascade/getemployees/' + $('#selempl :selected').text().trim(),
+                        cache: false,
+                        contentType: 'application/json; charset=utf-8',
+                        data: '',
+                        success: function (data) {
+                            if (data && data.length > 0) {
+                                $("#deptddl").empty();
+                                $("#deptddl").append($("<option />").val('-1').text('Select department'));
+                                $.each(data, function (index) {
+                                    var v = data[index];
+                                    $("#deptddl").append($("<option />").val(v).text(v));
+                                });
+                            } else {
+                                $("#deptddl").empty();
+                                $("#deptddl").append($("<option />").val('-1').text('Select department'));
+                            }
+                        },
+                        error: function (req, status, error) {
+                            alert("R: " + $(req) + " S: " + status + " E: " + error);
+                        }
+                    });
+
+
+                }
+
+            });
+
+
+
+            $("#deptddl").change(function () {
+                if ($('#deptddl :selected').val() != '-1') {
+                    var dept = $('#deptddl :selected').text().trim();
+                    var empname = $('#selempl :selected').text().trim();
+                    $.ajax({
+                        type: "GET",
+                        url: '/cascade/getemployees/' + empname + '/' + dept,
+                        cache: false,
+                        contentType: 'application/json; charset=utf-8',
+                        data: '',
+                        success: function (data) {
+                            if (data && data.length > 0) {
+                                $("#ddlloc").empty();
+                                $("#ddlloc").append($("<option />").val('-1').text('Select Location'));
+                                $.each(data, function (index) {
+                                    var v = data[index];
+                                    $("#ddlloc").append($("<option />").val(v).text(v));
+                                });
+                            } else {
+                                $("#ddlloc").empty();
+                                $("#ddlloc").append($("<option />").val('-1').text('Select Location'));
+                            }
+                        },
+                        error: function (req, status, error) {
+                            alert("R: " + $(req) + " S: " + status + " E: " + error);
+                        }
+                    });
+
+                } else {
+                    $("#ddlloc").empty();
+                    $("#ddlloc").append($("<option />").val('-1').text('Select Location'));
+                }
+            });
+
+        });
+    </script>
+</head>
+<body>
+    <div class="jumbotron">
+        <div class="container container-fluid">
+            <div class="form-group">
+                <label>Manager List</label>
+                <div class="row" id="showlinesdata">
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Employee List</label>
+                <div class="row" id="empdata">
+                    <label>Employee Name</label>
+                    <select id="selempl">
+                        <option value="-1">select employee</option>
+                    </select>
+                </div>
+                <div class="row" id="">
+                    <label>Department</label>
+                    <select id="deptddl">
+                        <option value="-1">select department</option>
+                    </select>
+                </div>
+                <div class="row">
+                    <label>
+                        Location
+                    </label>
+                    <select id="ddlloc"><option value="-1">select location</option></select>
+                </div>
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+</body>
+</html>

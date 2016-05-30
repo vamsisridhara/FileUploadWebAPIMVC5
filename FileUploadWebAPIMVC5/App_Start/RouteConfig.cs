@@ -18,7 +18,7 @@ namespace FileUploadWebAPIMVC5
                 url: "{controller}/{action}/{id}",
                 defaults: new
                 {
-                    controller = "TextFileUpload",
+                    controller = "Person",
                     action = "Index",
                     id = UrlParameter.Optional
                 }

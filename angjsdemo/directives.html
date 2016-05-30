@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html ng-app="exampleApp">
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+
+    <link rel="stylesheet" href="Content/bootstrap.min.css" />
+    <link rel="stylesheet" href="Content/bootstrap-theme.min.css" />
+
+    <script src="scripts/angular.min.js"></script>
+    <script>
+        (function () {
+            "use strict";
+            var app = angular.module("exampleApp", []);
+            app.controller("samplecontroller", function ($scope) {
+                $scope.products = [
+                       { name: "Apples", category: "Fruit", price: 1.20, expiry: 10 },
+                        { name: "Bananas", category: "Fruit", price: 2.42, expiry: 7 },
+                        { name: "Pears", category: "Fruit", price: 2.02, expiry: 6 }
+                ];
+                $scope.incrementPrices = function () {
+                    for (var count = 0 ; count < $scope.products.length ; count++) {
+                        $scope.products[count].price++;
+                    }
+
+                }
+            }).directive("unorderedList", function () {
+                return function (scope, element, attrs) {
+                    var data = scope[attrs["unorderedList"]];
+                    var propertyExpression = attrs["listProperty"];
+                    if (angular.isArray(data)) {
+                        var itemelement = angular.element("<ul>")
+                        element.append(itemelement);
+                        for (var count = 0 ; count < data.length; count++) {
+                            (function () {
+                                var index = count;
+                                var ele = angular.element("<li>");
+                                itemelement.append(ele);
+                                var watcherfn = function (newscope) {
+                                    return newscope.$eval(propertyExpression, data[index]);
+                                };
+                                scope.$watch(watcherfn, function (newval, oldval) {
+                                    ele.text(newval);
+                                });
+                            })();
+                        }
+                    }
+                }
+            });
+        }());
+    </script>
+</head>
+<body ng-controller="samplecontroller">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3>Products</h3>
+        </div>
+        <div class="panel-body">
+            <button class="btn btn-primary" ng-click="incrementPrices()">Click</button>
+
+        </div>
+        <div class="panel-body">
+            <div unordered-list="products" list-property="price| currency">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

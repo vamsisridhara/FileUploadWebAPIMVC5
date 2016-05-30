@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html ng-app="upload">
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="Scripts/angular.min.js"></script>
+    <script>
+        (function () {
+            var app = angular.module('upload', []);
+            app.controller('fileUploadCtrl', ['$scope', '$http', uploadfn]);
+            function uploadfn($scope, $http) {
+                $scope.showrequiredError = $scope.showvalidFileError = false;
+                $scope.listofFiles = [];
+                $scope.uploadFile = function () {
+                    var files = $("#fileUpload").get(0).files;
+                    if (files.length == 0) {
+                        $scope.showrequiredError = true;
+                        return false;
+                    }
+                    var extn = $('#fileUpload').val().split('.').pop().toLowerCase();
+                    if ($.inArray(extn, ['txt']) == -1) {
+                        $scope.showrequiredError = false;
+                        $scope.showvalidFileError = true;
+                        return false;
+                    }
+                    var data = new FormData();
+                    var uploadedFiles = '';
+                    var count = 0;
+                    if (files.length > 0) {
+                        $scope.showrequiredError = $scope.showvalidFileError = false;
+                        for (var temp = 0; temp < files.length; temp++) {
+                            data.append("UploadedImage" + count, files[count]);
+                        }
+                        $http({
+                            url: '/api/fileupload/uploadfile',
+                            method: "POST",
+                            data: data,
+                            headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+                        }).success(function (data, status, headers, config) {
+                            $scope.listofFiles = data; 
+                        }).error(function (data, status, headers, config) {
+                            
+                        });
+
+                        var ajaxRequest = $.ajax({
+                            type: "POST",
+                            url: "/api/fileupload/uploadfile",
+                            contentType: false,
+                            processData: false,
+                            data: data
+                        });
+                        ajaxRequest.done(function (data) {
+                            $('#divupload').empty();
+                            if (data.Data != null && data.Data.length > 0) {
+                                var table = $('<table id="tblfiles" border="0" width="100%"></table>');
+                                for (count = 0; count < data.Data.length; count++) {
+                                    var deleteFileName = data.Data[count];
+                                    var tr = $("<tr>");
+                                    $('<td />', {
+                                        id: 'fileId' + count,
+                                        text: deleteFileName
+                                    }).appendTo(tr);
+                                    table.append(tr);
+                                }
+                                $('#divupload').append(table);
+                                $("#fileUpload").val('');
+                                dialog.dialog("close");
+                            }
+                        });
+                    }
+
+
+                };
+
+
+            }
+
+
+        }());
+
+    </script>
+</head>
+<body>
+    <div class="jumbotron">
+        <div class="container">
+            <div class="container-fluid" ng-controller="fileUploadCtrl">
+                <label for="fileUpload">
+                    <input id="fileUpload" type="file" multiple />
+                    <label class="control-label" ng-if="showrequiredError">
+                        This field is required.
+                    </label>
+                    <label class="control-label" ng-if="showvalidFileError">
+                        Please upload only text files
+                    </label>
+                </label>
+                <br />
+                <input id="btnUploadFile" class="btn btn-primary"
+                       type="button" value="Upload File"
+                       ng-click="uploadFile()" />
+            </div>
+        </div>
+    </div>
+</body>
+</html>

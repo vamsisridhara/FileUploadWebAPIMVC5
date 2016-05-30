@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Urban Commuter Information</title>
+	<meta charset="utf-8" />
+    <script src="Scripts/jquery-2.1.1.min.js"></script>
+    <script src="Scripts/jquery-ui.min-1.11.1.js"></script>
+    <link rel="stylesheet" type="text/css" href="Content/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="Content/bootstrap-theme.min.css" />
+    <script>
+        $(document).ready(function () {
+
+            getstatusoflines();
+            getlines();
+            if (!$('#divlines').is(':empty')) {
+                $("#ddlLines").change(function () { gettrains();});
+            }
+            function getstatusoflines() {
+                $.ajax({
+                    type: "GET",
+                    url: '/commute/getServiceStatus',
+                    cache: false,
+                    contentType: 'application/json; charset=utf-8',
+                    data: '',
+                    success: function (data) {
+                        if (data && data.length > 0) {
+                            $("#showlinesdata").empty();
+                            var table = $('<table style="width:50%" class="table table-bordered"><tr><th>Line</th><th>Line Status</th></tr></thead></table>');
+                            for (count = 0; count < data.length; count++) {
+                                var tr = $("<tr>");
+                                var td = $("<td>").appendTo(tr);
+                                td.html(data[count]["RouteType"]);
+                                var td1 = $("<td class='" + data[count]["cssclass"] + "'>").appendTo(tr);
+                                td1.html(data[count]["lineStatus"]);
+                                table.append(tr);
+                            }
+                            $("#showlinesdata").append(table);
+                        }
+                    },
+                    error: function (req, status, error) {
+                        alert("R: " + $(req) + " S: " + status + " E: " + error);
+                    }
+                });
+            }
+            function getlines() {
+                $.ajax({
+                    type: "GET",
+                    url: '/commute/getlines',
+                    cache: false,
+                    contentType: 'application/json; charset=utf-8',
+                    data: '',
+                    success: function (data) {
+                        if (data && data.length > 0) {
+                            $.each(data, function (key,val) {
+                                var v = val;
+                                $("#ddlLines").append($("<option />").val(v).text(v));
+                            });
+                            
+                        }
+                    },
+                    error: function (req, status, error) {
+                        alert("R: " + $(req) + " S: " + status + " E: " + error);
+                    }
+                });
+            }
+            function gettrains() {
+                var optionModel = {
+                    lineid: $('#ddlLines :selected').text()
+                };
+                $.ajax({
+                    type: "GET",
+                    url: '/commute/gettrains/' + $('#ddlLines :selected').text().trim(),
+                    cache: false,
+                    contentType: 'application/json; charset=utf-8',
+                    data:'',
+                    success: function (data) {
+                        if (data && data.length > 0) {
+                            $("#divtrains").empty();
+                            $.each(data, function (key, val) {
+                                var table = $('<table style="width:50%" class="table table-bordered"><tr><th>Service Id</th><th>Station Name</th></tr></thead></table>');
+                                for (count = 0; count < data.length; count++) {
+                                    var tr = $("<tr>");
+                                    var td = $("<td>").appendTo(tr);
+                                    td.html(data[count]["ServiceId"]);
+                                    var obj = data[count]["stops"];
+                                    var td1 = $("<td>").appendTo(tr);
+                                    td1.html(obj["StopName"]);
+                                    table.append(tr);
+                                }
+                                $("#divtrains").append(table);
+                            });
+                        } else {
+                            $("#divtrains").empty();
+                            $("#divtrains").html("No trains");
+                        }
+                    },
+                    error: function (req, status, error) {
+                        alert("R: " + $(req) + " S: " + status + " E: " + error);
+                    }
+                });
+
+            }
+
+        });
+
+    </script>
+</head>
+<body>
+    <form class="form-horizontal">
+        <div class="container container-fluid">
+            <div class="table-responsive">
+                <label>
+                    Service Status
+                </label>
+                <div id="showlinesdata">
+                </div>
+            </div>
+        </div>
+        
+        <div id="divlines" class="container container-fluid">
+            <label>
+                Location of Any train
+            </label>
+            <select id="ddlLines"><option value="-1">Select Line</option></select>
+        </div>
+        <div id="divtrains" class="container container-fluid">
+            
+        </div>
+
+
+    </form>
+    
+</body>
+</html>

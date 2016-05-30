@@ -1,0 +1,38 @@
+﻿<html ng-app='myApp'>
+<head>
+    <title></title>
+    <style>
+        .selected {
+            background-color: lightgreen;
+        }
+    </style>
+    <script type="text/javascript" src="scripts/angular.min.js"></script>
+    <script type="text/javascript">
+        var myapp = angular.module("myApp", []);
+        myapp.controller("RestaurantTableController", function ($scope) {
+            $scope.directory = [
+                { name: 'The Handsome Heifer', cuisine: 'BBQ' },
+                { name: "Green's Green Greens", cuisine: 'Salads' },
+                { name: 'House of Fine Fish', cuisine: 'Seafood' }];
+            $scope.selectRestaurant = function (row) {
+                $scope.selectedRow = row;
+            };
+        });
+        myapp.controller("oneController", function ($scope) {
+            $scope.primary = "test one controller";
+        });
+    </script>
+</head>
+<body>
+    <table ng-controller='RestaurantTableController'>
+        <tr ng-repeat='restaurant in directory' ng-click='selectRestaurant($index)' ng-class='{selected: $index==selectedRow}'>
+            <td>{{restaurant.name}}</td>
+            <td>{{restaurant.cuisine}}</td>
+        </tr>
+    </table>
+    <div ng-controller="oneController">
+        {{ primary }}
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="todoApp">
+<head>
+    <title></title>
+    <script src="scripts/angular.min.js"></script>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/bootstrap-theme.css" rel="stylesheet" />
+    <script type="text/javascript">
+        var model = {
+            user: "Adam",
+            items: [{ action: "Buy Flowers", done: false },
+            { action: "Get Shoes", done: false },
+            { action: "Collect Tickets", done: true },
+            { action: "Call Joe", done: false }]
+        };
+        var todoApp = angular.module("todoApp", []);
+        todoApp.filter("checkedItems", function () {
+            return function (items, showComplete) {
+                var resultArr = [];
+                angular.forEach(items, function (item) {
+                    if (item.done == false || showComplete == true) {
+                        resultArr.push(item);
+                    }
+                });
+                return resultArr;
+            }
+        });
+        todoApp.controller("ToDoCtrl", function ($scope) {
+            $scope.todo = model;
+            $scope.incompleteCount = function () {
+                var count = 0;
+                angular.forEach($scope.todo.items, function (item) {
+                    if (!item.done) { count++ }
+                });
+                return count;
+            };
+            $scope.warningLevel = function () {
+                return $scope.incompleteCount() < 3 ? "label-success" : "label-warning";
+            };
+            $scope.addNewItem = function (actionText) {
+                $scope.todo.items.push({ action: actionText, done: false });
+            };
+            //$http.get("todo.json").then(function (response) {
+            //    $scope.todos = response.data;
+            //}, function () {
+            //    $scope.todos = [{ action: "Error" }];
+            //}).then(function () {
+            //    $scope.todos.push({ action: "Request Complete" });
+            //});
+        });
+    </script>
+</head>
+<body>
+    <div class="panel" ng-controller="ToDoCtrl">
+        <div class="page-header">
+            <h1>
+                {{todo.user}}'s To Do List
+                <span class="label label-default" ng-class="warningLevel()" ng-hide="incompleteCount() == 0">
+                    {{ incompleteCount() }}
+                </span>
+            </h1>
+        </div>
+        <div class="input-group">
+            <input class="form-control" ng-model="actionText" />
+            <span class="input-group-btn">
+                <button class="btn btn-default" ng-click="addNewItem(actionText)">
+                    Add
+                </button>
+            </span>
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Description</th>
+                    <th>Done</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in todo.items | checkedItems:showComplete | orderBy:'action'">
+                    <td>
+                        {{item.action}}
+                    </td>
+                    <td>
+                        <input type="checkbox" ng-model="item.done" />
+                    </td>
+                    <td>
+                        {{item.done}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="checkbox-inline">
+            <label><input type="checkbox" ng_model="showComplete"> Show Complete</label>
+        </div>
+    </div>
+</body>
+</html>

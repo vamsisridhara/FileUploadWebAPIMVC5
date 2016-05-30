@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="productManagement">
+<head>
+    <title></title>
+    <script src="scripts/angular.min.js"></script>
+    <script src="scripts/angular-resource.min.js"></script>
+    <script src="scripts/angular-mocks.js"></script>
+
+    <script src="app.js"></script>
+    <script src="common.services.js"></script>
+    <script src="productListCtrl.js"></script>
+    <script src="productResource.js"></script>
+    <script src="productResourceMock.js"></script>
+
+    <link rel="stylesheet" href="Content/bootstrap-theme.min.css" />
+    <link rel="stylesheet" href="Content/bootstrap.min.css" />
+</head>
+<body>
+    <div class="container" ng-controller="productListCtrl as vm">
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-responsive">
+                    <tr>
+                        <td>ProductID</td>
+                        <td>Product Name</td>
+                        <td>Release Date</td>
+                        <td>Description</td>
+                        <td>Cost</td>
+                    </tr>
+                    <tr ng-repeat="prod in vm.products">
+                        <td>{{ prod.productID }}</td>
+                        <td>{{ prod.productName }}</td>
+                        <td>{{ prod.releaseDate }}</td>
+                        <td>{{ prod.description }}</td>
+                        <td>{{ prod.cost | currency }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

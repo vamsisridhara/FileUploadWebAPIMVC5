@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Test</title>
+    <script src="scripts/jquery-2.1.1.min.js"></script>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="content/bootstrap-tour-standalone.min.css" rel="stylesheet">
+    <script src="scripts/bootstrap-tour-standalone.min.js"></script>
+    <style>
+        #see-schedule, #enrol-btn1 {
+            background-color: lightgray;
+        }
+        /*div {
+            margin: 20px auto;
+            width: 500px;
+            padding: 50px;
+            background: #EBEBEB;
+        }*/
+    </style>
+
+    <script>
+        $(document).ready(function () {
+            //// Instance the tour
+            //var tour = new Tour({ 
+            //    steps: [
+            //    {
+            //        element: "#test",
+            //        title: "Title of my step",
+            //        content: "Content of my step"
+            //    },
+            //    {
+            //        element: "#test1",
+            //        title: "Title of my step",
+            //        content: "Content of my step"
+            //    }
+            //    ]
+            //});
+            //// Initialize the tour
+            //tour.init();
+            //// Start the tour
+            //tour.start();
+
+            // Instance the tour
+            var tour = new Tour({
+                steps: [{
+                    element: "#enrol-btn1",
+                    title: "Exam Enrolment",
+                    content: "First let's enrol to an exam"
+                }, {
+                    element: "#see-schedule",
+                    title: "Your Schedule",
+                    content: "Great, let's see your new schedule."
+                }]
+            }).init().start(true);
+
+            $("#startTour").click(function () {
+                tour.restart();
+            })
+
+            $(".btnTest").click(function () {
+                tour.restart();
+            })
+
+        });
+    </script>
+
+</head>
+<body>
+    <a href="#" class="btn btn-block btn-primary classTest" id="startTour">Start tour</a>
+    <button class="btnTest" value="Start">Start Tour</button>
+    <button class="btnTest" value="Start1">Start Tour1</button>
+    
+    <br />
+    <div class="row">
+        <div class="left-container col-xs-6">
+            <span class="logo"><h2>Title 2</h2></span>
+
+            <p class="left-msg welcom-msg">Now that registration and filling out forms is out the way, let's get you all set up.</p>
+            <p class="left-msg need-enrol">First you' ll need to enrol to an exam.</p>
+        </div>
+        <div class="right-container col-xs-6">
+            <button class="btn btn-default enrol-btn" id="enrol-btn1" data-toggle="popover" data-placement="left">Enrol</button>
+            <button class="btn btn-default start-exam-btn hidden">Preparation</button>
+        </div>
+    </div>
+    <div id="see-schedule" style="width:50%">
+        <br />
+        Second step content
+    </div>
+</body>
+</html>

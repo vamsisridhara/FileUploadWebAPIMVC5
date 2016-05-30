@@ -1,0 +1,130 @@
+<html ng-app="MyApp">
+<head>
+    <title>Books</title>
+    <script src="../scripts/angular.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../Content/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../Content/bootstrap-theme.min.css" />
+    <script src="maincontroller.js"></script>
+</head>
+<body>
+    <div class="container container-fluid">
+        <div ng-controller="bookStoreController" class="row">
+            <br />
+            <h2>Add New Book</h2>
+            <div class="row col-md-10">
+
+                <table class="table table-striped">
+                    <tr>
+                        <td>ISBN: </td>
+                        <td>
+                            <input type="text" ng-model="item.ISBN" class="form-control" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Name: </td>
+                        <td>
+                            <input type="text" ng-model="item.Name"  class="form-control" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Price(In Rupee): </td>
+                        <td>
+                            <input type="number" ng-model="item.Price"  class="form-control"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Quantity: </td>
+                        <td>
+                            <input type="number" ng-model="item.Quantity" class="form-control" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Department</td>
+                        <td>
+                            <select name="department" id="department" class="">
+                                <option>Engineering</option>
+                                <option>Marketing</option>
+                                <option>Finance</option>
+                                <option>Administration</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Perks</td>
+                        <td>
+                            <label><input type="checkbox" value="perkCar" />Company Car</label>
+                            <label><input type="checkbox" value="perkStock" />Stock Options</label>
+                            <label><input type="checkbox" value="perkSixWeeks" />Six Weeks Vacation</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Payroll Type</td>
+                        <td>
+                            <label><input type="radio" name="payrollType" value="w2" /> W-2</label><br />
+                            <label><input type="radio" name="payrollType" value="ten99" /> 1099</label><br />
+                            <label><input type="radio" name="payrollType" value="none" /> None</label><br />
+                        </td>
+                    </tr>
+                </table>
+                <div class="row  container-fluid">
+                    <input type="Button" value="Add to list" class="btn btn-primary" ng-click="addItem(item)" />
+                    <input type="Button" value="Cancel" class="btn btn-primary" ng-click="" />
+                </div>
+            </div>
+            <div></div>
+            <div class="container container-fluid">
+                <table border="1" class="table table-striped">
+                    <tr>
+                        <td>ISBN</td>
+                        <td>Name</td>
+                        <td>Price</td>
+                        <td>Quantity</td>
+                        <td>Department</td>
+                        <td>Perks</td>
+                        <td>Payroll Type</td>
+                        <td>Total Price</td>
+                        <td>Action</td>
+                    </tr>
+                    <tr ng-repeat="item in items">
+                        <td>{{item.ISBN}}</td>
+                        <td>
+                            <span ng-hide="editMode">{{item.Name}}</span>
+                            <input type="text" ng-show="editMode" ng-model="item.Name" />
+                        </td>
+                        <td>
+                            <span ng-hide="editMode">{{item.Price}}</span>
+                            <input type="number" ng-show="editMode" ng-model="item.Price" />
+                        </td>
+                        <td>
+                            <span ng-hide="editMode">{{item.Quantity}}</span>
+                            <input type="number" ng-show="editMode" ng-model="item.Quantity" />
+                        </td>
+                        <td>
+                            <span ng-hide="editMode">{{item.Department}}</span>
+                            <input type="text" ng-show="editMode" ng-model="item.Department" />
+                        </td>
+                        <td>
+                            <span ng-hide="editMode">{{item.Perks}}</span>
+                            <input type="text" ng-show="editMode" ng-model="item.Perks" />
+                        </td>
+                        <td>
+                            <span ng-hide="editMode">{{item.PayrollType}}</span>
+                            <input type="text" ng-show="editMode" ng-model="item.PayrollType" />
+                        </td>
+                        <td>{{(item.Quantity) * (item.Price)}}</td>
+                        <td>
+                            <span><button type="submit" ng-hide="editMode" ng-click="editMode = true; editItem(item)">Edit</button></span>
+                            <span><button type="submit" ng-show="editMode" ng-click="editMode = false">Update</button></span>
+                            <span><input type="button" value="Delete" ng-click="removeItem($index)" /></span>
+                            <span><input type="button" value="Cancel" ng-click="" /></span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <br />
+            <div style="font-weight: bold">Grand Total: {{total | currency }}</div>
+            <br />
+        </div>
+    </div>
+</body>
+</html>
