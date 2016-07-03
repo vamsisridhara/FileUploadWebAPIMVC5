@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.25402.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileUploadWebAPIMVC5", "FileUploadWebAPIMVC5\FileUploadWebAPIMVC5.csproj", "{F44A9F9F-2082-43CA-ADC0-C0C880578D14}"
 EndProject
@@ -16,6 +16,8 @@ EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "TodoApi", "TodoApi\TodoApi.xproj", "{79FA4D70-A283-4B62-9811-A184F312B863}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApplication1", "ConsoleApplication1\ConsoleApplication1.csproj", "{4C0D666F-4D7C-458F-B1B2-179601B2272B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "suresh", "suresh\suresh.csproj", "{56E04738-E2A7-4EFC-AC84-B522EAACFA09}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{4C0D666F-4D7C-458F-B1B2-179601B2272B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4C0D666F-4D7C-458F-B1B2-179601B2272B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4C0D666F-4D7C-458F-B1B2-179601B2272B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56E04738-E2A7-4EFC-AC84-B522EAACFA09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56E04738-E2A7-4EFC-AC84-B522EAACFA09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56E04738-E2A7-4EFC-AC84-B522EAACFA09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56E04738-E2A7-4EFC-AC84-B522EAACFA09}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

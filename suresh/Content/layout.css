@@ -1,0 +1,194 @@
+﻿
+
+.hidden {
+    display: none;
+}
+
+#mainheader {
+    background-color: white;
+    width: 100%;
+    display: inline-block;
+    height: 100px;
+    float: left;
+}
+
+#dcrui-header-top {
+    border-top: 11px solid #2B4888;
+}
+
+.dots {
+    background-image: url('http://rui.dc.gov/rui/css/images/dot.png');
+    min-width: 100%;
+    position: absolute;
+    top: 4px;
+    height: 3px;
+}
+
+.logo-img {
+    float: left;
+    margin: 20px 10px;
+}
+
+.headertitle {
+    float: left;
+    margin: 10px 10px;
+}
+
+.logo-img img {
+    width: 100px;
+}
+
+img {
+    border: 0px none;
+}
+
+#divheader {
+    border-width: 4px;
+    border-color: #BF3F00;
+    float: left;
+    width: 100%;
+    height: 120px;
+    border-top-style: solid;
+}
+
+.dcMasthead {
+    background-color: Green;
+    width: 100%;
+    height: 120px;
+    background: transparent url('/global/images/dcHeaderBg_ver2.jpg') repeat-x scroll 0 0;
+}
+
+.dcMastheadLogo {
+    margin-left: 15px;
+    margin-top: 22px;
+    width: 233px;
+    float: left;
+    background: url('/global/images/DCgovLOGO_ver2.png') no-repeat;
+    height: 100px;
+}
+
+.dcMastheadflagCell {
+    background: #fff url('/global/images/dcFlag_ver2.jpg') no-repeat 0 0;
+    height: 100px;
+    float: left;
+    margin-top: 0px;
+    width: 270px;
+}
+
+
+.dcMastheadrightHeader {
+    float: right;
+    width: 265px;
+    height: 140px;
+    display: inline-block;
+}
+
+.rightHeader {
+    position: relative;
+    height: 140px;
+    float: right;
+    display: inline-block;
+}
+
+
+.logorightLast {
+    background: transparent url('/global/images/dcHeaderMayor_ver2.png') no-repeat;
+    border ="0";
+    position: relative;
+    float: right;
+    top: 17px;
+    height: 140px;
+    width: 200px;
+    margin-top: 15px;
+}
+
+
+.logorightLastBefore {
+    top: 22px;
+    position: relative;
+    background: url('/global/images/oneCityLOGO_ver2.png') no-repeat;
+    right: -110px;
+    float: right;
+    height: 107px;
+    width: 108px;
+    margin-top: 0px;
+}
+
+.validation-summary-errors-container {
+    padding: 1.5em;
+    margin: .5em 0px .5em 0px;
+    background-color: #F9E6E6;
+    border: 1px solid #df6b6b;
+    color: #dc3535;
+}
+
+.field-validation-error {
+    color: #dc3535;
+}
+
+.input-validation-error {
+    border: 1px solid #EFB8B8;
+    background-color: #FFF9F9;
+}
+
+span.validation-summary-errors {
+    font-weight: bold;
+}
+
+.error_message {
+    border: thin solid #FF0066;
+    color: #e80c4d;
+    display: inline-block;
+    padding: 5px 20px 5px 20px;
+    position: absolute;
+    top: 220px;
+    left: 400px;
+    background-color: #FFE0D9;
+}
+
+.info_message {
+    border: thin solid #00CC66;
+    color: #00CC66;
+    display: inline-block;
+    padding: 5px 20px 5px 20px;
+    position: absolute;
+    top: 220px;
+    left: 400px;
+    background-color: #D7FFEB;
+}
+
+#contactPopUpDiv {
+    border: 1px solid #0099CC;
+    width: 400px;
+    height: 310px;
+    top: 250px;
+    left: 400px;
+    position: fixed;
+    background-color: #DFF4FF;
+    text-align: left;
+    padding: 10px;
+    z-index: 999;
+    display: none;
+}
+
+    #contactPopUpDiv span {
+        display: inline-block;
+        width: 80px;
+        text-align: left;
+        padding-left: 15px;
+    }
+
+
+#overlay {
+    display: none; /* ensures it’s invisible until it’s called */
+    position: fixed; /* makes the div go into a position that’s absolute to the browser viewing area */
+    left: 0%; /* makes the div span all the way across the viewing area */
+    top: 0%; /* makes the div span all the way across the viewing area */
+    z-index: 99; /* makes the div the second most top layer, so it’ll lay on top of everything else EXCEPT for divs with a higher z-index (meaning the #overlay ruleset) */
+    filter: Alpha(Opacity=40);
+    -moz-opacity: 0.4;
+    opacity: 0.4;
+    width: 100%;
+    height: 100%;
+    background-color: #999999;
+}

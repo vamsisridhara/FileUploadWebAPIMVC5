@@ -57,9 +57,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Newtonsoft.Json.6.0.5\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Ninject">
       <HintPath>..\packages\Ninject.3.0.1.10\lib\net45-full\Ninject.dll</HintPath>
@@ -156,6 +156,7 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\BookingController.cs" />
     <Compile Include="Controllers\CascadingController.cs" />
     <Compile Include="Controllers\ChildController.cs" />
     <Compile Include="Controllers\CommuteController.cs" />
@@ -165,7 +166,9 @@
     <Compile Include="Controllers\FileUploadController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ParentController.cs" />
+    <Compile Include="Controllers\PeopleController.cs" />
     <Compile Include="Controllers\PersonController.cs" />
+    <Compile Include="Controllers\TemplatedController.cs" />
     <Compile Include="Controllers\TextFileUploadController.cs" />
     <Compile Include="Data\DistrictBL.cs" />
     <Compile Include="Data\DistrictDAL.cs" />
@@ -173,15 +176,18 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ActionModel.cs" />
+    <Compile Include="Models\Appointment.cs" />
     <Compile Include="Models\CommuteSystem.cs" />
     <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\ContactRepository.cs" />
+    <Compile Include="Models\CountryValueProvider.cs" />
     <Compile Include="Models\District.cs" />
     <Compile Include="Models\CsvHelper.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\Filter.cs" />
     <Compile Include="Models\Managers.cs" />
     <Compile Include="Models\NinjectDependencyResolver.cs" />
+    <Compile Include="Models\Person.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -189,11 +195,14 @@
   <ItemGroup>
     <Content Include="angularFileUpload.html" />
     <Content Include="cascade.html" />
+    <Content Include="ch18\index.html" />
     <Content Include="commute.html" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -233,16 +242,40 @@
     <Content Include="CRUD\user-creation.html" />
     <Content Include="CRUD\user-detail.html" />
     <Content Include="CRUD\user-list.html" />
+    <Content Include="dropdown\index.html" />
+    <Content Include="dropdown\userRepoService.js" />
+    <Content Include="dropdown\usersController.js" />
     <Content Include="favicon.ico" />
     <Content Include="fileUploadService.js" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="horizontal.html" />
+    <Content Include="horizontal2.html" />
+    <Content Include="images\dcgov_logo.jpg" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\jquery-ui-1.11.4.js" />
+    <Content Include="Scripts\jquery-ui-1.11.4.min.js" />
+    <Content Include="well.html" />
+    <Content Include="wizard\app.css" />
+    <Content Include="wizard\app.js" />
+    <Content Include="wizard\index.html" />
+    <Content Include="wizard\wizard.html" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="index.html" />
     <Content Include="Multistep\app.js" />
@@ -254,8 +287,6 @@
     <Content Include="Multistep\styles.css" />
     <Content Include="product.html" />
     <Content Include="Scripts\angular.min.js" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\dmprocessing.js" />
     <Content Include="Scripts\download.js" />
     <Content Include="Scripts\jquery-validate.bootstrap-tooltip.min.js" />
@@ -263,8 +294,6 @@
     <Content Include="Scripts\jquery-2.1.1.min.js" />
     <Content Include="Scripts\jquery-2.1.1.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery-ui-1.11.1.js" />
-    <Content Include="Scripts\jquery-ui.min-1.11.1.js" />
     <Content Include="Scripts\jquery-validate.bootstrap-tooltip.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
@@ -297,6 +326,14 @@
     <Content Include="Views\Child\Index.cshtml" />
     <Content Include="Views\Home\LoadStudents.cshtml" />
     <Content Include="Views\Person\Index.cshtml" />
+    <Content Include="Views\Templated\Index.cshtml" />
+    <Content Include="Views\Templated\CreatePerson.cshtml" />
+    <Content Include="Views\Templated\CreatePostPerson.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Enum.cshtml" />
+    <Content Include="Views\Booking\MakeBooking.cshtml" />
+    <Content Include="Views\Booking\Completed.cshtml" />
+    <Content Include="Views\People\Index.cshtml" />
+    <Content Include="Views\People\GetPeople.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -18,10 +18,15 @@ namespace FileUploadWebAPIMVC5
                 url: "{controller}/{action}/{id}",
                 defaults: new
                 {
-                    controller = "Person",
-                    action = "Index",
+                    controller = "Booking",
+                    action = "MakeBooking",
                     id = UrlParameter.Optional
                 }
+            );
+
+            routes.MapRoute(
+                name: "FormRoute",
+                url: "app/forms/{controller}/{action}"
             );
         }
     }

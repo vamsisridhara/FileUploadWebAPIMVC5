@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html ng-app="postExample">
+<head>
+    <script data-require="angular.js@1.2.22" data-semver="1.2.22"
+            src="https://code.angularjs.org/1.2.22/angular.js"></script>
+    <script src="usersController.js"></script>
+    <script src="userRepoService.js"></script>
+</head>
+<body ng-controller="UsersController">
+    <h1>Post Angular Example</h1>
+    <select id="UserSelector" 
+            ng-model="selValue"
+            class="form-control">
+        <option ng-repeat="user in users"
+                value="{{user.login}}">
+            {{user.login}}
+        </option>
+    </select>
+    <br />
+    <label>{{ selValue }}</label>
+</body>
+
+</html>

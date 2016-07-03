@@ -1,0 +1,279 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Navbar Template for Bootstrap</title>
+    <link href="Content/Site.css" rel="stylesheet" />
+    <!-- Bootstrap core CSS -->
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <style>
+        .hidden {
+            display: none;
+        }
+
+        #mainheader {
+            background-color: white;
+            width: 100%;
+            display: inline-block;
+            height: 100px;
+            float: left;
+        }
+
+        #dcrui-header-top {
+            border-top: 11px solid #2B4888;
+        }
+
+        .dots {
+            background-image: url('/images/dot.png');
+            min-width: 100%;
+            position: absolute;
+            top: 4px;
+            height: 3px;
+        }
+
+        .logo-img {
+            float: left;
+            margin: 20px 10px;
+        }
+
+        .headertitle {
+            float: left;
+            margin: 10px 10px;
+        }
+
+        .logo-img img {
+            width: 100px;
+        }
+
+        img {
+            border: 0px none;
+        }
+
+        #divheader {
+            border-width: 4px;
+            border-color: #BF3F00;
+            float: left;
+            width: 100%;
+            height: 120px;
+            border-top-style: solid;
+        }
+
+        .dcMasthead {
+            background-color: Green;
+            width: 100%;
+            height: 120px;
+            background: transparent url('/global/images/dcHeaderBg_ver2.jpg') repeat-x scroll 0 0;
+        }
+
+        .dcMastheadLogo {
+            margin-left: 15px;
+            margin-top: 22px;
+            width: 233px;
+            float: left;
+            background: url('/global/images/DCgovLOGO_ver2.png') no-repeat;
+            height: 100px;
+        }
+
+        .dcMastheadflagCell {
+            background: #fff url('/global/images/dcFlag_ver2.jpg') no-repeat 0 0;
+            height: 100px;
+            float: left;
+            margin-top: 0px;
+            width: 270px;
+        }
+
+
+        .dcMastheadrightHeader {
+            float: right;
+            width: 265px;
+            height: 140px;
+            display: inline-block;
+        }
+
+        .rightHeader {
+            position: relative;
+            height: 140px;
+            float: right;
+            display: inline-block;
+        }
+
+
+        .logorightLast {
+            background: transparent url('/global/images/dcHeaderMayor_ver2.png') no-repeat;
+            border ="0";
+            position: relative;
+            float: right;
+            top: 17px;
+            height: 140px;
+            width: 200px;
+            margin-top: 15px;
+        }
+
+
+        .logorightLastBefore {
+            top: 22px;
+            position: relative;
+            background: url('/global/images/oneCityLOGO_ver2.png') no-repeat;
+            right: -110px;
+            float: right;
+            height: 107px;
+            width: 108px;
+            margin-top: 0px;
+        }
+
+        .validation-summary-errors-container {
+            padding: 1.5em;
+            margin: .5em 0px .5em 0px;
+            background-color: #F9E6E6;
+            border: 1px solid #df6b6b;
+            color: #dc3535;
+        }
+
+        .field-validation-error {
+            color: #dc3535;
+        }
+
+        .input-validation-error {
+            border: 1px solid #EFB8B8;
+            background-color: #FFF9F9;
+        }
+
+        span.validation-summary-errors {
+            font-weight: bold;
+        }
+
+        .error_message {
+            border: thin solid #FF0066;
+            color: #e80c4d;
+            display: inline-block;
+            padding: 5px 20px 5px 20px;
+            position: absolute;
+            top: 220px;
+            left: 400px;
+            background-color: #FFE0D9;
+        }
+
+        .info_message {
+            border: thin solid #00CC66;
+            color: #00CC66;
+            display: inline-block;
+            padding: 5px 20px 5px 20px;
+            position: absolute;
+            top: 220px;
+            left: 400px;
+            background-color: #D7FFEB;
+        }
+
+        #contactPopUpDiv {
+            border: 1px solid #0099CC;
+            width: 400px;
+            height: 310px;
+            top: 250px;
+            left: 400px;
+            position: fixed;
+            background-color: #DFF4FF;
+            text-align: left;
+            padding: 10px;
+            z-index: 999;
+            display: none;
+        }
+
+            #contactPopUpDiv span {
+                display: inline-block;
+                width: 80px;
+                text-align: left;
+                padding-left: 15px;
+            }
+
+
+        #overlay {
+            display: none; /* ensures it’s invisible until it’s called */
+            position: fixed; /* makes the div go into a position that’s absolute to the browser viewing area */
+            left: 0%; /* makes the div span all the way across the viewing area */
+            top: 0%; /* makes the div span all the way across the viewing area */
+            z-index: 99; /* makes the div the second most top layer, so it’ll lay on top of everything else EXCEPT for divs with a higher z-index (meaning the #overlay ruleset) */
+            filter: Alpha(Opacity=40);
+            -moz-opacity: 0.4;
+            opacity: 0.4;
+            width: 100%;
+            height: 100%;
+            background-color: #999999;
+        }
+    </style>
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="https://getbootstrap.com/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="https://getbootstrap.com/examples/navbar/navbar.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="https://getbootstrap.com/assets/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+</head>
+
+<body>
+    <div class="dots"></div>
+    <div class="navbar">
+        <a class="logo-img" href="#">
+            <img src="images/dcgov_logo.jpg">
+            Department of Employment Services
+        </a>
+    </div>
+    <!-- Navbar fixed top -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header navbar-default">
+                <div class="dots"></div><br />
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="" href="#">
+                    <img src="images/dcgov_logo.jpg">
+                    Department of Employment Services
+                </a><br />
+
+            </div><br />
+        </div><!--/.container -->
+        <div class="navbar-collapse collapse">
+            <!-- Left nav -->
+            <ul class="nav navbar-nav">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Manage Employee Time</a></li>
+                <li><a href="#">Payroll Resolution</a></li>
+            </ul>
+            <!-- Right nav -->
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="bootstrap-navbar.html">Log in</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="https://getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
+</body>
+</html>
