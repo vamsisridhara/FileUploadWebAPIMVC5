@@ -72,6 +72,6 @@ C:\GitHub\FileUploadWebAPIMVC5\suresh\bin\Microsoft.Owin.Security.Google.xml
 C:\GitHub\FileUploadWebAPIMVC5\suresh\bin\Microsoft.Owin.Security.Twitter.xml
 C:\GitHub\FileUploadWebAPIMVC5\suresh\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\GitHub\FileUploadWebAPIMVC5\suresh\bin\System.Web.Http.Owin.xml
+C:\GitHub\FileUploadWebAPIMVC5\suresh\obj\Debug\suresh.csprojResolveAssemblyReference.cache
 C:\GitHub\FileUploadWebAPIMVC5\suresh\obj\Debug\suresh.dll
 C:\GitHub\FileUploadWebAPIMVC5\suresh\obj\Debug\suresh.pdb
-C:\GitHub\FileUploadWebAPIMVC5\suresh\obj\Debug\suresh.csprojResolveAssemblyReference.cache

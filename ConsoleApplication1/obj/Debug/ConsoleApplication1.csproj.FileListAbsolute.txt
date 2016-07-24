@@ -1,6 +1,8 @@
 C:\GitHub\FileUploadWebAPIMVC5\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
 C:\GitHub\FileUploadWebAPIMVC5\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
 C:\GitHub\FileUploadWebAPIMVC5\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+C:\GitHub\FileUploadWebAPIMVC5\ConsoleApplication1\bin\Debug\Newtonsoft.Json.dll
+C:\GitHub\FileUploadWebAPIMVC5\ConsoleApplication1\bin\Debug\Newtonsoft.Json.xml
+C:\GitHub\FileUploadWebAPIMVC5\ConsoleApplication1\obj\Debug\ConsoleApplication1.csprojResolveAssemblyReference.cache
 C:\GitHub\FileUploadWebAPIMVC5\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
 C:\GitHub\FileUploadWebAPIMVC5\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb
-C:\GitHub\FileUploadWebAPIMVC5\ConsoleApplication1\obj\Debug\ConsoleApplication1.csprojResolveAssemblyReference.cache

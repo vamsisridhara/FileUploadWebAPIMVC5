@@ -50,6 +50,6 @@ C:\GitHub\FileUploadWebAPIMVC5\FileUploadWebAPIMVC5\bin\Antlr3.Runtime.pdb
 C:\GitHub\FileUploadWebAPIMVC5\FileUploadWebAPIMVC5\bin\System.Net.Http.Formatting.xml
 C:\GitHub\FileUploadWebAPIMVC5\FileUploadWebAPIMVC5\bin\System.Web.Http.xml
 C:\GitHub\FileUploadWebAPIMVC5\FileUploadWebAPIMVC5\bin\System.Web.Http.WebHost.xml
+C:\GitHub\FileUploadWebAPIMVC5\FileUploadWebAPIMVC5\obj\Debug\FileUploadWebAPIMVC5.csprojResolveAssemblyReference.cache
 C:\GitHub\FileUploadWebAPIMVC5\FileUploadWebAPIMVC5\obj\Debug\FileUploadWebAPIMVC5.dll
 C:\GitHub\FileUploadWebAPIMVC5\FileUploadWebAPIMVC5\obj\Debug\FileUploadWebAPIMVC5.pdb
-C:\GitHub\FileUploadWebAPIMVC5\FileUploadWebAPIMVC5\obj\Debug\FileUploadWebAPIMVC5.csprojResolveAssemblyReference.cache

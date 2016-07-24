@@ -1,6 +1,6 @@
 C:\GitHub\FileUploadWebAPIMVC5\RestfulTutorial.Web\bin\RestfulTutorial.Web.dll.config
 C:\GitHub\FileUploadWebAPIMVC5\RestfulTutorial.Web\bin\RestfulTutorial.Web.dll
 C:\GitHub\FileUploadWebAPIMVC5\RestfulTutorial.Web\bin\RestfulTutorial.Web.pdb
+C:\GitHub\FileUploadWebAPIMVC5\RestfulTutorial.Web\obj\Debug\RestfulTutorial.Web.csprojResolveAssemblyReference.cache
 C:\GitHub\FileUploadWebAPIMVC5\RestfulTutorial.Web\obj\Debug\RestfulTutorial.Web.dll
 C:\GitHub\FileUploadWebAPIMVC5\RestfulTutorial.Web\obj\Debug\RestfulTutorial.Web.pdb
-C:\GitHub\FileUploadWebAPIMVC5\RestfulTutorial.Web\obj\Debug\RestfulTutorial.Web.csprojResolveAssemblyReference.cache

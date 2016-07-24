@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/Content/StyleSheet1.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://datcp.wi.gov/_catalogs/masterpage/AgencyTemplate1/css/styles.css" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <style>
+        #searchBoxInput {
+            width: 100%;
+            height: 40px;
+            background-color: #1D4F81;
+            color: #FFFFFF;
+            text-align: center;
+            border: 1px solid #F9C118;
+            position: absolute;
+            margin-top: 75px;
+            opacity: 0.8;
+        }
+
+        .loadingDiv {
+            position: fixed;
+            left: 20%;
+            top: 25%;
+            width: 100%;
+            height: 100%;
+            background-repeat: no-repeat;
+            background-position: center;
+            z-index: 10000000;
+            opacity: 0.4;
+            filter: alpha(opacity=40); /* For IE8 and earlier */
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                </ul>
+                <ul class="nav navbar-right">
+                    <li>
+                        <div id="searchBox">
+                            @using (Ajax.BeginForm("Index", new { area = "", controller = "Search" },
+                            new AjaxOptions
+                            {
+                                UpdateTargetId = "content",
+                                HttpMethod = "GET",
+                                LoadingElementId = "ajax-progress"
+                            }))
+                            {
+                                @Html.TextBox("searchBoxInput", "SEARCH",
+                                    new
+                                    {
+                                        maxlength = 30,
+                                        @id = "searchBoxInput",
+                                        placeholder = "SEARCH",
+                                        @class = "searchBoxInput",
+                                        onkeypress = "key = window.event ? event.keyCode : event.which; if((this.value.length >= this.getAttribute('maxlength')) && (key == 32 || key == 13 || key > 47)) { if (window.event) { window.event.returnValue = null; } else { event.cancelDefault; return false; } }"
+                                    })
+                                <button id="btnSubmit" type="submit" class="btn btn-primary">Submit</button>
+                            }
+                        </div>
+                        <div id="ajax-progress" class="loadingDiv">
+                            <img src="@Url.Content("https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif")"
+                                 alt="Please wait..." />
+                        </div>
+                    </li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        <div class="jumbotron" id="content">
+        </div>
+        @RenderBody()
+        <hr />
+        <footer>
+            <div class="text-center center-block">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-1">
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-10">
+                            <label>Wisconsin Department of Agriculture, Trade and Consumer Protection</label><br />
+                            <label>2811 Agriculture Dr. P.O. Box 891</label><br />
+                            <label>Madison, Wisconsin 53708-8911</label>
+                            <br />
+                            <label>(608) 224-5012</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <script>
+        $(document).ready(function () {
+            $('#ajax-progress').hide();
+            $("#btnSubmit").click(function () {
+                $("#content").empty();
+            });
+            function loadGIF() {
+                $("#content").html('');
+                $('#ajax-progress').show();
+            }
+        });
+    </script>
+</body>
+</html>

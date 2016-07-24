@@ -59,8 +59,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="advdirectives.html" />
+    <Content Include="angrecaptcha.html" />
+    <Content Include="angular-recaptcha.min.js" />
     <Content Include="angularjs\app.html" />
     <Content Include="app.js" />
+    <Content Include="captcha\angular-recaptcha.min.js" />
+    <Content Include="captcha\captcha.html" />
+    <Content Include="captcha\login.js" />
     <Content Include="common.services.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />

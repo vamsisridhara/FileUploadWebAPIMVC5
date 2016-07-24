@@ -12,7 +12,12 @@
     <script src="~/Scripts/jquery-ui-1.11.4.js"></script>
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+    <link rel="stylesheet" href="https://datcp.wi.gov/_catalogs/masterpage/AgencyTemplate1/css/styles.css" />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
     <style>
+
         label {
             display: inline-block;
             width: 100px;
@@ -117,7 +122,48 @@
         @RenderBody()
         <hr />
     </div>
+    <footer>
+        <div class="text-center center-block">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-4">
 
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                        <label>Wisconsin Department of Agriculture</label>
+                        <label>2811 Agriculture Dr.</label>
+                        <label>P.O. Box 8911</label>
+                        <label>Madison, WI 53708-8911</label>
+                        <br />
+                        <label>(608) 224-5012</label><br />
+                        <label>(608) 224-5058(TDD)</label>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+    </footer>
+    <div class="text-center center-block">
+        <a href="https://www.facebook.com">
+            <i id="social-fb" class="fa fa-facebook-square fa-3x social">
+            </i>
+        </a>
+        <a href="https://twitter.com">
+            <i id="social-tw" class="fa fa-twitter-square fa-3x social">
+
+            </i>
+        </a>
+        <a href="https://plus.google.com">
+            <i id="social-gp" class="fa fa-google-plus-square fa-3x social">
+
+            </i>
+        </a>
+    </div>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
 </body>

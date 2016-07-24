@@ -15,7 +15,7 @@
     <AssemblyName>FileUploadWebAPIMVC5</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -165,6 +165,7 @@
     <Compile Include="Controllers\ExcelApiController.cs" />
     <Compile Include="Controllers\FileUploadController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\loginController.cs" />
     <Compile Include="Controllers\ParentController.cs" />
     <Compile Include="Controllers\PeopleController.cs" />
     <Compile Include="Controllers\PersonController.cs" />
@@ -194,6 +195,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="angularFileUpload.html" />
+    <Content Include="bcemit.html" />
+    <Content Include="captcha\angular-recaptcha.min.js" />
+    <Content Include="captcha\captcha.html" />
+    <Content Include="captcha\login.js" />
+    <Content Include="captcha\loginService.js" />
     <Content Include="cascade.html" />
     <Content Include="ch18\index.html" />
     <Content Include="commute.html" />
@@ -249,6 +255,7 @@
     <Content Include="fileUploadService.js" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="footer\footer1.html" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="horizontal.html" />
@@ -362,7 +369,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>8656</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:8656/</IISUrl>
+          <IISUrl>http://localhost/FileUploadWebAPIMVC5</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
