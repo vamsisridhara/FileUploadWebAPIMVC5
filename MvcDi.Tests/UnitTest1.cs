@@ -29,7 +29,7 @@ namespace MvcDi.Tests
                 new ProductVM() { ProductID = 12, ProductName = "Chai"}
             };
             var mock = new Mock<IProductRepository>();
-            IProductRepository repo = mock.Object;
+            //IProductRepository repo = mock.Object;
             
             mock.Setup(x => x.getProducts(It.IsAny<CategoryInput>())).Returns(list);
             pc = new ProductApiController(mock.Object);

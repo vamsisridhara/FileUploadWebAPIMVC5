@@ -11,6 +11,10 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 using AssessmentTest;
+using AutoMapper;
+using AutoMapper.QueryableExtensions;
+using AutoMapper.Mappers;
+using AutoMapper.Configuration.Conventions;
 using Newtonsoft.Json;
 
 namespace custommetadata
@@ -34,7 +38,23 @@ namespace n2
 }
 namespace ConsoleApplication1
 {
+    public class GenderResolver : AutoMapper.IValueResolver<bool, string, string>
+    {
+        public string Resolve(bool source, string destination, string destMember, ResolutionContext context)
+        {
+            return source ? "Man" : "Female";
+        }
+    }
 
+    //public class DateFormatter : AutoMapper.
+    //{
+    //    public string FormatValue(ResolutionContext context)
+    //    {
+    //        return ((DateTime)context.SourceValue).ToShortDateString();
+    //    }
+
+
+    //}
 
     class Pet
     {
@@ -66,6 +86,38 @@ namespace ConsoleApplication1
         public string sql { get; set; }
         public string comment { get; set; }
     }
+    public class EmployeeMap
+    {
+        public string Name { get; set; }
+        public string Email { get; set; }
+        public AddressMap Address { get; set; }
+        public string Position { get; set; }
+        public bool Gender { get; set; }
+        public int Age { get; set; }
+        public int YearsInCompany { get; set; }
+        public DateTime StartDate { get; set; }
+    }
+
+    public class AddressMap
+    {
+        public string Country { get; set; }
+        public string City { get; set; }
+        public string Street { get; set; }
+        public int Number { get; set; }
+    }
+
+    public class EmployeeViewItemMap
+    {
+        public string Name { get; set; }
+        public string Email { get; set; }
+        public string Address { get; set; }
+        public string Position { get; set; }
+        public string Gender { get; set; }
+        public int Age { get; set; }
+        public int YearsInCompany { get; set; }
+        public string StartDate { get; set; }
+    }
+
     class Program
     {
         static void A()
@@ -211,7 +263,35 @@ namespace ConsoleApplication1
         }
         static void Main(string[] args)
         {
-            
+            //EmployeeMap employee = new EmployeeMap
+            //{
+            //    Name = "John SMith",
+            //    Email = "john@codearsenal.net",
+            //    Address = new AddressMap
+            //    {
+            //        Country = "USA",
+            //        City = "New York",
+            //        Street = "Wall Street",
+            //        Number = 7
+            //    },
+            //    Position = "Manager",
+            //    Gender = true,
+            //    Age = 35,
+            //    YearsInCompany = 5,
+            //    StartDate = new DateTime(2007, 11, 2)
+            //};
+            //Mapper.Initialize(cfg => cfg.CreateMap<EmployeeMap, EmployeeViewItemMap>()
+            //.ForMember(ev => ev.Address,
+            //           m => m.MapFrom(a => a.Address.City + ", " +
+            //                               a.Address.Street + " " +
+            //                               a.Address.Number)
+            //          );
+            //.ForMember(ev => ev.Gender,
+            //            m => m.ResolveUsing<GenderResolver>().FromMember(e => e.Gender))
+            //.ForMember(ev => ev.StartDate, m => m.AddFormatter<DateFormatter>());
+
+
+
             printnumbers();
             //OrderDetail od = new OrderDetail()
             //{

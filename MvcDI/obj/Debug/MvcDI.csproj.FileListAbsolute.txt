@@ -1,9 +1,9 @@
-C:\GitHub\FileUploadWebAPIMVC5\MvcDI\bin\roslyn\csc.exe
 C:\GitHub\FileUploadWebAPIMVC5\MvcDI\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
 C:\GitHub\FileUploadWebAPIMVC5\MvcDI\bin\roslyn\Microsoft.CodeAnalysis.dll
 C:\GitHub\FileUploadWebAPIMVC5\MvcDI\bin\roslyn\System.Collections.Immutable.dll
 C:\GitHub\FileUploadWebAPIMVC5\MvcDI\bin\roslyn\System.Reflection.Metadata.dll
 C:\GitHub\FileUploadWebAPIMVC5\MvcDI\bin\roslyn\VBCSCompiler.exe
+C:\GitHub\FileUploadWebAPIMVC5\MvcDI\bin\roslyn\csc.exe
 C:\GitHub\FileUploadWebAPIMVC5\MvcDI\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
 C:\GitHub\FileUploadWebAPIMVC5\MvcDI\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
 C:\GitHub\FileUploadWebAPIMVC5\MvcDI\bin\roslyn\Microsoft.CSharp.Core.targets
@@ -37,6 +37,8 @@ C:\GitHub\FileUploadWebAPIMVC5\MvcDI\bin\Newtonsoft.Json.dll
 C:\GitHub\FileUploadWebAPIMVC5\MvcDI\bin\Ninject.dll
 C:\GitHub\FileUploadWebAPIMVC5\MvcDI\bin\Ninject.Web.Common.dll
 C:\GitHub\FileUploadWebAPIMVC5\MvcDI\bin\Ninject.Web.Mvc.dll
+C:\GitHub\FileUploadWebAPIMVC5\MvcDI\bin\Ninject.Web.WebApi.dll
+C:\GitHub\FileUploadWebAPIMVC5\MvcDI\bin\Ninject.Web.WebApi.WebHost.dll
 C:\GitHub\FileUploadWebAPIMVC5\MvcDI\bin\Owin.dll
 C:\GitHub\FileUploadWebAPIMVC5\MvcDI\bin\System.Net.Http.Formatting.dll
 C:\GitHub\FileUploadWebAPIMVC5\MvcDI\bin\System.Web.Helpers.dll
@@ -57,6 +59,8 @@ C:\GitHub\FileUploadWebAPIMVC5\MvcDI\bin\Moq.xml
 C:\GitHub\FileUploadWebAPIMVC5\MvcDI\bin\Ninject.xml
 C:\GitHub\FileUploadWebAPIMVC5\MvcDI\bin\Ninject.Web.Common.xml
 C:\GitHub\FileUploadWebAPIMVC5\MvcDI\bin\Ninject.Web.Mvc.xml
+C:\GitHub\FileUploadWebAPIMVC5\MvcDI\bin\Ninject.Web.WebApi.xml
+C:\GitHub\FileUploadWebAPIMVC5\MvcDI\bin\Ninject.Web.WebApi.WebHost.xml
 C:\GitHub\FileUploadWebAPIMVC5\MvcDI\bin\System.Web.Helpers.xml
 C:\GitHub\FileUploadWebAPIMVC5\MvcDI\bin\System.Web.Mvc.xml
 C:\GitHub\FileUploadWebAPIMVC5\MvcDI\bin\System.Web.Optimization.xml
@@ -85,8 +89,3 @@ C:\GitHub\FileUploadWebAPIMVC5\MvcDI\bin\Microsoft.Owin.Security.Twitter.xml
 C:\GitHub\FileUploadWebAPIMVC5\MvcDI\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\GitHub\FileUploadWebAPIMVC5\MvcDI\obj\Debug\MvcDI.dll
 C:\GitHub\FileUploadWebAPIMVC5\MvcDI\obj\Debug\MvcDI.pdb
-C:\GitHub\FileUploadWebAPIMVC5\MvcDI\bin\Ninject.Web.WebApi.dll
-C:\GitHub\FileUploadWebAPIMVC5\MvcDI\bin\Ninject.Web.WebApi.xml
-C:\GitHub\FileUploadWebAPIMVC5\MvcDI\bin\Ninject.Web.WebApi.WebHost.dll
-C:\GitHub\FileUploadWebAPIMVC5\MvcDI\bin\Ninject.Web.WebApi.WebHost.xml
-C:\GitHub\FileUploadWebAPIMVC5\MvcDI\obj\Debug\MvcDI.csprojResolveAssemblyReference.cache

@@ -7,9 +7,9 @@ using System.Web.Mvc;
 namespace MvcDI.Controllers
 {
     //this need to be removed and replaced by real implementation
-    public class SiteFilter
+    public class SearchFilter
     {
-        public string searchBoxInput { get; set; }
+        public string filterInput { get; set; }
     }
     //this need to be removed and replaced by real implementation
     public class SearchData
@@ -41,26 +41,11 @@ namespace MvcDI.Controllers
             };
         }
         // GET: Search
-        public PartialViewResult Index(SiteFilter filter)
+        public PartialViewResult Index(SearchFilter filter)
         {
-            string strSearch;
-            List<SearchData> lst = null;
-            try
-            {
-                strSearch = filter.searchBoxInput.ToString();
-            }
-            catch (Exception ex)
-            {
-                strSearch = "SEARCH";
-                throw;
-            }
-
-            ViewData["filter"] = strSearch;
-            if (filter.searchBoxInput != "SEARCH")
-            {
-                System.Threading.Thread.Sleep(10000);
-                lst = getSearchFakeData();
-            }
+            string strSearch = filter.filterInput.ToString();
+            System.Threading.Thread.Sleep(10000);
+            List<SearchData> lst = getSearchFakeData();
             return PartialView("~/Views/Shared/_SearchData.cshtml", lst);
         }
     }

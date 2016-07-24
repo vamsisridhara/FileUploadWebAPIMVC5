@@ -56,7 +56,7 @@ namespace MvcDI.Models
         public Nullable<short> ReorderLevel { get; set; }
         public bool Discontinued { get; set; }
 
-        public CategoryVM Category { get; set; }
+        //public CategoryVM Category { get; set; }
 
     }
     public class CategoryVM
