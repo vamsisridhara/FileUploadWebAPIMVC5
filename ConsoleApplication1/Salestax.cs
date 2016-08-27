@@ -4,6 +4,7 @@ using System.Text;
 
 namespace ConsoleApplication1
 {
+    //test
     public abstract class Product
     {
         public decimal Price { get; set; }
