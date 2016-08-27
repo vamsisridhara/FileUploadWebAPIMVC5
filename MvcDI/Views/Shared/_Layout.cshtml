@@ -9,6 +9,7 @@
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
     <style>
         #filterInput {
             width: 100%;
@@ -53,59 +54,19 @@
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
-                <ul class="nav navbar-right">
-                    <li>
-                        <div id="searchBox">
-                            @using (Ajax.BeginForm("Index", new { area = "", controller = "Search" },
-                            new AjaxOptions
-                            {
-                                UpdateTargetId = "content",
-                                HttpMethod = "GET",
-                                LoadingElementId = "progress"
-                            }))
-                            {
-                                @Html.TextBox("filterInput", "",
-                                    new
-                                    {
-                                        maxlength = 30,
-                                        @id = "filterInput",
-                                        placeholder = "Please enter",
-                                        @class = "filterInput"
-                                    })
-                                <button id="btnSubmit" type="submit" class="btn btn-primary">Submit</button>
-                            }
-                        </div>
-                        <div id="progress" class="loadingDiv">
-                            <img src="@Url.Content("https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif")"
-                                 alt="Please wait..." />
-                        </div>
-                    </li>
-                </ul>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
     <div class="container body-content">
-        <div class="jumbotron" id="content">
+        <div>
+            @Html.Partial("_SearchBarPartial")
         </div>
         @RenderBody()
         <hr />
-        
     </div>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
-    <script>
-        $(document).ready(function () {
-            $('#progress').hide();
-            $("#btnSubmit").click(function () {
-                $("#content").empty();
-            });
-            function loadGIF() {
-                $("#content").html('');
-                $('#progress').show();
-            }
-        });
-    </script>
 </body>
 </html>

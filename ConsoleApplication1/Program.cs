@@ -1,4 +1,5 @@
-﻿using System;
+﻿using static System.Math;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.IO;
@@ -16,6 +17,10 @@ using AutoMapper.QueryableExtensions;
 using AutoMapper.Mappers;
 using AutoMapper.Configuration.Conventions;
 using Newtonsoft.Json;
+using System.Collections;
+using System.Diagnostics;
+using n1;
+using System.Runtime.CompilerServices;
 
 namespace custommetadata
 {
@@ -25,6 +30,24 @@ namespace custommetadata
 
 namespace n1
 {
+    public class CA {
+        public string prop { get; set; }
+        public string methoda(int va) {
+            return va.ToString();
+        }
+
+    }
+
+
+    public interface Myinter {
+        string method();
+    }
+    public class c2 : Myinter {
+       
+       public string method() {
+            return "te";
+        }
+    }
     public class cl1 { }
     class class2
     {
@@ -38,6 +61,27 @@ namespace n2
 }
 namespace ConsoleApplication1
 {
+    class DataList<TData> : IEnumerable<TData>
+    {
+        public IEnumerator<TData> GetEnumerator()
+        {
+            return null;
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return null;
+        }
+    }
+    public abstract class Student { }
+    public class EnginerignStudent : Student { }
+    public class LiterStu : Student { }
+    //public class Course<TStu> {
+    //    private List<TStu> stu = new List<TStu>();
+    //    public void CreateTempl() {
+    //        stu.Add(new TStu());
+    //    }
+    //}
     public class GenderResolver : AutoMapper.IValueResolver<bool, string, string>
     {
         public string Resolve(bool source, string destination, string destMember, ResolutionContext context)
@@ -261,8 +305,177 @@ namespace ConsoleApplication1
                 else { Console.WriteLine(count); }
             }
         }
+        //static IEnumerable ParseCodes(string value, out int code)
+        //{
+        //    int parsedCode;
+        //    code = 0;
+        //    if (!Int32.TryParse(value, out parsedCode)) {
+        //        yield return "false";
+        //    }
+        //    code = parsedCode;
+        //    for (int i = 0; i <= parsedCode.ToString().Length; i++) {
+        //        yield return parsedCode.ToString().Substring(i, 1);
+        //    }
+        //}
+        delegate int Calculator(int m, int n);
+        private static void A1() {
+            try { B1(); } catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        private static void B1() { 
+            try { C(); }
+            catch (Exception ex)
+            {
+                throw ;
+            }
+        }
+        private static void C()
+        {
+            throw new InvalidOperationException();
+        }
+        internal static void method() { }
+
+        static void updateText()
+        {
+
+            Console.Write("te");
+
+        }
+        static void showmess(string t, [CallerMemberName]string t1 = "") {
+            string m = t1;
+            Console.Write(t1);
+        }
+        [Obsolete("use mthod1",false)]
+        static string methodx() {
+            return "test";
+        }
+        static void m1(string na = "") {
+            Console.Write(na);
+        }
+        public enum WeeklyoFf { Sunday =1, saturday =2}
+        static async Task<string> testasync() {
+            await Task.Delay(100);
+            string ms = "yr";
+            return ms;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="args"></param>
         static void Main(string[] args)
         {
+            try
+            {
+                m1();
+
+                int count1 = 1;
+                int i1 = 2;
+                i1 = i1 + count1++;
+                Console.Write(i1);
+
+                bool? fal = null;
+
+                System.IO.Directory.CreateDirectory(@"c:\vamsiusha\usha");
+                string ms = "tst";
+                showmess(ms);
+
+                WeeklyoFf off = WeeklyoFf.saturday;
+                off = (WeeklyoFf)5;
+                Console.Write(off.ToString());
+
+                string q = "update prod set ta='test' whre prod=1";
+                dynamic d = new CA();
+                d.methoda("xiud");
+                Thread tr = new Thread(updateText);
+                tr.Start();
+
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.Message);
+            }
+
+            foreach (Match item in Regex.Matches("Ninety Six Thousand and Ninety Starts", @"\bN\S*"))
+            {
+                Console.Write(item.Value);
+                Console.Read();
+            }
+
+
+            int count = 0; int t = 0;
+            try
+            {
+                count++;
+                count = count / t;
+                count++;
+            }
+            catch (Exception ex)
+            {
+
+            }
+            count++;
+            Console.Write(count);
+
+            var str = "Brainbench";
+
+            //try
+            //{
+            //    string p = @"\b(\w+)\s\1\b";
+            //    var r = new Regex(p, RegexOptions.Singleline,Time);
+            //    var m = r.Match("I am string to be tested");
+
+            //}
+            //catch (RegexMatchTimeoutException ex)
+            //{
+
+            //    throw;
+            //}
+            //switch (customerTran)
+            //{
+            //    case "Cash": Console.WriteLine("cash");
+            //        return;
+            //    case "Visa": 
+            //    case "Master":
+            //    case "cc":
+            //        Console.WriteLine("cc");break;
+            //    default:return;
+
+            //}
+
+
+
+            try { A1(); }
+            catch (Exception ex) { Console.WriteLine(ex.StackTrace); }
+            //int? xyz = 5;
+            //Console.WriteLine(xyz.GetType());
+
+            //Calculator cd = new Calculator((n, m) => n + m);
+            //cd += new Calculator((n, m) => n * m);
+            //Console.WriteLine(cd(cd(2, 5), 4));
+            //try
+            //{
+            //    var person = new { FirstName = "Jon", LastName = "Doe" };
+            //    dynamic typeList = null;
+            //    typeList.invoke();
+            //}
+            //catch (Exception ex) { }
+
+
+            string[] ordinals = new string[] { "First", "second", "third", "fourth" };
+            var taken = ordinals.Take(3);
+            Console.WriteLine(taken.Count());
+
+            int[] numbers = { 1, 3, 4, 5, 6 };
+            int[] evenNumbers = Array.FindAll<int>(numbers, i => i % 2 == 0);
+
+            int ij = 0;
+            ij *= 1 + 1 * 2 - 1 / 3;
+            Console.WriteLine(ij);
+
+
+
             //EmployeeMap employee = new EmployeeMap
             //{
             //    Name = "John SMith",
@@ -560,6 +773,11 @@ namespace ConsoleApplication1
             //Console.Read();
         }
     }
+
+    internal class ConfigurationManager
+    {
+    }
+
     //create a class 
     public class MultiThreadTest
     {

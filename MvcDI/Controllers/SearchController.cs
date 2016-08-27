@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using MvcDI.Models;
 
 namespace MvcDI.Controllers
 {
@@ -47,6 +48,13 @@ namespace MvcDI.Controllers
             System.Threading.Thread.Sleep(10000);
             List<SearchData> lst = getSearchFakeData();
             return PartialView("~/Views/Shared/_SearchData.cshtml", lst);
+        }
+
+        [HttpPost]
+        public ActionResult Results(string searchText)
+        {
+            var result = ProductModelRepository.FillProduct(searchText);
+            return View(result);
         }
     }
 }

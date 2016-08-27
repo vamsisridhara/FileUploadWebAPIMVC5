@@ -1,0 +1,9 @@
+C:\GitHub\FileUploadWebAPIMVC5\ConsoleApplication2\bin\Debug\ConsoleApplication2.exe.config
+C:\GitHub\FileUploadWebAPIMVC5\ConsoleApplication2\bin\Debug\ConsoleApplication2.exe
+C:\GitHub\FileUploadWebAPIMVC5\ConsoleApplication2\bin\Debug\ConsoleApplication2.pdb
+C:\GitHub\FileUploadWebAPIMVC5\ConsoleApplication2\bin\Debug\ConsoleApplication2.xml
+C:\GitHub\FileUploadWebAPIMVC5\ConsoleApplication2\obj\Debug\ConsoleApplication2.Resources.resources
+C:\GitHub\FileUploadWebAPIMVC5\ConsoleApplication2\obj\Debug\ConsoleApplication2.vbproj.GenerateResource.Cache
+C:\GitHub\FileUploadWebAPIMVC5\ConsoleApplication2\obj\Debug\ConsoleApplication2.exe
+C:\GitHub\FileUploadWebAPIMVC5\ConsoleApplication2\obj\Debug\ConsoleApplication2.xml
+C:\GitHub\FileUploadWebAPIMVC5\ConsoleApplication2\obj\Debug\ConsoleApplication2.pdb

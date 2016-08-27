@@ -234,6 +234,7 @@
     <Compile Include="Models\IProductRepository.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\NinjectDependencyResolver.cs" />
+    <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Nwind.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -332,10 +333,11 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\Shared\_SearchData.cshtml" />
+    <Content Include="Views\Shared\_SearchBarPartial.cshtml" />
+    <Content Include="Views\Search\Results.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Search\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

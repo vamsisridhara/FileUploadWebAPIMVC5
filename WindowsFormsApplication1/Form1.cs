@@ -19,8 +19,8 @@ namespace WindowsFormsApplication1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            listBox1.Items.Add("test");
-            showselectedcustomer();
+            //listBox1.Items.Add("test");
+            //showselectedcustomer();
         }
         private void showselectedcustomer()
         {
@@ -36,6 +36,26 @@ namespace WindowsFormsApplication1
                 selectedValue = listBox1.SelectedItem.ToString();
             }
             return selectedValue;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (textBox1.InvokeRequired)
+                {
+                    textBox1.Text = " tet";
+                }
+                else
+                {
+                    textBox1.Text = "teeee";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
         }
     }
 }
