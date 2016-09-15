@@ -1,0 +1,49 @@
+﻿<html ng-app="app">
+<head>
+    <script src="../scripts/angular.min.js"></script>
+    <script src="../scripts/angular-sanitize.min.js"></script>
+    <script src="realestate/massautocomplete.min.js"></script>
+
+    <!-- Optional -->
+    <link href="realestate/massautocomplete.theme.css" rel="stylesheet" type="text/css">
+    <script>
+        (function () {
+            'use strict';
+            var app = angular.module('app', ['ngSanitize', 'MassAutoComplete']);
+            app.controller('mainCtrl', function ($scope, $sce, $q) {
+                $scope.dirty = {};
+
+                var states = ['Alabama', 'Alaska', 'California', /* ... */];
+
+                function suggest_state(term) {
+                    var q = term.toLowerCase().trim();
+                    var results = [];
+
+                    // Find first 10 states that start with `term`.
+                    for (var i = 0; i < states.length && results.length < 10; i++) {
+                        var state = states[i];
+                        if (state.toLowerCase().indexOf(q) === 0)
+                            results.push({ label: state, value: state });
+                    }
+
+                    return results;
+                }
+
+                $scope.autocomplete_options = {
+                    suggest: suggest_state
+                };
+            });
+
+        }());
+    </script>
+</head>
+
+<body>
+    <div ng-controller="mainCtrl">
+        <div mass-autocomplete>
+            <input ng-model="dirty.value"
+                   mass-autocomplete-item="autocomplete_options">
+        </div>
+    </div>
+</body>
+</html>

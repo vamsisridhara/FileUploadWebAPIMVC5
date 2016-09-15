@@ -1,0 +1,110 @@
+﻿<html ng-app="app">
+<head>
+    <script src="../Scripts/angular.min.js"></script>
+    <script src="../Scripts/angular-sanitize.min.js"></script>
+    <script src="../Scripts/jquery-2.1.1.min.js"></script>
+    <script src="../Scripts/jquery-ui-1.11.4.min.js"></script>
+    <script src="../Scripts/bootstrap.min.js"></script>
+    <script src="massautocomplete.min.js"></script>
+
+    <link rel="stylesheet" href="../Content/bootstrap.min.css" />
+    <link rel="stylesheet" href="../Content/bootstrap-theme.min.css" />
+    <link href="massautocomplete.theme.css" rel="stylesheet" />
+
+    <script>
+        (function () {
+            'use strict';
+            var app = angular.module('app', ['ngSanitize', 'MassAutoComplete']);
+            app.controller('mainCtrl', function ($scope, $sce, $q) {
+                $scope.dirty = {};
+                var users = [
+                  { name: 'Haki', joined: '2 month ago', email: 'Haki@email.com' },
+                  { name: 'Ran', joined: '2 days ago', email: 'Ran123@ac.org' },
+                  { name: 'John', joined: 'a week ago', email: 'JJ@gmail.com' },
+                  { name: 'Mary', joined: 'Yesterday', email: 'Mary@yahoo.com' },
+                  { name: 'Charlie', joined: 'Just now', email: 'Charlie@msn.com' },
+                  { name: 'Rebecca', joined: 'Yesterday', email: 'Becky@mail.com' },
+                  { name: 'James', joined: '3 month ago', email: 'James@inbox.com' }
+                ];
+                function suggest_users(term) {
+                    var q = term.toLowerCase().trim(),
+                        results = [];
+
+                    for (var i = 0; i < users.length; i++) {
+                        var user = users[i];
+                        if (user.name.toLowerCase().indexOf(q) !== -1 ||
+                            user.email.toLowerCase().indexOf(q) !== -1)
+                            results.push({
+                                value: user.name,
+                                // Pass the object as well. Can be any property name.
+                                obj: user,
+                                label: $sce.trustAsHtml(
+                                  '<div class="row">' +
+                                  ' <div class="col-xs-5">' +
+                                  '  <i class="fa fa-user"></i>' +
+                                  '  <strong>' + highlight(user.name, term) + '</strong>' +
+                                  ' </div>' +
+                                  ' <div class="col-xs-7 text-right text-muted">' +
+                                  '  <small>' + highlight(user.email, term) + '</small>' +
+                                  ' </div>' +
+                                  ' <div class="col-xs-12">' +
+                                  '  <span class="text-muted">Joined</span>' +
+                                     user.joined +
+                                  ' </div>' +
+                                  '</div>'
+                                )
+                            });
+                    }
+                    return results;
+                };
+                function highlight(name, term){
+                    return name;
+                }
+
+                $scope.autocomplete_options1 = {
+                    suggest: suggest_users
+                };
+
+                var states = ['Alabama', 'Alaska', 'California', /* ... */];
+
+                function suggest_state(term) {
+                    var q = term.toLowerCase().trim();
+                    var results = [];
+
+                    // Find first 10 states that start with `term`.
+                    for (var i = 0; i < states.length && results.length < 10; i++) {
+                        var state = states[i];
+                        if (state.toLowerCase().indexOf(q) === 0)
+                            results.push({ label: state, value: state });
+                    }
+
+                    return results;
+                }
+
+                $scope.autocomplete_options = {
+                    suggest: suggest_state
+                };
+            });
+
+        }());
+    </script>
+</head>
+
+<body>
+    <div ng-controller="mainCtrl">
+        <div mass-autocomplete class="col-md-4">
+            <input class="form-control"
+                   type="text"
+                   ng-model="dirty.value"
+                   mass-autocomplete-item="autocomplete_options">
+        </div>
+        <div mass-autocomplete class="col-md-4">
+            <input class="form-control"
+                   type="text"
+                   ng-model="dirty.value1"
+                   mass-autocomplete-item="autocomplete_options1">
+        </div>
+        
+    </div>
+</body>
+</html>

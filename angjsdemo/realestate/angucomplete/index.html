@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="../../scripts/angular.min.js"></script>
+    <script src="../../scripts/bootstrap.min.js"></script>
+    <script src="../../scripts/angular-sanitize.min.js"></script>
+    <script src="angucomplete.js"></script>
+    <link href="angucomplete.css" rel="stylesheet" />
+    <script>
+        (function () {
+
+            var app = angular.module('app', ["angucomplete"]);
+
+        }());
+    </script>
+</head>
+<body>
+    <angucomplete id="members"
+                  placeholder="Search members"
+                  pause="400"
+                  selectedobject="testObj"
+                  url="http://rethinkdata.ddns.net:5000/api/realestate/search/zip5/"
+                  datafield="results"
+                  titlefield="firstName,surname"
+                  descriptionfield="email"
+                  imagefield="profilePic"
+                  minlength="3"
+                  inputclass="form-control form-control-small" />
+</body>
+</html>

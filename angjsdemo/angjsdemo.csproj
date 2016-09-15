@@ -63,6 +63,11 @@
     <Content Include="angular-recaptcha.min.js" />
     <Content Include="angularjs\app.html" />
     <Content Include="app.js" />
+    <Content Include="autocomplete\generic.html" />
+    <Content Include="autocomplete\index.html" />
+    <Content Include="autocomplete\ngAutocomplete.js" />
+    <Content Include="autocomplete\script.js" />
+    <Content Include="autocomplete\templateurl.html" />
     <Content Include="captcha\angular-recaptcha.min.js" />
     <Content Include="captcha\captcha.html" />
     <Content Include="captcha\login.js" />
@@ -111,9 +116,11 @@
     <Content Include="controllers\1.js" />
     <Content Include="controllers\productListControllers.js" />
     <Content Include="controllers\sportsStore.js" />
+    <Content Include="demo.html" />
     <Content Include="demo\app.js" />
     <Content Include="demo\Index.html" />
     <Content Include="demo\maincontroller.js" />
+    <Content Include="dir1.html" />
     <Content Include="directives.html" />
     <Content Include="directiveScopes.html" />
     <Content Include="filters\customFilters.js" />
@@ -125,9 +132,15 @@
     <Content Include="itemTemplate.html" />
     <Content Include="list.html" />
     <Content Include="one.html" />
+    <Content Include="prdFactory.js" />
     <Content Include="productListCtrl.js" />
     <Content Include="productResource.js" />
     <Content Include="productResourceMock.js" />
+    <Content Include="realestate\angucomplete\angucomplete.css" />
+    <Content Include="realestate\angucomplete\angucomplete.js" />
+    <Content Include="realestate\angucomplete\index.html" />
+    <Content Include="realestate\massautocomplete.min.js" />
+    <Content Include="realestate\massautocomplete.theme.css" />
     <Content Include="route.html" />
     <Content Include="scripts\angular-ui-router.min.js" />
     <Content Include="scripts\angular.min.js.map" />
@@ -143,12 +156,14 @@
     <Content Include="scripts\bootstrap-tour.min.js" />
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\bootstrap.min.js" />
+    <Content Include="autocomplete\states.json" />
     <None Include="scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="scripts\jquery-2.1.1.js" />
     <Content Include="scripts\jquery-2.1.1.min.js" />
     <Content Include="scripts\jquery-ui-1.11.2.js" />
     <Content Include="scripts\jquery-ui-1.11.2.min.js" />
     <Content Include="scripts\npm.js" />
+    <Content Include="scripts\ui-bootstrap-tpls-2.1.3.min.js" />
     <Content Include="scripts\version.json" />
     <Content Include="scripts\errors.json" />
     <Content Include="scripts\angular-touch.min.js.map" />
@@ -923,6 +938,7 @@
     <Content Include="scripts\github.js" />
     <Content Include="scripts\usercontroller.js" />
     <Content Include="tableTemplate.html" />
+    <Content Include="realestate\search.html" />
     <Content Include="userdetails.html" />
     <Content Include="Web.config" />
   </ItemGroup>

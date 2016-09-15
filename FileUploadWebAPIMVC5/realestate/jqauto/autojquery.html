@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="../../Scripts/jquery-2.1.1.min.js"></script>
+    <script src="../../Scripts/jquery-ui-1.11.4.min.js"></script>
+    <script src="jquery.autocomplete.min.js"></script>
+    <link rel="stylesheet" href="../../Content/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../Content/bootstrap-theme.min.css" />
+    <style>
+        .autocomplete-suggestions {
+            border: 1px solid #999;
+            background: #FFF;
+            overflow: auto;
+        }
+
+        .autocomplete-suggestion {
+            padding: 2px 5px;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .autocomplete-selected {
+            background: #F0F0F0;
+        }
+
+        .autocomplete-suggestions strong {
+            font-weight: normal;
+            color: #3399FF;
+        }
+
+        .autocomplete-group {
+            padding: 2px 5px;
+        }
+
+            .autocomplete-group strong {
+                display: block;
+                border-bottom: 1px solid #000;
+            }
+    </style>
+    <script>
+        $(document).ready(function () {
+            $('#autocomplete').devbridgeAutocomplete({
+                minChars: 3,
+                lookup: function (query, done) {
+                    var result = null;
+                    var settings = {
+                        "async": true,
+                        "crossDomain": true,
+                        "url": "http://rethinkdata.ddns.net:5000/api/realestate/search/zip5/"+ $("#autocomplete").val(),
+                        "method": "GET",
+                        "headers": {
+                            "authorization": "Basic MTBtZW1ncnA6ZjRhODIyOWI5OGEzYWJhYWUyNTdiZWNiNjg0MGI0ZWQ=",
+                            "cache-control": "no-cache",
+                            "postman-token": "694947d2-6363-4964-5ab8-642cfa22ac2f",
+                            'Access-Control-Allow-Origin': '*'
+                        }
+                    };
+
+                    $.ajax(settings).done(function (response) {
+                        result = response;
+                        console.log(response);
+                    });
+                    // Do Ajax call or lookup locally, when done,
+                    // call the callback and pass your results:
+                    //var result = {
+                    //    suggestions: [
+                    //        { "value": "United Arab Emirates", "data": "AE" },
+                    //        { "value": "United Kingdom", "data": "UK" },
+                    //        { "value": "United States", "data": "US" }
+                    //    ]
+                    //};
+
+                    done(result);
+                },
+                onSelect: function (suggestion) {
+                    alert('You selected: ' + suggestion.city + ', ' + suggestion.state);
+                }
+            });
+
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="container-fluid">
+            <div class="jumbotron row">
+                <div class="col-md-4">
+                    <input type="text" name="country"
+                           id="autocomplete"
+                           class="form-control" />
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</body>
+</html>

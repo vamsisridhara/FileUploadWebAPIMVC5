@@ -30,21 +30,42 @@ namespace custommetadata
 
 namespace n1
 {
-    public class CA {
+    public static class test
+    {
+        static string ToUpper(this string s)
+        {
+            return s;
+        }
+    }
+    public class Member
+    {
+        public int freetickets { get; set; }
+
+    }
+    public class Associate : Member
+    {
+        public new int freetickets { get; set; }
+    }
+    public class CA
+    {
         public string prop { get; set; }
-        public string methoda(int va) {
+        public string methoda(int va)
+        {
             return va.ToString();
         }
 
     }
 
 
-    public interface Myinter {
+    public interface Myinter
+    {
         string method();
     }
-    public class c2 : Myinter {
-       
-       public string method() {
+    public class c2 : Myinter
+    {
+
+        public string method()
+        {
             return "te";
         }
     }
@@ -318,17 +339,20 @@ namespace ConsoleApplication1
         //    }
         //}
         delegate int Calculator(int m, int n);
-        private static void A1() {
-            try { B1(); } catch (Exception ex)
+        private static void A1()
+        {
+            try { B1(); }
+            catch (Exception ex)
             {
                 throw ex;
             }
         }
-        private static void B1() { 
+        private static void B1()
+        {
             try { C(); }
             catch (Exception ex)
             {
-                throw ;
+                throw;
             }
         }
         private static void C()
@@ -343,22 +367,44 @@ namespace ConsoleApplication1
             Console.Write("te");
 
         }
-        static void showmess(string t, [CallerMemberName]string t1 = "") {
+        static void showmess(string t, [CallerMemberName]string t1 = "")
+        {
             string m = t1;
             Console.Write(t1);
         }
-        [Obsolete("use mthod1",false)]
-        static string methodx() {
+        [Obsolete("use mthod1", false)]
+        static string methodx()
+        {
             return "test";
         }
-        static void m1(string na = "") {
+        static void m1(string na = "")
+        {
             Console.Write(na);
         }
-        public enum WeeklyoFf { Sunday =1, saturday =2}
-        static async Task<string> testasync() {
+        public enum WeeklyoFf { Sunday = 1, saturday = 2 }
+        static async Task<string> testasync()
+        {
             await Task.Delay(100);
             string ms = "yr";
             return ms;
+        }
+        static decimal logadd(decimal op1, decimal op2)
+        {
+            var result = op1 + op2;
+            Console.WriteLine("{0}+{1} = {2}", op1, op2, result);
+            return result;
+        }
+        static void Log(string mesg, [CallerMemberName] string method = null)
+        {
+            Console.Write(String.Format("{0} {1}", mesg, method));
+        }
+
+        static void printVehicle(List<Vehicle> vehicleList)
+        {
+            foreach (var vehicle in vehicleList)
+            {
+                Console.WriteLine(vehicle.ToString());
+            }
         }
         /// <summary>
         /// 
@@ -368,6 +414,103 @@ namespace ConsoleApplication1
         {
             try
             {
+
+                VehicleData data = new VehicleData();
+                var newestVehicle = data.getNewestVehicleInOrder();
+                Console.WriteLine("1) A function to calculate newest vehicles in order");
+                printVehicle(newestVehicle);
+
+                var alphabeticalVehicles = data.getAlphabetizedList();
+                Console.WriteLine("2) A function to calculate alphabetized List of vehicles");
+                printVehicle(alphabeticalVehicles);
+
+                var orderByvehiclesPrice = data.getOrderedListOfVehiclesByPrice();
+                Console.WriteLine("3) A function to calculate ordered List of Vehicles by Price");
+                printVehicle(orderByvehiclesPrice);
+
+                var bestVehiclebyMileage = data.getBestValueByMileage();
+                Console.WriteLine("4) A function to calculate the best value");
+                Console.WriteLine(bestVehiclebyMileage.ToString());
+
+                var fuelConsumption = data.getFuelConsumption();
+                Console.WriteLine("5) A function to calculate full consumption for a given distance");
+                Console.WriteLine(fuelConsumption.ToString());
+
+                var randomVehicle = data.getRandomCar();
+                Console.WriteLine("6) A function to return a random car from the list");
+                Console.WriteLine(randomVehicle.ToString());
+
+                String output = data.getAverageMPGByYear();
+                Console.WriteLine("7) A function to return average MPG by year");
+                Console.WriteLine(output);
+
+
+
+                string s = "Csharp";
+                Console.WriteLine(s.ToUpper());
+
+
+
+
+                List<Func<int, int>> coinFunctiosn = new List<Func<int, int>>();
+                var coins = new int[] { 1, 5, 10, 25 };
+                for (var ijk = 0; ijk < coins.Length; ijk++)
+                {
+                    coinFunctiosn.Add((count11) => coins[ijk] * count11);
+
+                }
+                foreach (var item in coinFunctiosn)
+                {
+                    Console.WriteLine(item(2));
+                }
+
+
+
+                int baseInt = 23;
+                object o = baseInt;
+                short i = (short)(int)o;
+
+                Expression<Func<string, int>> exp;
+                exp = st => st.Length;
+                int len = exp.Compile()("CShar");
+
+                var salaryGrades = new List<int>() { 11, 14, 15, 18 };
+                var maxSalaryGrade = new Dictionary<int, double>()
+                                        { { 10,40000 } };
+
+
+                var literal = 0xadefdebe;
+                Console.WriteLine(literal.GetType().Name);
+
+                Log("Begining");
+                Console.WriteLine("test");
+                Log("Ending");
+
+                n1.Associate ass = new n1.Associate();
+                n1.Member y = ass;
+                Associate z = (Associate)y;
+                ass.freetickets = 1;
+                y.freetickets = 2;
+                Console.Write(z.freetickets);
+
+                Console.Write(y.freetickets);
+
+                logadd(2.2m, 1);
+
+                var pe = new { fname = "tets", lname = "doe" };
+                try
+                {
+
+                    Console.WriteLine(pe.fname + " " + pe.lname);
+                }
+                catch (NullReferenceException ex)
+                {
+                    Console.WriteLine("test");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("test1");
+                }
                 m1();
 
                 int count1 = 1;

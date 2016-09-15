@@ -1,0 +1,420 @@
+﻿{
+  "errorCode": 0,
+  "responseData": [
+    {
+      "city": "DULLES",
+      "state": "VA",
+      "zip5Code": "20101"
+    },
+    {
+      "city": "DULLES",
+      "state": "VA",
+      "zip5Code": "20102"
+    },
+    {
+      "city": "DULLES",
+      "state": "VA",
+      "zip5Code": "20103"
+    },
+    {
+      "city": "DULLES",
+      "state": "VA",
+      "zip5Code": "20104"
+    },
+    {
+      "city": "ALDIE",
+      "state": "VA",
+      "zip5Code": "20105"
+    },
+    {
+      "city": "AMISSVILLE",
+      "state": "VA",
+      "zip5Code": "20106"
+    },
+    {
+      "city": "ARCOLA",
+      "state": "VA",
+      "zip5Code": "20107"
+    },
+    {
+      "city": "MANASSAS",
+      "state": "VA",
+      "zip5Code": "20108"
+    },
+    {
+      "city": "MANASSAS",
+      "state": "VA",
+      "zip5Code": "20109"
+    },
+    {
+      "city": "MANASSAS",
+      "state": "VA",
+      "zip5Code": "20110"
+    },
+    {
+      "city": "MANASSAS",
+      "state": "VA",
+      "zip5Code": "20111"
+    },
+    {
+      "city": "MANASSAS",
+      "state": "VA",
+      "zip5Code": "20112"
+    },
+    {
+      "city": "MANASSAS",
+      "state": "VA",
+      "zip5Code": "20113"
+    },
+    {
+      "city": "MARSHALL",
+      "state": "VA",
+      "zip5Code": "20115"
+    },
+    {
+      "city": "MARSHALL",
+      "state": "VA",
+      "zip5Code": "20116"
+    },
+    {
+      "city": "MIDDLEBURG",
+      "state": "VA",
+      "zip5Code": "20117"
+    },
+    {
+      "city": "MIDDLEBURG",
+      "state": "VA",
+      "zip5Code": "20118"
+    },
+    {
+      "city": "CATLETT",
+      "state": "VA",
+      "zip5Code": "20119"
+    },
+    {
+      "city": "CENTREVILLE",
+      "state": "VA",
+      "zip5Code": "20120"
+    },
+    {
+      "city": "CENTREVILLE",
+      "state": "VA",
+      "zip5Code": "20121"
+    },
+    {
+      "city": "CENTREVILLE",
+      "state": "VA",
+      "zip5Code": "20122"
+    },
+    {
+      "city": "CLIFTON",
+      "state": "VA",
+      "zip5Code": "20124"
+    },
+    {
+      "city": "ORLEAN",
+      "state": "VA",
+      "zip5Code": "20128"
+    },
+    {
+      "city": "PAEONIAN SPRINGS",
+      "state": "VA",
+      "zip5Code": "20129"
+    },
+    {
+      "city": "PARIS",
+      "state": "VA",
+      "zip5Code": "20130"
+    },
+    {
+      "city": "PHILOMONT",
+      "state": "VA",
+      "zip5Code": "20131"
+    },
+    {
+      "city": "PURCELLVILLE",
+      "state": "VA",
+      "zip5Code": "20132"
+    },
+    {
+      "city": "PURCELLVILLE",
+      "state": "VA",
+      "zip5Code": "20134"
+    },
+    {
+      "city": "BLUEMONT",
+      "state": "VA",
+      "zip5Code": "20135"
+    },
+    {
+      "city": "BRISTOW",
+      "state": "VA",
+      "zip5Code": "20136"
+    },
+    {
+      "city": "BROAD RUN",
+      "state": "VA",
+      "zip5Code": "20137"
+    },
+    {
+      "city": "CALVERTON",
+      "state": "VA",
+      "zip5Code": "20138"
+    },
+    {
+      "city": "CASANOVA",
+      "state": "VA",
+      "zip5Code": "20139"
+    },
+    {
+      "city": "RECTORTOWN",
+      "state": "VA",
+      "zip5Code": "20140"
+    },
+    {
+      "city": "ROUND HILL",
+      "state": "VA",
+      "zip5Code": "20141"
+    },
+    {
+      "city": "ROUND HILL",
+      "state": "VA",
+      "zip5Code": "20142"
+    },
+    {
+      "city": "CATHARPIN",
+      "state": "VA",
+      "zip5Code": "20143"
+    },
+    {
+      "city": "DELAPLANE",
+      "state": "VA",
+      "zip5Code": "20144"
+    },
+    {
+      "city": "ASHBURN",
+      "state": "VA",
+      "zip5Code": "20146"
+    },
+    {
+      "city": "ASHBURN",
+      "state": "VA",
+      "zip5Code": "20147"
+    },
+    {
+      "city": "ASHBURN",
+      "state": "VA",
+      "zip5Code": "20148"
+    },
+    {
+      "city": "ASHBURN",
+      "state": "VA",
+      "zip5Code": "20149"
+    },
+    {
+      "city": "CHANTILLY",
+      "state": "VA",
+      "zip5Code": "20151"
+    },
+    {
+      "city": "CHANTILLY",
+      "state": "VA",
+      "zip5Code": "20152"
+    },
+    {
+      "city": "CHANTILLY",
+      "state": "VA",
+      "zip5Code": "20153"
+    },
+    {
+      "city": "GAINESVILLE",
+      "state": "VA",
+      "zip5Code": "20155"
+    },
+    {
+      "city": "GAINESVILLE",
+      "state": "VA",
+      "zip5Code": "20156"
+    },
+    {
+      "city": "HAMILTON",
+      "state": "VA",
+      "zip5Code": "20158"
+    },
+    {
+      "city": "HAMILTON",
+      "state": "VA",
+      "zip5Code": "20159"
+    },
+    {
+      "city": "LINCOLN",
+      "state": "VA",
+      "zip5Code": "20160"
+    },
+    {
+      "city": "STERLING",
+      "state": "VA",
+      "zip5Code": "20163"
+    },
+    {
+      "city": "STERLING",
+      "state": "VA",
+      "zip5Code": "20164"
+    },
+    {
+      "city": "STERLING",
+      "state": "VA",
+      "zip5Code": "20165"
+    },
+    {
+      "city": "STERLING",
+      "state": "VA",
+      "zip5Code": "20166"
+    },
+    {
+      "city": "STERLING",
+      "state": "VA",
+      "zip5Code": "20167"
+    },
+    {
+      "city": "HAYMARKET",
+      "state": "VA",
+      "zip5Code": "20168"
+    },
+    {
+      "city": "HAYMARKET",
+      "state": "VA",
+      "zip5Code": "20169"
+    },
+    {
+      "city": "HERNDON",
+      "state": "VA",
+      "zip5Code": "20170"
+    },
+    {
+      "city": "HERNDON",
+      "state": "VA",
+      "zip5Code": "20171"
+    },
+    {
+      "city": "HERNDON",
+      "state": "VA",
+      "zip5Code": "20172"
+    },
+    {
+      "city": "LEESBURG",
+      "state": "VA",
+      "zip5Code": "20175"
+    },
+    {
+      "city": "LEESBURG",
+      "state": "VA",
+      "zip5Code": "20176"
+    },
+    {
+      "city": "LEESBURG",
+      "state": "VA",
+      "zip5Code": "20177"
+    },
+    {
+      "city": "LEESBURG",
+      "state": "VA",
+      "zip5Code": "20178"
+    },
+    {
+      "city": "LOVETTSVILLE",
+      "state": "VA",
+      "zip5Code": "20180"
+    },
+    {
+      "city": "NOKESVILLE",
+      "state": "VA",
+      "zip5Code": "20181"
+    },
+    {
+      "city": "NOKESVILLE",
+      "state": "VA",
+      "zip5Code": "20182"
+    },
+    {
+      "city": "UPPERVILLE",
+      "state": "VA",
+      "zip5Code": "20184"
+    },
+    {
+      "city": "UPPERVILLE",
+      "state": "VA",
+      "zip5Code": "20185"
+    },
+    {
+      "city": "WARRENTON",
+      "state": "VA",
+      "zip5Code": "20186"
+    },
+    {
+      "city": "WARRENTON",
+      "state": "VA",
+      "zip5Code": "20187"
+    },
+    {
+      "city": "WARRENTON",
+      "state": "VA",
+      "zip5Code": "20188"
+    },
+    {
+      "city": "DULLES",
+      "state": "VA",
+      "zip5Code": "20189"
+    },
+    {
+      "city": "RESTON",
+      "state": "VA",
+      "zip5Code": "20190"
+    },
+    {
+      "city": "RESTON",
+      "state": "VA",
+      "zip5Code": "20191"
+    },
+    {
+      "city": "HERNDON",
+      "state": "VA",
+      "zip5Code": "20192"
+    },
+    {
+      "city": "RESTON",
+      "state": "VA",
+      "zip5Code": "20193"
+    },
+    {
+      "city": "RESTON",
+      "state": "VA",
+      "zip5Code": "20194"
+    },
+    {
+      "city": "RESTON",
+      "state": "VA",
+      "zip5Code": "20195"
+    },
+    {
+      "city": "RESTON",
+      "state": "VA",
+      "zip5Code": "20196"
+    },
+    {
+      "city": "WATERFORD",
+      "state": "VA",
+      "zip5Code": "20197"
+    },
+    {
+      "city": "THE PLAINS",
+      "state": "VA",
+      "zip5Code": "20198"
+    },
+    {
+      "city": "DULLES",
+      "state": "VA",
+      "zip5Code": "20199"
+    }
+  ]
+}

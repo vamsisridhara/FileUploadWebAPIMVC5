@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="Scripts/angular.min.js"></script>
+    <script>
+        (function () {
+            var app = angular.module('app', []);
+            app.controller("savePerson", ['$scope', '$http', '$q', saveFn]);
+            function saveFn($scope, $http, $q) {
+                $scope.personlist = [
+                    {
+                        name: 'test', id: 10
+                    }, { name: 'test1', id: 101 }
+                    , { name: 'test1', id: 101 }
+                ];
+                $scope.save = function () {
+                    var defer = $q.defer();
+                    $http({
+                        url: '/FileUploadWebAPIMVC5/api/demo/savelist',
+                        method: "POST",
+                        data: { 'listPerson': JSON.stringify($scope.personlist) }
+                    })
+                    .then(function (response) {
+                        alert(response.data);
+                        console.log(response);
+                    },
+                    function (response) { // optional
+                        alert(response);
+                        console.log(response);
+                    });
+
+                };
+            }
+
+        }());
+
+    </script>
+</head>
+<body>
+    <div ng-controller="savePerson">
+        <button ng-click="save()">Save</button>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,138 @@
+﻿<!DOCTYPE html>
+<html ng-app="directivesModule">
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+
+    <link rel="stylesheet" href="Content/bootstrap.min.css" />
+    <link rel="stylesheet" href="Content/bootstrap-theme.min.css" />
+
+    <script src="scripts/angular.min.js"></script>
+    <script>
+        (function () {
+            "use strict";
+            var app = angular.module('directivesModule', []);
+            angular.module('directivesModule').directive('isolatedScopeWithTransclusion', function () {
+                return {
+                    restrict: 'E',
+                    transclude: true,
+                    replace: true,
+                    scope: {
+                        tasks: '='
+                    },
+                    controller: function ($scope) {
+                        $scope.addTask = function () {
+
+                            if (!$scope.tasks) $scope.tasks = [];
+
+                            $scope.tasks.push({
+                                title: $scope.title
+                            });
+
+                        };
+                    },
+                    template: '<div>Name: <input type="text" ng-model="title" />&nbsp;' +
+                              '<button ng-click="addTask()">Add Task</button>' +
+                              '<div class="taskContainer"><br />' +
+                                 '<ng-transclude></ng-transclude>' +
+                              '</div></div>'
+                };
+            });
+            app.directive('mySharedScope', function () {
+                return {
+                    template: 'Name: {{customer.name}}<br /> Street: {{customer.street}}'
+                };
+            });
+            angular.module('directivesModule').directive('myIsolatedScopeWithModelAndFunction', function () {
+                return {
+                    scope: {
+                        datasource: '=',
+                        action: '&'
+                    },
+                    template: '<ul><li ng-repeat="prop in datasource">{{ prop }}</li></ul> ' +
+                              '<button ng-click="action()">Change Data</button>'
+                };
+            });
+            app.directive('myIsolatedScope', function () {
+                return {
+                    scope: {
+                        customer: '=',
+                        name: '='//Two-way data binding
+                    },
+                    template: '<ul><li>{{ name.name }} </li><li ng-repeat="prop in customer">{{ prop }}</li></ul>'
+                };
+            });
+            app.directive('myDomDirective', function () {
+                return {
+                    link: function ($scope, element, attrs) {
+                        element.bind('click', function () {
+                            element.html('You clicked me!');
+                        });
+                        element.bind('mouseenter', function () {
+                            element.css('background-color', 'yellow');
+                        });
+                        element.bind('mouseleave', function () {
+                            element.css('background-color', 'white');
+                        });
+                    }
+                };
+            });
+            app.controller('CustomersController', ['$scope', function ($scope) {
+                var counter = 0;
+                $scope.customer = {
+                    name: 'David',
+                    street: '1234 Anywhere St.'
+                };
+
+                $scope.customers = [
+                    {
+                        name: 'David',
+                        street: '1234 Anywhere St.'
+                    },
+                    {
+                        name: 'Tina',
+                        street: '1800 Crest St.'
+                    },
+                    {
+                        name: 'Michelle',
+                        street: '890 Main St.'
+                    }
+                ];
+
+                $scope.addCustomer = function () {
+                    counter++;
+                    $scope.customers.push({
+                        name: 'New Customer' + counter,
+                        street: counter + ' Cedar Point St.'
+                    });
+                };
+
+                $scope.changeData = function () {
+                    counter++;
+                    $scope.customer = {
+                        name: 'James',
+                        street: counter + ' Cedar Point St.'
+                    };
+                };
+            }]);
+        }());
+    </script>
+</head>
+<body ng-controller="CustomersController">
+    <isolated-scope-with-transclusion tasks="tasks">
+        <div ng-repeat="task in tasks track by $index">
+            <strong>{{ task.title }}</strong>
+        </div>
+    </isolated-scope-with-transclusion>
+    <div my-isolated-scope-with-model-and-function
+         datasource="customer"
+         action="changeData()">
+    </div>s
+    <div my-isolated-scope customer="customer" name="customer">
+
+    </div>
+   <div my-shared-scope my-dom-directive>
+       
+   </div>
+</body>
+</html>

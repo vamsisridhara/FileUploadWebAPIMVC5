@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>jQuery UI Autocomplete - Scrollable results</title>
+    <link rel="stylesheet" href="../../Content/bootstrap.min.css" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+    <style>
+        .ui-autocomplete {
+            max-height: 300px;
+            overflow-y: auto;
+            /* prevent horizontal scrollbar */
+            overflow-x: hidden;
+        }
+        /* IE 6 doesn't support max-height
+        * we use height instead, but this forces the menu to always be this tall
+        */
+        * html .ui-autocomplete {
+            height: 300px;
+        }
+
+        .ui-autocomplete-loading {
+            background: white url("images/ui-anim_basic_16x16.gif") right center no-repeat;
+        }
+    </style>
+    <script src="../../Scripts/jquery-3.1.0.min.js"></script>
+    <script src="../../Scripts/jquery-ui-1.12.0.min.js"></script>
+    <script>
+        $(function () {
+            $("#showdiverror").hide();
+            $(".placeholder").click(function () {
+                switch (this.innerText) {
+                    case "Buy":
+                        $("#txtSearch").attr("placeholder", "Enter a neighborhood, city, address or ZIP code");
+                        break;
+                    case "Rent":
+                        $("#txtSearch").attr("placeholder", "Enter a neighborhood, city, address or ZIP code");
+                        break;
+                    case "Sell":
+                        $("#txtSearch").attr("placeholder", "Enter your home address");
+                        break;
+                    case "Estimate":
+                        $("#txtSearch").attr("placeholder", "Enter your home address");
+                        break;
+                }
+            });
+            $('#txtSearch').autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: '/FileUploadWebAPIMVC5/api/address/getDetails/' + $('#txtSearch').val(),
+                        type: 'GET',
+                        cache: true,
+                        data: request,
+                        dataType: 'json',
+                        success: function (json) {
+                            console.log(json);
+                            if (json != null && json.length == 0) {
+                                $("#showdiverror").show();
+                            } else {
+                                $("#showdiverror").hide();
+                            }
+                            // call autocomplete callback method with results
+                            response($.map(json.responseData, function (name, val) {
+                                var obj = name;
+                                return {
+                                    label: obj.city + " " + obj.state + " " + obj.zip5Code,
+                                    value: obj.city + " " + obj.state + " " + obj.zip5Code
+                                }
+                            }));
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            $("#showdiverror").show();
+                            console.log('error', textStatus, errorThrown);
+                        }
+                    });
+                },
+                minLength: 3,
+                select: function (event, ui) {
+                    $("#showdiverror").hide();
+                    $('#txtSearch').val(ui.item.label);
+                    return false;
+                }
+            })
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="container-fluid">
+            <div class="jumbotron">
+                <div class="row">
+                    <div class="col-md-5 col-md-offset-3">
+                        <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                            <div class="btn-group" role="group">
+                                <button type="button" id="btnBuy"
+                                        name="btnBuy"
+                                        class="btn btn-lg btn-primary placeholder">
+                                    Buy
+                                </button>
+                            </div>
+                            <div class="btn-group" role="group">
+                                <button type="button" id="btnRent"
+                                        name="btnRent"
+                                        class="btn btn-lg btn-primary placeholder">
+                                    Rent
+                                </button>
+                            </div>
+                            <div class="btn-group" role="group">
+                                <button type="button" id="btnSell"
+                                        name="btnSell"
+                                        class="btn btn-lg btn-primary placeholder">
+                                    Sell
+                                </button>
+                            </div>
+                            <div class="btn-group" role="group">
+                                <button type="button" id="btnEstimate"
+                                        name="btnEstimate"
+                                        class="btn btn-lg btn-primary placeholder">
+                                    Estimate
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-offset-3 col-md-5">
+                        <input type="text" id="txtSearch" class="form-control"
+                               placeholder="Enter a neighborhood, city, address or ZIP code" />
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-offset-3 col-md-5" id="showdiverror" style="display:none">
+                        <label id="lblError" class="control-label" style="color:red">
+                            No records found
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

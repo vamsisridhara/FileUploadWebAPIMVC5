@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+<html ng-app="MyApp">
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic" />
+    <link rel="stylesheet" href="https://cdn.gitcdn.link/cdn/angular/bower-material/v1.1.0/angular-material.css" />
+    <link rel="stylesheet" href="https://material.angularjs.org/1.1.0/docs.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-114/svg-assets-cache.js"></script>
+    <script src="https://cdn.gitcdn.link/cdn/angular/bower-material/v1.1.0/angular-material.js"></script>
+    <script>
+        (function () {
+            'use strict';
+            angular
+              .module('MyApp', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache'])
+              .controller('DemoCtrl', DemoCtrl);
+
+            function DemoCtrl($timeout, $q) {
+                var self = this;
+
+                // list of `state` value/display objects
+                self.states = loadAll();
+                self.selectedItem = null;
+                self.searchText = null;
+                self.querySearch = querySearch;
+
+                // ******************************
+                // Internal methods
+                // ******************************
+
+                /**
+                 * Search for states... use $timeout to simulate
+                 * remote dataservice call.
+                 */
+                function querySearch(query) {
+                    var results = query ? self.states.filter(createFilterFor(query)) : self.states;
+                    var deferred = $q.defer();
+                    $timeout(function () {
+                        deferred.resolve(results);
+                    }, Math.random() * 1000, false);
+                    return deferred.promise;
+                }
+
+                /**
+                 * Build `states` list of key/value pairs
+                 */
+                function loadAll() {
+                    var allStates = 'Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware,\
+              Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana,\
+              Maine, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana,\
+              Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New York, North Carolina,\
+              North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania, Rhode Island, South Carolina,\
+              South Dakota, Tennessee, Texas, Utah, Vermont, Virginia, Washington, West Virginia,\
+              Wisconsin, Wyoming';
+
+                    return allStates.split(/, +/g).map(function (state) {
+                        return {
+                            value: state.toLowerCase(),
+                            display: state
+                        };
+                    });
+                }
+
+                /**
+                 * Create filter function for a query string
+                 */
+                function createFilterFor(query) {
+                    var lowercaseQuery = angular.lowercase(query);
+
+                    return function filterFn(state) {
+                        return (state.value.indexOf(lowercaseQuery) === 0);
+                    };
+
+                }
+            }
+        })();
+
+        /**
+        Copyright 2016 Google Inc. All Rights Reserved.
+        Use of this source code is governed by an MIT-style license that can be foundin the LICENSE file at http://material.angularjs.org/HEAD/license.
+        **/
+    </script>
+</head>
+<body>
+    <div class="autocompletedemoFloatingLabel"
+         ng-controller="DemoCtrl as ctrl"
+         layout="column"
+         ng-cloak="">
+        <md-content class="md-padding">
+            <form ng-submit="$event.preventDefault()" name="searchForm">
+                <p>The following example demonstrates floating labels being used as a normal form element.</p>
+                <div layout-gt-sm="row">
+                    <md-input-container flex="">
+                        <label>Name</label>
+                        <input type="text">
+                    </md-input-container>
+                    <md-autocomplete flex="" required="" md-input-name="autocompleteField"
+                                     md-input-minlength="2" md-input-maxlength="18"
+                                     md-no-cache="ctrl.noCache" md-selected-item="ctrl.selectedItem"
+                                     md-search-text="ctrl.searchText" md-items="item in ctrl.querySearch(ctrl.searchText)"
+                                     md-item-text="item.display" md-require-match="" 
+                                     md-floating-label="Favorite state">
+                        <md-item-template>
+                            <span md-highlight-text="ctrl.searchText">{{item.display}}</span>
+                        </md-item-template>
+                        <div ng-messages="searchForm.autocompleteField.$error"
+                             ng-if="searchForm.autocompleteField.$touched">
+                            <div ng-message="required">You <b>must</b> have a favorite state.</div>
+                            <div ng-message="md-require-match">Please select an existing state.</div>
+                            <div ng-message="minlength">Your entry is not long enough.</div>
+                            <div ng-message="maxlength">Your entry is too long.</div>
+                        </div>
+                    </md-autocomplete>
+                </div>
+            </form>
+        </md-content>
+    </div>
+</body>
+</html>

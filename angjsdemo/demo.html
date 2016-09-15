@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="Content/bootstrap.min.css" />
+    <link rel="stylesheet" href="Content/bootstrap-theme.min.css" />
+    <script src="scripts/angular.min.js"></script>
+    <script src="prdFactory.js"></script>
+    <script>
+
+        var testModule = (function () {
+            var counter = 0;
+            return {
+                incrementCounter: function () {
+                    return counter++;
+                },
+                resetCounter: function () {
+                    console.log("counter value prior to reset: " + counter);
+                    counter = 0;
+                }
+            };
+        })();
+        // Usage:
+        // Increment our counter
+        testModule.incrementCounter();
+        console.log(testModule.incrementCounter());
+
+        //IIFE
+        (function () {
+            var app = angular.module('app', ['appFactoryModule']);
+            app.constant('globalConstants', {
+                'dateFormat': 'MM/DD/YYYY',
+                'weekday': {
+                    'Sunday': 'Sunday',
+                    'Monday': 'Monday'
+                }
+            }).controller('appController', ['$scope', 'appFactory','globalConstants', appFun]);
+
+            function appFun($scope, appFactory, globalConstants) {
+                $scope.constant = globalConstants.dateFormat;
+                console.log($scope.constant);
+
+                $scope.showProducts = function () {
+                    $scope.products = appFactory.getProducts();
+                };
+                $scope.showProducts();
+            }
+        }());
+    </script>
+</head>
+<body>
+    <div ng-cloak class="container" ng-controller="appController">
+        <div class="container-fluid jumbotron">
+            <table class="table table-responsive table-hover">
+                <tr>
+                    <th>
+                        productID
+                    </th>
+                    <th>productName</th>
+                    <th>price</th>
+                </tr>
+                <tr ng-repeat="p in products">
+                    <td>
+                        {{ p.productID }}
+                    </td>
+                    <td>
+                        {{ p.productName }}
+                    </td>
+                    <td>
+                        {{ p.price }}
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
