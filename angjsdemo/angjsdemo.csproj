@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="advdirectives.html" />
+    <Content Include="angmaterial\autocomp.html" />
     <Content Include="angrecaptcha.html" />
     <Content Include="angular-recaptcha.min.js" />
     <Content Include="angularjs\app.html" />

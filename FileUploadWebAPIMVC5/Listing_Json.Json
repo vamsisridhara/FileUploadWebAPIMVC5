@@ -1,0 +1,178 @@
+{
+  "results": [
+    {
+      "result": {
+        "zpid": "110690861",
+        "localRealEstate": {
+          "region": {
+            "@type": "city",
+            "@id": "23431",
+            "@name": "Aldie",
+            "links": {
+              "forSaleByOwner": "http://www.zillow.com/aldie-va/fsbo/",
+              "overview": "http://www.zillow.com/local-info/VA-Aldie/r_23431/",
+              "forSale": "http://www.zillow.com/aldie-va/"
+            },
+            "zindexValue": "481,100"
+          }
+        },
+        "address": {
+          "city": "Aldie",
+          "longitude": "-77.546298",
+          "street": "25532 Oak Medley Ter",
+          "zipcode": "20105",
+          "state": "VA",
+          "latitude": "38.911336"
+        },
+        "zestimate": {
+          "amount": {
+            "@currency": "USD",
+            "#text": "443282"
+          },
+          "last-updated": "09/12/2016",
+          "valueChange": {
+            "@currency": "USD",
+            "@duration": "30",
+            "#text": "-1421"
+          },
+          "oneWeekChange": {
+            "@deprecated": "true"
+          },
+          "percentile": "0",
+          "valuationRange": {
+            "high": {
+              "@currency": "USD",
+              "#text": "465446"
+            },
+            "low": {
+              "@currency": "USD",
+              "#text": "421118"
+            }
+          }
+        },
+        "links": {
+          "comparables": "http://www.zillow.com/homes/comps/110690861_zpid/",
+          "mapthishome": "http://www.zillow.com/homes/110690861_zpid/",
+          "graphsanddata": "http://www.zillow.com/homedetails/25532-Oak-Medley-Ter-Aldie-VA-20105/110690861_zpid/#charts-and-data",
+          "homedetails": "http://www.zillow.com/homedetails/25532-Oak-Medley-Ter-Aldie-VA-20105/110690861_zpid/"
+        }
+      }
+    },
+    {
+      "result": {
+        "localRealEstate": {
+          "region": {
+            "zindexValue": "481,100",
+            "@id": "23431",
+            "@name": "Aldie",
+            "links": {
+              "forSaleByOwner": "http://www.zillow.com/aldie-va/fsbo/",
+              "overview": "http://www.zillow.com/local-info/VA-Aldie/r_23431/",
+              "forSale": "http://www.zillow.com/aldie-va/"
+            },
+            "@type": "city"
+          }
+        },
+        "links": {
+          "mapthishome": "http://www.zillow.com/homes/89009994_zpid/",
+          "homedetails": "http://www.zillow.com/homedetails/25531-Oak-Medley-Ter-Aldie-VA-20105/89009994_zpid/",
+          "graphsanddata": "http://www.zillow.com/homedetails/25531-Oak-Medley-Ter-Aldie-VA-20105/89009994_zpid/#charts-and-data",
+          "comparables": "http://www.zillow.com/homes/comps/89009994_zpid/"
+        },
+        "zestimate": {
+          "valuationRange": {
+            "low": {
+              "#text": "420440",
+              "@currency": "USD"
+            },
+            "high": {
+              "#text": "464696",
+              "@currency": "USD"
+            }
+          },
+          "amount": {
+            "#text": "442568",
+            "@currency": "USD"
+          },
+          "valueChange": {
+            "@duration": "30",
+            "#text": "-706",
+            "@currency": "USD"
+          },
+          "percentile": "0",
+          "last-updated": "09/12/2016",
+          "oneWeekChange": {
+            "@deprecated": "true"
+          }
+        },
+        "address": {
+          "state": "VA",
+          "city": "Aldie",
+          "longitude": "-77.546787",
+          "street": "25531 Oak Medley Ter",
+          "latitude": "38.911316",
+          "zipcode": "20105"
+        },
+        "zpid": "89009994"
+      }
+    },
+    {
+      "result": {
+        "localRealEstate": {
+          "region": {
+            "@type": "city",
+            "@id": "23431",
+            "links": {
+              "forSaleByOwner": "http://www.zillow.com/aldie-va/fsbo/",
+              "overview": "http://www.zillow.com/local-info/VA-Aldie/r_23431/",
+              "forSale": "http://www.zillow.com/aldie-va/"
+            },
+            "zindexValue": "481,100",
+            "@name": "Aldie"
+          }
+        },
+        "zestimate": {
+          "last-updated": "09/12/2016",
+          "amount": {
+            "#text": "437839",
+            "@currency": "USD"
+          },
+          "oneWeekChange": {
+            "@deprecated": "true"
+          },
+          "percentile": "0",
+          "valueChange": {
+            "@duration": "30",
+            "#text": "-1571",
+            "@currency": "USD"
+          },
+          "valuationRange": {
+            "low": {
+              "#text": "415947",
+              "@currency": "USD"
+            },
+            "high": {
+              "#text": "459731",
+              "@currency": "USD"
+            }
+          }
+        },
+        "zpid": "110694746",
+        "links": {
+          "comparables": "http://www.zillow.com/homes/comps/110694746_zpid/",
+          "graphsanddata": "http://www.zillow.com/homedetails/25530-Oak-Medley-Ter-Aldie-VA-20105/110694746_zpid/#charts-and-data",
+          "homedetails": "http://www.zillow.com/homedetails/25530-Oak-Medley-Ter-Aldie-VA-20105/110694746_zpid/",
+          "mapthishome": "http://www.zillow.com/homes/110694746_zpid/"
+        },
+        "address": {
+          "city": "Aldie",
+          "latitude": "38.9114",
+          "longitude": "-77.546314",
+          "state": "VA",
+          "street": "25530 Oak Medley Ter",
+          "zipcode": "20105"
+        }
+      }
+    }
+  ]
+}

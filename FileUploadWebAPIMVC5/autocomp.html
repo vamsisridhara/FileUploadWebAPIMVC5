@@ -1,0 +1,239 @@
+﻿<!DOCTYPE html>
+<html ng-app="MyApp">
+<head>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel='stylesheet prefetch'
+          href='https://cdn.gitcdn.xyz/cdn/angular/bower-material/v1.0.0-rc4/angular-material.css'>
+    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-animate.min.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-route.min.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-aria.min.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-messages.min.js'></script>
+    <script src='https://cdn.gitcdn.xyz/cdn/angular/bower-material/v1.0.0-rc4/angular-material.js'></script>
+    <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-114/assets-cache.js'></script>
+    <style>
+        .typeahead-demo .custom-popup-wrapper {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            z-index: 1000;
+            display: none;
+            background-color: #f9f9f9;
+        }
+
+            .typeahead-demo .custom-popup-wrapper > .message {
+                padding: 10px 20px;
+                border-bottom: 1px solid #ddd;
+                color: #868686;
+            }
+
+            .typeahead-demo .custom-popup-wrapper > .dropdown-menu {
+                position: static;
+                float: none;
+                display: block;
+                min-width: 160px;
+                background-color: transparent;
+                border: none;
+                border-radius: 0;
+                box-shadow: none;
+            }
+    </style>
+    <script>
+        //http://en.marnoto.com/2013/12/mapa-com-varios-marcadores-google-maps.html
+        var map;
+        var infoWindow;
+        // markersData variable stores the information necessary to each marker
+        var markersData = [
+            {
+                lat: 38.911336,
+                lng: -71.546298,
+                name: "Camping Praia da Barra",
+                address1: "Rua Diogo CÃ£o, 125",
+                address2: "Praia da Barra",
+                postalCode: "3830-772 Gafanha da NazarÃ©" // don't insert comma in the last item of each marker
+            },
+            {
+                lat: 38.911316,
+                lng: -79.546787,
+                name: "Camping Costa Nova",
+                address1: "Quinta dos Patos, n.Âº 2",
+                address2: "Praia da Costa Nova",
+                postalCode: "3830-453 Gafanha da EncarnaÃ§Ã£o" // don't insert comma in the last item of each marker
+            },
+            {
+                lat: 38.9114,
+                lng: -77.546314,
+                name: "Camping Gafanha da NazarÃ©",
+                address1: "Rua dos BalneÃ¡rios do Complexo Desportivo",
+                address2: "Gafanha da NazarÃ©",
+                postalCode: "3830-225 Gafanha da NazarÃ©" // don't insert comma in the last item of each marker
+            } // don't insert comma in the last item
+        ];
+
+        function initialize() {
+            var mapOptions = {
+                center: new google.maps.LatLng(38.9114, -77.546314),
+                zoom: 5,
+                mapTypeId: 'roadmap',
+            };
+
+            map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+            // a new Info Window is created
+            infoWindow = new google.maps.InfoWindow();
+
+            // Event that closes the Info Window with a click on the map
+            google.maps.event.addListener(map, 'click', function () {
+                infoWindow.close();
+            });
+
+            // Finally displayMarkers() function is called to begin the markers creation
+            displayMarkers();
+        }
+
+        // This function will iterate over markersData array
+        // creating markers with createMarker function
+        function displayMarkers() {
+
+            // this variable sets the map bounds according to markers position
+            var bounds = new google.maps.LatLngBounds();
+
+            // for loop traverses markersData array calling createMarker function for each marker
+            for (var i = 0; i < markersData.length; i++) {
+
+                var latlng = new google.maps.LatLng(markersData[i].lat, markersData[i].lng);
+                var name = markersData[i].name;
+                var address1 = markersData[i].address1;
+                var address2 = markersData[i].address2;
+                var postalCode = markersData[i].postalCode;
+
+                createMarker(latlng, name, address1, address2, postalCode);
+
+                // marker position is added to bounds variable
+                bounds.extend(latlng);
+            }
+
+            // Finally the bounds variable is used to set the map bounds
+            // with fitBounds() function
+            map.fitBounds(bounds);
+        }
+
+        // This function creates each marker and it sets their Info Window content
+        function createMarker(latlng, name, address1, address2, postalCode) {
+            var marker = new google.maps.Marker({
+                map: map,
+                position: latlng,
+                title: name,
+                draggable: true,
+                animation: google.maps.Animation.DROP,
+            });
+
+            // This event expects a click on a marker
+            // When this event is fired the Info Window content is created
+            // and the Info Window is opened.
+            google.maps.event.addListener(marker, 'click', function () {
+
+                // Creating the content to be inserted in the infowindow
+                var iwContent = '<div id="iw_container">' +
+                      '<div class="iw_title">' + name + '</div>' +
+                   '<div class="iw_content">' + address1 + '<br />' +
+                   address2 + '<br />' +
+                   postalCode + '</div></div>';
+
+                // including content to the Info Window.
+                infoWindow.setContent(iwContent);
+
+                // opening the Info Window in the current map and at the current marker location.
+                infoWindow.open(map, marker);
+            });
+        }
+
+    </script>
+    <script type="text/javascript">
+        (function () {
+            'use strict';
+            angular
+              .module('MyApp')
+              .controller('DemoCtrl', ['$scope', '$http', DemoCtrl]);
+
+            function DemoCtrl($scope, $http) {
+                var self = this;
+                $scope.data = null;
+                $scope.selectedItem = null;
+                $scope.searchText = null;
+                $scope.querySearch = function (query) {
+                    if (angular.isDefined(query) && query.length >= 3) {
+                        $http.get('http://localhost/FileUploadWebAPIMVC5/api/address/getdetails/' + escape(query))
+                      .then(function (result) {
+                          $scope.data = result.data;//.ResponseData;
+                          //console.log(result.data);
+                      });
+                    } else {
+                        return null;
+                    }
+                }
+
+                $scope.$watch('selectedItem', function (newVal, oldVal) {
+                    if (angular.isDefined(newVal) && oldVal !== newVal && newVal != null) {
+                        console.log(newVal);
+                    }
+                });
+            }
+        })();
+    </script>
+</head>
+<body>
+    <div class="autocompletedemoFloatingLabel"
+         ng-controller="DemoCtrl"
+         layout="column" ng-cloak="">
+        <md-content class="md-padding">
+            <form name="searchForm" ng-submit="$event.preventDefault()">
+                <div class="col-md-4">
+                    <div layout-gt-sm="row">
+                        <md-autocomplete md-floating-label="Enter Zip Code"
+                                         flex=""
+                                         md-item-text="item.city.trim() + ',' + item.state.trim() + ',' + item.zip5Code.trim()"
+                                         md-items="item in data"
+                                         md-search-text-change="querySearch(searchText)"
+                                         md-search-text="searchText"
+                                         md-selected-item="selectedItem"
+                                         md-no-cache="noCache"
+                                         md-input-maxlength="30"
+                                         md-input-minlength="3"
+                                         md-input-name="autocompleteField"
+                                         required="">
+                            <md-item-template>
+                                <span md-highlight-text="searchText">
+                                    {{item.city.trim() + ',' + item.state.trim() + ',' + item.zip5Code.trim()}}
+                                </span>
+                            </md-item-template>
+                            <md-not-found>
+                                No matches found.
+                            </md-not-found>
+                            <div ng-messages="searchForm.autocompleteField.$error"
+                                 ng-if="searchForm.autocompleteField.$touched">
+                                <div ng-message="required">You <b>must</b> have a zipcode.</div>
+                                <div ng-message="minlength">Your entry is not long enough.</div>
+                                <div ng-message="maxlength">Your entry is too long.</div>
+                            </div>
+                        </md-autocomplete>
+                    </div>
+                </div>
+                <div class="col-md-6">
+
+                </div>
+            </form>
+        </md-content>
+
+
+
+    </div>
+    <div style="height: 900px; width: 900px;align-content:center" id="map">
+
+    </div>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAU2cpbmPLe3e1PKGzfPntdoUtrANRf1_E&callback=initialize"
+            async defer></script>
+
+</body>
+</html>

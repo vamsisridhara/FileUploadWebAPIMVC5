@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html ng-app="MyApp">
+<head>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel='stylesheet prefetch'
+          href='https://cdn.gitcdn.xyz/cdn/angular/bower-material/v1.0.0-rc4/angular-material.css'>
+
+    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-animate.min.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-route.min.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-aria.min.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-messages.min.js'></script>
+    <script src='https://cdn.gitcdn.xyz/cdn/angular/bower-material/v1.0.0-rc4/angular-material.js'></script>
+    <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-114/assets-cache.js'></script>
+    <style>
+        .typeahead-demo .custom-popup-wrapper {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            z-index: 1000;
+            display: none;
+            background-color: #f9f9f9;
+        }
+
+            .typeahead-demo .custom-popup-wrapper > .message {
+                padding: 10px 20px;
+                border-bottom: 1px solid #ddd;
+                color: #868686;
+            }
+
+            .typeahead-demo .custom-popup-wrapper > .dropdown-menu {
+                position: static;
+                float: none;
+                display: block;
+                min-width: 160px;
+                background-color: transparent;
+                border: none;
+                border-radius: 0;
+                box-shadow: none;
+            }
+    </style>
+    <script>
+    (function () {
+      'use strict';
+      angular
+        .module('MyApp')
+        .controller('DemoCtrl', DemoCtrl);
+
+      function DemoCtrl($http) {
+        var self = this;
+        self.data = null;
+        self.selectedItem = null;
+        self.searchText = null;
+        self.querySearch = function (query) {
+          if (angular.isDefined(query) && query.length >= 3) {
+              $http.get('http://localhost/FileUploadWebAPIMVC5/api/address/getdetails/' + escape(query))
+            .then(function (result) {
+              self.data = result.data;//.ResponseData;
+              //console.log(result.data);
+            });
+
+          } else {
+            return null;
+          }
+        }
+      }
+    })();
+    </script>
+</head>
+<body>
+    <div class="autocompletedemoFloatingLabel"
+         ng-controller="DemoCtrl as ctrl"
+         layout="column" ng-cloak="">
+        <md-content class="md-padding">
+            <form name="searchForm" ng-submit="$event.preventDefault()">
+                <div class="col-md-4">
+                    <div layout-gt-sm="row">
+                        <md-autocomplete md-floating-label="Enter Zip Code"
+                                         flex=""
+                                         md-item-text="item.city.trim() + ',' + item.state.trim() + ',' + item.zip5Code.trim()"
+                                         md-items="item in ctrl.data"
+                                         md-search-text-change="ctrl.querySearch(ctrl.searchText)"
+                                         md-search-text="ctrl.searchText"
+                                         md-selected-item="ctrl.selectedItem"
+                                         md-no-cache="ctrl.noCache"
+                                         md-input-maxlength="30"
+                                         md-input-minlength="3"
+                                         md-input-name="autocompleteField"
+                                         required="">
+                            <md-item-template>
+                                <span md-highlight-text="ctrl.searchText">
+                                    {{item.city.trim() + ',' + item.state.trim() + ',' + item.zip5Code.trim()}}
+                                </span>
+                            </md-item-template>
+                            <div ng-messages="searchForm.autocompleteField.$error"
+                                 ng-if="searchForm.autocompleteField.$touched">
+                                <div ng-message="required">You <b>must</b> have a zipcode.</div>
+                                <div ng-message="minlength">Your entry is not long enough.</div>
+                                <div ng-message="maxlength">Your entry is too long.</div>
+                            </div>
+                        </md-autocomplete>
+                    </div>
+                </div>
+
+            </form>
+        </md-content>
+    </div>
+</body>
+</html>

@@ -73,13 +73,29 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.3\lib\net45\System.Web.Cors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Cors.5.2.3\lib\net45\System.Web.Http.Cors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -140,12 +156,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="System.Net.Http.Formatting">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.0\lib\net45\System.Net.Http.Formatting.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Http">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.0\lib\net45\System.Web.Http.dll</HintPath>
-    </Reference>
     <Reference Include="System.Web.Http.WebHost">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.0\lib\net45\System.Web.Http.WebHost.dll</HintPath>
     </Reference>
@@ -197,6 +207,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="angularFileUpload.html" />
+    <Content Include="autocomp.html" />
     <Content Include="bcemit.html" />
     <Content Include="captcha\angular-recaptcha.min.js" />
     <Content Include="captcha\captcha.html" />
@@ -268,6 +279,8 @@
     <Content Include="footer\footer1.html" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="gmaps\index.html" />
+    <Content Include="gmaps\maps.js" />
     <Content Include="horizontal.html" />
     <Content Include="horizontal2.html" />
     <Content Include="images\dcgov_logo.jpg" />
@@ -294,6 +307,7 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="realestate\plainjquery\zipcode.json" />
+    <Content Include="Listing_Json.Json" />
     <None Include="Scripts\jquery-3.1.0.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -303,6 +317,8 @@
     <Content Include="Scripts\jquery-3.1.0.slim.min.js" />
     <Content Include="Scripts\jquery-ui-1.12.0.js" />
     <Content Include="Scripts\jquery-ui-1.12.0.min.js" />
+    <Content Include="Scripts\ng-map.min.js" />
+    <Content Include="shadecity.html" />
     <Content Include="well.html" />
     <Content Include="wizard\app.css" />
     <Content Include="wizard\app.js" />
