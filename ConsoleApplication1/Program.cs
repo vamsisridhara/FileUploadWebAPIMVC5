@@ -21,15 +21,160 @@ using System.Collections;
 using System.Diagnostics;
 using n1;
 using System.Runtime.CompilerServices;
+using Admin.empty;
+using System.Globalization;
 
 namespace custommetadata
 {
     public enum pri { high, medium, low }
     //test
 }
-
+namespace Admin
+{
+    namespace Fill
+    {
+        interface bin
+        {
+            void add();
+        }
+    }
+    namespace empty
+    {
+        interface bin
+        {
+            void empty();
+        }
+    }
+}
+namespace co
+{
+    class cowaster : bin
+    {
+        public void empty()
+        {
+            throw new NotImplementedException();
+        }
+    }
+}
 namespace n1
 {
+
+    public class A {
+        protected virtual void m1() { }
+        public void m2() { }
+    }
+    public class B : A {
+        protected override sealed void m1() { }
+    }
+
+    public sealed class C : B {
+        public void metho() { }
+        //public sealed void m2(int par) { }
+    }
+    
+
+    [DebuggerDisplay("[{y},{x}]")]
+    public class Coordinate
+    {
+        public int x { get; private set; }
+        public int y { get; private set; }
+        public Coordinate(int _x, int _y)
+        {
+            x = _x;
+            y = _y;
+        }
+        public static Coordinate operator *(Coordinate c, int factor)
+        {
+            return new Coordinate(c.x * factor, c.y * factor);
+        }
+        public override string ToString()
+        {
+            return string.Format("{0} , {1}",x,y);
+        }
+    }
+
+
+    public enum conn_States
+    {
+        connecting, discon
+    }
+    public class Rectange
+    {
+        public double x1 { get; set; }
+        public double x2 { get; set; }
+        public float y1 { get; set; }
+        public float  y2 { get; set; }
+        public double Area
+        {
+            get {
+                return (x2 - x1) * (y2 - y1);
+            }
+        }
+    }
+    class MyTestClass
+    {
+        private string name;
+        public string Name
+        {
+            get { return name; }
+            protected set { name = value; }
+        }
+        
+    }
+
+    public static class Myclass
+    {
+        static Myclass() { throw new Exception(); }
+        public static string MyMethod()
+        {
+            return "My method";
+        }
+    }
+    public class Account
+    {
+        public Account()
+        {
+            Account.checkvalid(20);
+        }
+        public static void checkvalid(int cust)
+        {
+
+        }
+
+    }
+    public class Point
+    {
+        public int X { get; set; }
+        public int Y { get; set; }
+    }
+    public static class Myext
+    {
+        public static void Add(this Point p, Point p1)
+        {
+            p.X += p1.X;
+            p.Y += p1.Y;
+        }
+    }
+    public class Instrument {
+        public virtual void Playsound() {
+
+            Console.WriteLine("silence");
+        }
+    }
+    public class Horn : Instrument
+    {
+        public override void Playsound()
+        {
+            Console.WriteLine("Beep");
+        }
+    }
+    public class Drum : Instrument
+    {
+        public override void Playsound()
+        {
+            Console.WriteLine("Bang");
+        }
+    }
     public static class test
     {
         static string ToUpper(this string s)
@@ -406,6 +551,59 @@ namespace ConsoleApplication1
                 Console.WriteLine(vehicle.ToString());
             }
         }
+
+        static void mymethod(out ushort A, out ushort b)
+        {
+            A = b = 0;
+            try
+            {
+                A = unchecked((ushort)(A - 10));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("cant calc a");
+                throw;
+            }
+
+            try
+            {
+                b = checked((ushort)(b - 10));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("cant calc v");
+                throw;
+            }
+        }
+        static int CountEmployeesByName(string[] namesToSearch)
+        {
+            using (var context = new NorthwindEntities())
+            {
+                var queries = new List<IEnumerable<employees_test>>();
+                string nameParam;
+                foreach (string name in namesToSearch)
+                {
+                    nameParam = name; //search for employees by name 
+                    queries.Add(from e in context.employees_test
+                                where e.name.ToUpper().Equals(name.ToUpper(),
+                                StringComparison.OrdinalIgnoreCase)
+                                select e);
+
+                    queries.Add(from e in context.employees_test
+                                where 
+                                CultureInfo.InvariantCulture.CompareInfo.IndexOf(e.name , 
+                                nameParam ,CompareOptions.IgnoreNonSpace) > -1 select e);
+                }
+                return queries.Sum(q => q.Count());
+            }
+        }
+        //static void foo(int i = 0, DateTime dt = DateTime.Now)
+        //{
+        //    if (i == 0)
+        //    {
+        //        Console.Write(date)
+        //    }
+        //}
         /// <summary>
         /// 
         /// </summary>
@@ -414,7 +612,117 @@ namespace ConsoleApplication1
         {
             try
             {
+                using (var context = new NorthwindEntities())
+                {
+                    var temp1 = context.employees_test;
+                    var temp2 = temp1.Take(30).Select(x => x.uniqueEmployeesId);
+                    var temp3 = temp1.ToList();
+                    var temp4 = temp1.Count();
+                    var temp5 = temp4 + temp2.Count();
+                }
 
+
+
+                double doubleva = 10 / 4;
+                int intv = 10 / 4;
+                var re = doubleva + intv;
+                Console.Write(re + "" + re.GetType());
+
+                var src_dir = @"C:\usha";
+                var tar_dir = @"C:\vamsi\test";
+                string[] files = Directory.GetFiles(src_dir);
+                Directory.CreateDirectory(tar_dir);
+                foreach (var item in files)
+                {
+
+                }
+
+                n1.Coordinate c_1 = new n1.Coordinate(100, 200);
+                c_1 *= 2;
+
+                Console.WriteLine(c_1);
+
+
+                String m1 = "One";
+                String m2 = "One";
+                StringBuilder sb1 = new StringBuilder("One");
+                StringBuilder sb2 = new StringBuilder("One");
+
+                List<Object> lst_a = new List<object>();
+                lst_a.Add(m1);
+                lst_a.Add(sb1);
+
+                Console.WriteLine(lst_a.Contains(m2));
+                Console.WriteLine(lst_a.Contains(sb2));
+                Console.WriteLine(lst_a.Contains(m2.ToString()));
+
+                String mytest_1 = "New York";
+                mytest_1.ToUpper();
+                mytest_1.ToLowerInvariant();
+                mytest_1.Clone();
+                mytest_1 += "er";
+                Console.WriteLine(mytest_1);
+
+                ushort a = 0, b = 0;
+                mymethod(out a, out b);
+                Console.WriteLine("A={0},B={1}", a, b);
+                System.IO.StreamWriter s1 = new StreamWriter(@"c:\t.txt");
+                s1.WriteLine("test");
+                s1.Close();
+                s1.Dispose();
+
+                n1.MyTestClass mc = new n1.MyTestClass();
+                //mc.Name = "tet";
+                Console.WriteLine(mc.Name);
+
+
+
+                var source = Enumerable.Range(1, 20000);
+                var results = from num in source.AsParallel()
+                              where num % 10 == 0
+                              orderby num
+                              select num;
+                var count_test = 0;
+                results.ForAll((e) => Console.WriteLine(e + " " + count_test++));
+
+
+                try
+                {
+                    Console.WriteLine(n1.Myclass.MyMethod());
+                }
+                catch (Exception ex11)
+                {
+                    Console.WriteLine(ex11.GetType().ToString());
+                }
+                
+
+               
+                string data_t = "12dewe123ffg4565";
+                var stringquery = from ch in data_t
+                                  where char.IsDigit(ch)
+                                  select ch;
+                Console.WriteLine(stringquery.Count());
+
+
+                //int? aaatemp = null;
+                //int b = (int)A;
+                Int32 mydata = 0x0000FFFF;
+                mydata = mydata >> 4;
+                mydata = mydata << 4;
+
+                mydata = mydata | 0x0000FFFF;
+                mydata = mydata ^ 0x55555555;
+
+                n1.Point p = new n1.Point() { X = 100, Y = 200 };
+                Myext.Add(p, new n1.Point() { X= 100, Y= 200 });
+
+                n1.Instrument i111 = new Horn();
+                n1.Instrument i211 = new Drum();
+                i111.Playsound();
+                i211.Playsound();
+
+
+                // AppDomain appdom = AppDomain.CreateDomain("");
                 VehicleData data = new VehicleData();
                 var newestVehicle = data.getNewestVehicleInOrder();
                 Console.WriteLine("1) A function to calculate newest vehicles in order");
@@ -511,7 +819,7 @@ namespace ConsoleApplication1
                 {
                     Console.WriteLine("test1");
                 }
-                m1();
+               
 
                 int count1 = 1;
                 int i1 = 2;
@@ -672,9 +980,9 @@ namespace ConsoleApplication1
             calcuatetax(dtax, paydate, 5000, MonthDifference(dtax, paydate));
 
 
-            Employee employee = new Employee();
-            employee.Initialize(500);
-            employee.Manager.Name = "";
+            //Employee employee = new Employee();
+            //employee.Initialize(500);
+            //employee.Manager.Name = "";
 
             DoSomeWork();
             Console.Write(reverseWords("The Car is Red"));

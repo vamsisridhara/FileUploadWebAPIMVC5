@@ -131,6 +131,8 @@
     <Content Include="HtmlPage3.html" />
     <Content Include="HtmlPage4.html" />
     <Content Include="itemTemplate.html" />
+    <Content Include="jqdatatable\checkboxtest.html" />
+    <Content Include="jqhtm.html" />
     <Content Include="list.html" />
     <Content Include="one.html" />
     <Content Include="prdFactory.js" />

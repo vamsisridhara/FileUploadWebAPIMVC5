@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="scripts/jquery-2.1.1.min.js"></script>
+    <script src="scripts/jquery-ui-1.11.2.min.js"></script>
+    <link rel="stylesheet" href="Content/bootstrap.min.css" />
+    <link rel="stylesheet" href="Content/bootstrap-theme.min.css" />
+    <script type="text/javascript">
+        function AddRow() {
+            for (var count = 0; count <= 100; count++) {
+                $('#table1').append('<tr><td>' + count
+                    + '</td><td>test ' + count + '</td></tr>')
+            }
+            $('#table1 tr').each(function (index) {
+                if (index > 0 && (index % 4) == 0) {
+                    this.style.backgroundColor = "#eeeeee";
+                }
+            });
+        }
+    </script>
+    <script>
+        $(document).ready(function () {
+            //for (var count = 0; count < 100; count++) {
+            //    $('#table1').append('<tr><td>' + count
+            //        + '</td><td>test ' + count + '</td></tr>')
+            //}
+
+
+
+        }());
+    </script>
+</head>
+<body>
+
+    <input type="button" id="btnAdd" onclick="AddRow()" />
+    <table id="table1">
+        <tbody>
+            
+        </tbody>
+    </table>
+</body>
+</html>

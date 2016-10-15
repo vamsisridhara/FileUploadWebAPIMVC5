@@ -166,6 +166,9 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="codetest\AccountRepository.cs" />
+    <Compile Include="codetest\IAccountRepository.cs" />
+    <Compile Include="codetest\UserAccount.cs" />
     <Compile Include="Controllers\AddressController.cs" />
     <Compile Include="Controllers\BookingController.cs" />
     <Compile Include="Controllers\CascadingController.cs" />
@@ -183,6 +186,7 @@
     <Compile Include="Controllers\PersonController.cs" />
     <Compile Include="Controllers\TemplatedController.cs" />
     <Compile Include="Controllers\TextFileUploadController.cs" />
+    <Compile Include="Controllers\UserAccountController.cs" />
     <Compile Include="Data\DistrictBL.cs" />
     <Compile Include="Data\DistrictDAL.cs" />
     <Compile Include="Global.asax.cs">

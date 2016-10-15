@@ -7,4 +7,15 @@ C:\GitHub\FileUploadWebAPIMVC5\ConsoleApplication1\obj\Debug\ConsoleApplication1
 C:\GitHub\FileUploadWebAPIMVC5\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb
 C:\GitHub\FileUploadWebAPIMVC5\ConsoleApplication1\bin\Debug\AutoMapper.dll
 C:\GitHub\FileUploadWebAPIMVC5\ConsoleApplication1\bin\Debug\AutoMapper.xml
+C:\GitHub\FileUploadWebAPIMVC5\ConsoleApplication1\bin\Debug\System.Net.Http.Formatting.dll
+C:\GitHub\FileUploadWebAPIMVC5\ConsoleApplication1\bin\Debug\System.Web.Cors.dll
+C:\GitHub\FileUploadWebAPIMVC5\ConsoleApplication1\bin\Debug\System.Web.Http.Cors.dll
+C:\GitHub\FileUploadWebAPIMVC5\ConsoleApplication1\bin\Debug\System.Web.Http.dll
+C:\GitHub\FileUploadWebAPIMVC5\ConsoleApplication1\bin\Debug\System.Net.Http.Formatting.xml
+C:\GitHub\FileUploadWebAPIMVC5\ConsoleApplication1\bin\Debug\System.Web.Http.xml
+C:\GitHub\FileUploadWebAPIMVC5\ConsoleApplication1\bin\Debug\System.Web.Http.Cors.xml
 C:\GitHub\FileUploadWebAPIMVC5\ConsoleApplication1\obj\Debug\ConsoleApplication1.csprojResolveAssemblyReference.cache
+C:\GitHub\FileUploadWebAPIMVC5\ConsoleApplication1\bin\Debug\EntityFramework.dll
+C:\GitHub\FileUploadWebAPIMVC5\ConsoleApplication1\bin\Debug\EntityFramework.SqlServer.dll
+C:\GitHub\FileUploadWebAPIMVC5\ConsoleApplication1\bin\Debug\EntityFramework.xml
+C:\GitHub\FileUploadWebAPIMVC5\ConsoleApplication1\bin\Debug\EntityFramework.SqlServer.xml
