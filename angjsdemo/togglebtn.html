@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="Content/bootstrap.min.css" />
+    <link rel="stylesheet" href="Content/bootstrap-theme.min.css" />
+    <script src="scripts/jquery-2.1.1.min.js"></script>
+    <script src="scripts/jquery-ui-1.11.2.min.js"></script>
+    <script src="scripts/angular.min.js"></script>
+    <script>
+        (function () {
+            var app = angular.module('app', []);
+            app.controller('dbctrl', ['$scope', '$http', dbctrlfn]);
+            function dbctrlfn($scope, $http) {
+                $scope.dbvalues = [];
+                function getdata() {
+                    return $http.get("http://localhost/FileUploadWebAPIMVC5/api/db/filltable")
+                        .then(function (response) {
+                            $scope.dbvalues = response.data;
+                        });
+                }
+                $scope.savedb = function (flag) {
+                    //alert(flag);
+                    return $http.post({
+                        url: "http://localhost/FileUploadWebAPIMVC5/api/db/savedata",
+                        method: 'POST',
+                        data: JSON.stringify(flag)
+                    }).then(function (response) {
+                        //
+                    });
+                };
+                getdata();
+            }
+        }());
+    </script>
+</head>
+<body>
+    <div class="container" ng-controller="dbctrl" ng-cloak>
+        <div class="container-fluid" ng-if="dbvalues.length > 0">
+            <div class="row">
+                <div class="col-md-5">
+                    <table class="table table-responsive">
+                        <tr>
+                            <th>
+                                Id
+                            </th>
+                            <th>flag</th>
+                        </tr>
+                        <tr ng-repeat="db in dbvalues">
+                            <td>
+                                {{db.id}}
+                            </td>
+                            <td>
+                                <button type="button"
+                                        id="btnSave"
+                                        ng-disabled="!{{db.flag}}"
+                                        class="btn btn-primary"
+                                        ng-click="savedb(db.flag)"
+                                        value="{{db.flag}}">
+                                    DB value
+                                </button>
+
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

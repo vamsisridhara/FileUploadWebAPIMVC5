@@ -14,7 +14,7 @@
     <RootNamespace>angjsdemo</RootNamespace>
     <AssemblyName>angjsdemo</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -942,6 +942,7 @@
     <Content Include="scripts\usercontroller.js" />
     <Content Include="tableTemplate.html" />
     <Content Include="realestate\search.html" />
+    <Content Include="togglebtn.html" />
     <Content Include="userdetails.html" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -968,7 +969,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>1905</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:1905/</IISUrl>
+          <IISUrl>http://localhost/angjsdemo</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

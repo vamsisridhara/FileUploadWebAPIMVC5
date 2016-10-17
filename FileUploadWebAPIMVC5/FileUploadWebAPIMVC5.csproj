@@ -175,6 +175,7 @@
     <Compile Include="Controllers\ChildController.cs" />
     <Compile Include="Controllers\CommuteController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\DBValuesController.cs" />
     <Compile Include="Controllers\demoController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\ExcelApiController.cs" />
