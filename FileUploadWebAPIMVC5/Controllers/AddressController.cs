@@ -11,11 +11,11 @@ namespace FileUploadWebAPIMVC5.Controllers
     public class AddressController : ApiController
     {
         [HttpGet]
-        [Route("getDetails/{searchTerm}")]
-        public IHttpActionResult getAddress(string searchTerm)
+        [Route("getDetails")]
+        public IHttpActionResult getAddress([FromUri]string searchTerm)
         {
             RootObject items = null;
-            dynamic query = null;
+            List<ResponseData> query = null;
             var fileName = @"C:\GitHub\FileUploadWebAPIMVC5\FileUploadWebAPIMVC5\realestate\jqauto\zipcode.json";
             if (File.Exists(fileName))
             {
@@ -30,10 +30,11 @@ namespace FileUploadWebAPIMVC5.Controllers
                                     x.state.Contains(searchTerm.ToUpperInvariant()) ||
                                     x.zip5Code.Contains(searchTerm.ToUpperInvariant()))
                                     .Select(x => x).ToList();
+                        items = new RootObject() { responseData = query };
                     }
                 }
             }
-            return Ok(query);
+            return Ok(items);
         }
         [Route("showMap/{city}")]
         public IHttpActionResult showMap(string city)

@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="../scripts/angular.min.js"></script>
+    <script src="../scripts/angucomplete-alt.min.js"></script>
+    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="../Content/angucomplete-alt.css" rel="stylesheet" />
+    <script>
+        var app = angular.module('myApp', ['angucomplete-alt']);
+        app.controller('ngAutoCompleteController', ['$scope', '$http', function ($scope, $http) {
+            $scope.show = function () {
+                alert($scope.responseData);
+            };
+            
+        }]);
+    </script>
+</head>
+<body>
+    <div class="container" ng-controller="ngAutoCompleteController">
+        <h2>Autocomplete textbox in AngularJS</h2>
+        <!--https://github.com/ghiden/angucomplete-alt-->
+        <div class="container-fluid col-md-3">
+            <div angucomplete-alt
+                 id="ex5"
+                 placeholder="Search Cities"
+                 pause="500"
+                 selected-object="responseData"
+                 remote-url="/FileUploadWebAPIMVC5/api/address/getDetails?searchTerm="
+                 remote-url-request-formatter="remoteUrlRequestFn"
+                 remote-url-data-field="responseData"
+                 title-field="city"
+                 minlength="3"
+                 input-class="form-control form-control-small"
+                 match-class="highlight"
+                 ></div>
+            </div>
+            <button ng-click="show()">click</button>
+        </div>
+    </div>
+</body>
+</html>
+<style>
+    .angucomplete-dropdown {
+        overflow-y: auto;
+        max-height: 200px;
+        // your preference;
+    }
+</style>

@@ -64,6 +64,7 @@
     <Content Include="angular-recaptcha.min.js" />
     <Content Include="angularjs\app.html" />
     <Content Include="app.js" />
+    <Content Include="autocomplete\angucomplete.html" />
     <Content Include="autocomplete\generic.html" />
     <Content Include="autocomplete\index.html" />
     <Content Include="autocomplete\ngAutocomplete.js" />
@@ -73,6 +74,7 @@
     <Content Include="captcha\captcha.html" />
     <Content Include="captcha\login.js" />
     <Content Include="common.services.js" />
+    <Content Include="Content\angucomplete-alt.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap-tour-standalone.css" />
@@ -145,6 +147,7 @@
     <Content Include="realestate\massautocomplete.min.js" />
     <Content Include="realestate\massautocomplete.theme.css" />
     <Content Include="route.html" />
+    <Content Include="scripts\angucomplete-alt.min.js" />
     <Content Include="scripts\angular-ui-router.min.js" />
     <Content Include="scripts\angular.min.js.map" />
     <Content Include="packages.config" />
