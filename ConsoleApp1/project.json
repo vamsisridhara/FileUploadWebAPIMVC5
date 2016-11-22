@@ -1,0 +1,22 @@
+﻿{
+  "version": "1.0.0-*",
+  "description": "",
+  "authors": [ "" ],
+  "tags": [ "" ],
+  "projectUrl": "",
+  "licenseUrl": "",
+  "dependencies": {
+    "NETStandard.Library": "1.0.0-*"
+  },
+  "frameworks": {
+    "net46": { },
+    //"netstandardapp1.5": {
+    //  "dependencies": { },
+    //  "imports": "dnxcore50"
+    //}
+  },
+  "runtimes": {
+    "win7-x64": { },
+    "win10-x64": { }
+  }
+}

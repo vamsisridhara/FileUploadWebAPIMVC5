@@ -31,6 +31,184 @@ namespace custommetadata
 }
 namespace Admin
 {
+    public abstract class PhoneBase : IPhone
+    {
+        private bool isOpen;
+        private PhoneCall activeCall;
+        public PhoneBase()
+        {
+            isOpen = false;
+            activeCall = null;
+        }
+        bool IPhone.FlipOpen
+        {
+            set
+            {
+                isOpen = true;
+            }
+        }
+        void IPhone.FlipClose()
+        {
+            if (IsConnected())
+                this.Disconnect(activeCall);
+            isOpen = false;
+        }
+        public PhoneCall Call(bool IsOpen, bool IsConnected, string phoneNumber)
+        {
+            if (!IsOpen)
+                throw new ApplicationException("Must flip phone open before making a call.");
+
+            if (IsConnected)
+                throw new ApplicationException("Unable to make a new call while another call is active.");
+
+            return new PhoneCall(phoneNumber);
+        }
+
+        public void Disconnect(PhoneCall activeCall)
+        {
+            if (activeCall != null) { activeCall.Disconnect(); }
+            activeCall = null;
+        }
+
+        public bool IsConnected()
+        {
+            return activeCall != null;
+        }
+
+        public bool IsOpen()
+        {
+            return isOpen;
+        }
+
+        public void SaveContact(int contactID, string phoneNumber)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class Phone : PhoneBase
+    {
+        private bool isOpen;
+        private PhoneCall activeCall;
+        public void Call(string phoneNumber)
+        {
+            base.Call(base.IsOpen(), base.IsConnected(), phoneNumber);
+        }
+        public void Disconnect()
+        {
+            base.Disconnect(activeCall);
+        }
+        public void FlipOpen()
+        {
+            isOpen = true;
+        }
+
+        public void FlipClose()
+        {
+            if (IsConnected())
+                Disconnect();
+            isOpen = false;
+        }
+
+        public Phone()
+        {
+            isOpen = false;
+            activeCall = null;
+        }
+    }
+
+    public class SmartPhone : PhoneBase
+    {
+        List<PhoneCall> history;
+        Dictionary<int, string> contacts;
+
+        public PhoneCall ActiveCall
+        {
+            get
+            {
+                return history.FirstOrDefault(c => c.EndTime == DateTime.MinValue);
+            }
+        }
+
+        public void Call(string phoneNumber)
+        {
+            if (IsConnected())
+                throw new ApplicationException("Unable to make a new call while another call is active.");
+
+            history.Add(new PhoneCall(phoneNumber));
+        }
+
+        public void Call(int contactID)
+        {
+            if (IsConnected())
+                throw new ApplicationException("Unable to make a new call while another call is active.");
+
+            if (!contacts.Keys.Contains(contactID))
+                throw new ApplicationException("Unable to locate a contact with that ID.");
+
+            history.Add(new PhoneCall(contacts[contactID]));
+        }
+
+        public void Disconnect()
+        {
+            base.Disconnect(this.ActiveCall);
+        }
+
+        public new void SaveContact(int contactID, string phoneNumber)
+        {
+            contacts.Add(contactID, phoneNumber);
+        }
+
+        public SmartPhone()
+        {
+            history = new List<PhoneCall>();
+            contacts = new Dictionary<int, string>();
+        }
+    }
+
+    public class PhoneCall
+    {
+        private string phoneNumber;
+
+        public PhoneCall(string phoneNumber)
+        {
+            this.phoneNumber = phoneNumber;
+        }
+
+        public DateTime EndTime { get; internal set; }
+
+        internal void Disconnect()
+        {
+            throw new NotImplementedException();
+        }
+    }
+    public interface IPhone
+    {
+        bool FlipOpen {  set; }
+        PhoneCall Call(bool IsOpen, bool IsConnected, string phoneNumber);
+        void Disconnect(PhoneCall activeCall);
+        bool IsConnected();
+        bool IsOpen();
+
+        void FlipClose();
+        void SaveContact(int contactID, string phoneNumber);
+    }
+    public abstract class Foo
+    {
+        public virtual void DoSomething()
+        {
+            Console.WriteLine("do something baes");
+        }
+    }
+    public class Bar : Foo {
+        public override void DoSomething()
+        {
+            base.DoSomething();
+            Console.WriteLine("do something derived");
+        }
+
+    }
+
     namespace Fill
     {
         interface bin
@@ -55,23 +233,31 @@ namespace co
             throw new NotImplementedException();
         }
     }
+    struct te {
+        public int test { get; set; }
+        public void t() { }
+
+    }
 }
 namespace n1
 {
 
-    public class A {
+    public class A
+    {
         protected virtual void m1() { }
         public void m2() { }
     }
-    public class B : A {
+    public class B : A
+    {
         protected override sealed void m1() { }
     }
 
-    public sealed class C : B {
+    public sealed class C : B
+    {
         public void metho() { }
         //public sealed void m2(int par) { }
     }
-    
+
 
     [DebuggerDisplay("[{y},{x}]")]
     public class Coordinate
@@ -89,7 +275,7 @@ namespace n1
         }
         public override string ToString()
         {
-            return string.Format("{0} , {1}",x,y);
+            return string.Format("{0} , {1}", x, y);
         }
     }
 
@@ -103,10 +289,11 @@ namespace n1
         public double x1 { get; set; }
         public double x2 { get; set; }
         public float y1 { get; set; }
-        public float  y2 { get; set; }
+        public float y2 { get; set; }
         public double Area
         {
-            get {
+            get
+            {
                 return (x2 - x1) * (y2 - y1);
             }
         }
@@ -119,7 +306,7 @@ namespace n1
             get { return name; }
             protected set { name = value; }
         }
-        
+
     }
 
     public static class Myclass
@@ -155,8 +342,10 @@ namespace n1
             p.Y += p1.Y;
         }
     }
-    public class Instrument {
-        public virtual void Playsound() {
+    public class Instrument
+    {
+        public virtual void Playsound()
+        {
 
             Console.WriteLine("silence");
         }
@@ -590,9 +779,10 @@ namespace ConsoleApplication1
                                 select e);
 
                     queries.Add(from e in context.employees_test
-                                where 
-                                CultureInfo.InvariantCulture.CompareInfo.IndexOf(e.name , 
-                                nameParam ,CompareOptions.IgnoreNonSpace) > -1 select e);
+                                where
+                                CultureInfo.InvariantCulture.CompareInfo.IndexOf(e.name,
+                                nameParam, CompareOptions.IgnoreNonSpace) > -1
+                                select e);
                 }
                 return queries.Sum(q => q.Count());
             }
@@ -610,6 +800,25 @@ namespace ConsoleApplication1
         /// <param name="args"></param>
         static void Main(string[] args)
         {
+
+
+
+
+
+
+
+            List<string> listtest = new List<string>() { "10", "20" };
+            Dictionary<String, List<string>> dictst = new Dictionary<String, List<string>>()
+            {
+                { "a",listtest},
+                
+
+            };
+
+
+            int ans = 5;
+            ans += 9;
+            ans *= 3;
             try
             {
                 using (var context = new NorthwindEntities())
@@ -694,9 +903,9 @@ namespace ConsoleApplication1
                 {
                     Console.WriteLine(ex11.GetType().ToString());
                 }
-                
 
-               
+
+
                 string data_t = "12dewe123ffg4565";
                 var stringquery = from ch in data_t
                                   where char.IsDigit(ch)
@@ -714,7 +923,7 @@ namespace ConsoleApplication1
                 mydata = mydata ^ 0x55555555;
 
                 n1.Point p = new n1.Point() { X = 100, Y = 200 };
-                Myext.Add(p, new n1.Point() { X= 100, Y= 200 });
+                Myext.Add(p, new n1.Point() { X = 100, Y = 200 });
 
                 n1.Instrument i111 = new Horn();
                 n1.Instrument i211 = new Drum();
@@ -819,7 +1028,7 @@ namespace ConsoleApplication1
                 {
                     Console.WriteLine("test1");
                 }
-               
+
 
                 int count1 = 1;
                 int i1 = 2;

@@ -1,0 +1,9 @@
+C:\GitHub\FileUploadWebAPIMVC5\UnitTestProject2\bin\Debug\UnitTestProject2.dll
+C:\GitHub\FileUploadWebAPIMVC5\UnitTestProject2\bin\Debug\UnitTestProject2.pdb
+C:\GitHub\FileUploadWebAPIMVC5\UnitTestProject2\bin\Debug\ClassLibrary1.dll
+C:\GitHub\FileUploadWebAPIMVC5\UnitTestProject2\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\GitHub\FileUploadWebAPIMVC5\UnitTestProject2\bin\Debug\ClassLibrary1.pdb
+C:\GitHub\FileUploadWebAPIMVC5\UnitTestProject2\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml
+C:\GitHub\FileUploadWebAPIMVC5\UnitTestProject2\obj\Debug\UnitTestProject2.csprojResolveAssemblyReference.cache
+C:\GitHub\FileUploadWebAPIMVC5\UnitTestProject2\obj\Debug\UnitTestProject2.dll
+C:\GitHub\FileUploadWebAPIMVC5\UnitTestProject2\obj\Debug\UnitTestProject2.pdb

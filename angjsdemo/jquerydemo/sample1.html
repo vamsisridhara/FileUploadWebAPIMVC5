@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <link rel="stylesheet" href="../Content/bootstrap.min.css" />
+    <script src="../scripts/angular.min.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.16/angular-route.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.16/angular-sanitize.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.16/angular-touch.min.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.16/angular-animate.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.0/highlight.min.js"></script>
+    <script type="text/javascript" src="https://rawgit.com/pc035860/angular-highlightjs/master/angular-highlightjs.js"></script>
+    <script type="text/javascript"
+            src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.js"></script>
+
+    <script type="text/javascript"
+            src="https://rawgit.com/dotansimha/angularjs-dropdown-multiselect/master/src/angularjs-dropdown-multiselect.js"></script>
+
+    <script>
+        (function () {
+            'use strict';
+            var app = angular.module('app', ['angularjs-dropdown-multiselect']);
+            app.controller('appCtrl', ['$scope',appctrlfn]);
+            function appctrlfn($scope) {
+                $scope.example1model = [];
+                $scope.example1data = [
+                    { id: 1, label: "David" },
+                    { id: 2, label: "Jhon" },
+                    { id: 3, label: "Danny" }];
+            }
+        }());
+    </script>
+</head>
+<body>
+    <div class="container" ng-controller="appCtrl">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6">
+                <h3>Demo</h3>
+                <div class="well">
+                    <div>
+                        <div ng-dropdown-multiselect="" 
+                             options="example1data" 
+                             checkboxes="true"
+                             selected-model="example1model"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <h3>The model:</h3>
+                <pre>{{example1model|json}}</pre>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
