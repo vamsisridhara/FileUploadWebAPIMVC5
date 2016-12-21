@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html ng-app="myapp">
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="Content/bootstrap.min.css" />
+    <link rel="stylesheet" href="Content/bootstrap-theme.css" />
+
+    <script src="Scripts/jquery-3.1.0.min.js"></script>
+    <script src="Scripts/jquery-ui-1.12.0.min.js"></script>
+    <script src="Scripts/angular.min.js"></script>
+    <script type="text/javascript">
+        function save() {
+            window.open('http://localhost/FileUploadWebAPIMVC5/api/sampledownload/getdata/book1', '_blank', '');
+        }
+    </script>
+</head>
+<body>
+    <a class="btn btn-primary" onclick="save()">Export</a>
+</body>
+</html>

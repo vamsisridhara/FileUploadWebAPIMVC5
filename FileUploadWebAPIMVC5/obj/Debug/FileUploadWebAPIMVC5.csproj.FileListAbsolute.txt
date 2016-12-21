@@ -13,7 +13,9 @@ C:\GitHub\FileUploadWebAPIMVC5\FileUploadWebAPIMVC5\bin\Ninject.dll
 C:\GitHub\FileUploadWebAPIMVC5\FileUploadWebAPIMVC5\bin\Ninject.Web.Common.dll
 C:\GitHub\FileUploadWebAPIMVC5\FileUploadWebAPIMVC5\bin\Ninject.Web.Mvc.dll
 C:\GitHub\FileUploadWebAPIMVC5\FileUploadWebAPIMVC5\bin\System.Net.Http.Formatting.dll
+C:\GitHub\FileUploadWebAPIMVC5\FileUploadWebAPIMVC5\bin\System.Web.Cors.dll
 C:\GitHub\FileUploadWebAPIMVC5\FileUploadWebAPIMVC5\bin\System.Web.Helpers.dll
+C:\GitHub\FileUploadWebAPIMVC5\FileUploadWebAPIMVC5\bin\System.Web.Http.Cors.dll
 C:\GitHub\FileUploadWebAPIMVC5\FileUploadWebAPIMVC5\bin\System.Web.Http.dll
 C:\GitHub\FileUploadWebAPIMVC5\FileUploadWebAPIMVC5\bin\System.Web.Http.WebHost.dll
 C:\GitHub\FileUploadWebAPIMVC5\FileUploadWebAPIMVC5\bin\System.Web.Mvc.dll
@@ -39,6 +41,9 @@ C:\GitHub\FileUploadWebAPIMVC5\FileUploadWebAPIMVC5\bin\Ninject.Web.Common.pdb
 C:\GitHub\FileUploadWebAPIMVC5\FileUploadWebAPIMVC5\bin\Ninject.Web.Common.xml
 C:\GitHub\FileUploadWebAPIMVC5\FileUploadWebAPIMVC5\bin\Ninject.Web.Mvc.pdb
 C:\GitHub\FileUploadWebAPIMVC5\FileUploadWebAPIMVC5\bin\Ninject.Web.Mvc.xml
+C:\GitHub\FileUploadWebAPIMVC5\FileUploadWebAPIMVC5\bin\System.Net.Http.Formatting.xml
+C:\GitHub\FileUploadWebAPIMVC5\FileUploadWebAPIMVC5\bin\System.Web.Http.xml
+C:\GitHub\FileUploadWebAPIMVC5\FileUploadWebAPIMVC5\bin\System.Web.Http.Cors.xml
 C:\GitHub\FileUploadWebAPIMVC5\FileUploadWebAPIMVC5\bin\System.Web.Helpers.xml
 C:\GitHub\FileUploadWebAPIMVC5\FileUploadWebAPIMVC5\bin\System.Web.Mvc.xml
 C:\GitHub\FileUploadWebAPIMVC5\FileUploadWebAPIMVC5\bin\System.Web.Optimization.xml
@@ -47,11 +52,7 @@ C:\GitHub\FileUploadWebAPIMVC5\FileUploadWebAPIMVC5\bin\System.Web.WebPages.xml
 C:\GitHub\FileUploadWebAPIMVC5\FileUploadWebAPIMVC5\bin\System.Web.WebPages.Deployment.xml
 C:\GitHub\FileUploadWebAPIMVC5\FileUploadWebAPIMVC5\bin\System.Web.WebPages.Razor.xml
 C:\GitHub\FileUploadWebAPIMVC5\FileUploadWebAPIMVC5\bin\Antlr3.Runtime.pdb
-C:\GitHub\FileUploadWebAPIMVC5\FileUploadWebAPIMVC5\bin\System.Net.Http.Formatting.xml
-C:\GitHub\FileUploadWebAPIMVC5\FileUploadWebAPIMVC5\bin\System.Web.Http.xml
 C:\GitHub\FileUploadWebAPIMVC5\FileUploadWebAPIMVC5\bin\System.Web.Http.WebHost.xml
 C:\GitHub\FileUploadWebAPIMVC5\FileUploadWebAPIMVC5\obj\Debug\FileUploadWebAPIMVC5.dll
 C:\GitHub\FileUploadWebAPIMVC5\FileUploadWebAPIMVC5\obj\Debug\FileUploadWebAPIMVC5.pdb
-C:\GitHub\FileUploadWebAPIMVC5\FileUploadWebAPIMVC5\bin\System.Web.Cors.dll
-C:\GitHub\FileUploadWebAPIMVC5\FileUploadWebAPIMVC5\bin\System.Web.Http.Cors.dll
-C:\GitHub\FileUploadWebAPIMVC5\FileUploadWebAPIMVC5\bin\System.Web.Http.Cors.xml
+C:\GitHub\FileUploadWebAPIMVC5\FileUploadWebAPIMVC5\obj\Debug\FileUploadWebAPIMVC5.csprojResolveAssemblyReference.cache

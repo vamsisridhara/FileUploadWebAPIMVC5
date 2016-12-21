@@ -6,7 +6,7 @@ using System.Web.Http.Cors;
 using Newtonsoft.Json;
 namespace FileUploadWebAPIMVC5.Controllers
 {
-    //[EnableCors(origins: "http://example.com", headers: "*", methods: "*")]
+    [EnableCors("*", "*", "GET,POST,PUT,DELETE")]
     [RoutePrefix("api/address")]
     public class AddressController : ApiController
     {
@@ -22,10 +22,10 @@ namespace FileUploadWebAPIMVC5.Controllers
                 using (StreamReader reader = new StreamReader(fileName))
                 {
                     items = JsonConvert.DeserializeObject<RootObject>(reader.ReadToEnd());
-                    if (items != null && items.responseData != null 
+                    if (items != null && items.responseData != null
                         && items.responseData.Count() > 0)
                     {
-                        query = items.responseData.Where(x => 
+                        query = items.responseData.Where(x =>
                                     x.city.Contains(searchTerm.ToUpperInvariant()) ||
                                     x.state.Contains(searchTerm.ToUpperInvariant()) ||
                                     x.zip5Code.Contains(searchTerm.ToUpperInvariant()))
@@ -46,7 +46,7 @@ namespace FileUploadWebAPIMVC5.Controllers
         }
     }
 
-    
+
     public class ResponseData
     {
         public string city { get; set; }

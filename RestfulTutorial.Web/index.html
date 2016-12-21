@@ -15,12 +15,14 @@
                     <form role="form">
                         <div class="form-group has-feedback">
                             <label for="blogPostTitle">Blog post title</label>
-                            <input type="text" class="form-control" id="blogPostTitle" data-bind="value: title" required>
+                            <input type="text" class="form-control" id="blogPostTitle" 
+                                   data-bind="value: title" required>
                             <span class="form-control-feedback"></span>
                         </div>
                         <div class="form-group has-feedback">
                             <label for="blogPostUrl">Blog post Url</label>
-                            <input type="text" class="form-control" id="blogPostUrl" name="blogPostUrl" data-bind="value: url" required>
+                            <input type="text" class="form-control" id="blogPostUrl" name="blogPostUrl" 
+                                   data-bind="value: url" required>
                             <span class="form-control-feedback"></span>
                         </div>
                         <button type="submit" class="btn btn-primary" data-bind="click: add">Submit</button>
@@ -39,7 +41,8 @@
                                 <a data-bind="attr: { href: url }"><span data-bind="text: title"></span></a>
                             </td>
                             <td>
-                                <a href="#" data-bind="click: $parent.edit">Edit</a>&nbsp;<a href="#" data-bind="click: $parent.delete">Delete</a>
+                                <a href="#" data-bind="click: $parent.edit">Edit</a>&nbsp;
+                                <a href="#" data-bind="click: $parent.delete">Delete</a>
                             </td>
                         </tr>
                     </tbody>

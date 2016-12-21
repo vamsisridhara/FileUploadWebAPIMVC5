@@ -179,6 +179,7 @@
     <Compile Include="Controllers\demoController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\ExcelApiController.cs" />
+    <Compile Include="Controllers\FileDownloadController.cs" />
     <Compile Include="Controllers\FileUploadController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\loginController.cs" />
@@ -274,6 +275,7 @@
     <Content Include="CRUD\user-creation.html" />
     <Content Include="CRUD\user-detail.html" />
     <Content Include="CRUD\user-list.html" />
+    <Content Include="downloadcsv.html" />
     <Content Include="dropdown\index.html" />
     <Content Include="dropdown\userRepoService.js" />
     <Content Include="dropdown\usersController.js" />

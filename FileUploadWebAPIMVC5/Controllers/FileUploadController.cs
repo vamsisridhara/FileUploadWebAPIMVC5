@@ -4,6 +4,8 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 
@@ -11,6 +13,8 @@ namespace FileUploadWebAPIMVC5.Controllers
 {
     public class FileUploadController : ApiController
     {
+        
+
         [HttpPost]
         public System.Web.Mvc.JsonResult UploadFile()
         {
