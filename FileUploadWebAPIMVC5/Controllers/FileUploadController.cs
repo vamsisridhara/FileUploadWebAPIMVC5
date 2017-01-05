@@ -1,19 +1,63 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using System.Web;
 using System.Web.Http;
-
+using System.IO;
+using System.IO.Compression;
 namespace FileUploadWebAPIMVC5.Controllers
 {
+    [RoutePrefix("api/fileupload")]
     public class FileUploadController : ApiController
     {
-        
+        //upload zip files
+        [HttpPost]
+        [Route("uploadzipfiles")]
+        public System.Web.Mvc.JsonResult uploadzipFiles()
+        {
+            string filePath = string.Empty;
+            if (HttpContext.Current.Request.Files.AllKeys.Any())
+            {
+                int count = HttpContext.Current.Request.Files.AllKeys.Count();
+                for (int filecount = 0; filecount < count; filecount++)
+                {
+                    // Get the uploaded image from the Files collection
+                    var contextFileName = "UploadedImage" + filecount;
+                    var httpPostedFile = HttpContext.Current.Request.Files[contextFileName];
+                    if (httpPostedFile != null)
+                    {
+                        // Get the complete file path
+                        filePath = HttpContext.Current.Server.MapPath("~/UploadedFiles");
+                        // Save the uploaded file to "UploadedFiles" folder
+                        httpPostedFile.SaveAs(Path.Combine(filePath, httpPostedFile.FileName));
+
+                        //unzip the files
+                        ZipFile.ExtractToDirectory(Path.Combine(filePath, httpPostedFile.FileName),
+                            filePath);
+
+                        //delete the zip file
+                        File.Delete(Path.Combine(filePath, httpPostedFile.FileName));
+
+                        //move the files to folder
+                        var files = Directory.GetFiles(Path.Combine(filePath, Path.GetFileNameWithoutExtension(httpPostedFile.FileName)));
+                        foreach (var file in files)
+                        {
+                            if (!File.Exists(Path.Combine(filePath, Path.GetFileNameWithoutExtension(file) + Path.GetExtension(file))))
+                            {
+                                File.Copy(file, Path.Combine(filePath, Path.GetFileNameWithoutExtension(file) + Path.GetExtension(file)));
+                            }
+                            else
+                            {
+                                File.Delete(file);
+                            }
+                        }
+                        Directory.Delete(Path.Combine(filePath, Path.GetFileNameWithoutExtension(httpPostedFile.FileName)), true);
+                    }
+                }
+            }
+            return new System.Web.Mvc.JsonResult()
+            {
+                Data = getFileNames(filePath)
+            };
+        }
 
         [HttpPost]
         public System.Web.Mvc.JsonResult UploadFile()
@@ -34,7 +78,8 @@ namespace FileUploadWebAPIMVC5.Controllers
                         // Get the complete file path
                         filePath = HttpContext.Current.Server.MapPath("~/UploadedFiles");
                         // Save the uploaded file to "UploadedFiles" folder
-                        httpPostedFile.SaveAs(Path.Combine(filePath, Path.GetFileNameWithoutExtension(httpPostedFile.FileName) + ".txt"));
+                        httpPostedFile.SaveAs(Path.Combine(filePath,
+                            Path.GetFileNameWithoutExtension(httpPostedFile.FileName) + ".txt"));
                     }
                 }
 

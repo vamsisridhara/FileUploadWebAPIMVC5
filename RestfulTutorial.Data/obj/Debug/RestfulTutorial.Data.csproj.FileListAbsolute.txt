@@ -7,3 +7,4 @@ C:\GitHub\FileUploadWebAPIMVC5\RestfulTutorial.Data\bin\Debug\EntityFramework.xm
 C:\GitHub\FileUploadWebAPIMVC5\RestfulTutorial.Data\bin\Debug\EntityFramework.SqlServer.xml
 C:\GitHub\FileUploadWebAPIMVC5\RestfulTutorial.Data\obj\Debug\RestfulTutorial.Data.dll
 C:\GitHub\FileUploadWebAPIMVC5\RestfulTutorial.Data\obj\Debug\RestfulTutorial.Data.pdb
+C:\GitHub\FileUploadWebAPIMVC5\RestfulTutorial.Data\obj\Debug\RestfulTutorial.Data.csprojResolveAssemblyReference.cache

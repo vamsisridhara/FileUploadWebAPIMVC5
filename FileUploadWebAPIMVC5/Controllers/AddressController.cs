@@ -6,7 +6,7 @@ using System.Web.Http.Cors;
 using Newtonsoft.Json;
 namespace FileUploadWebAPIMVC5.Controllers
 {
-    [EnableCors("*", "*", "GET,POST,PUT,DELETE")]
+    //[EnableCors("*", "*", "GET,POST,PUT,DELETE")]
     [RoutePrefix("api/address")]
     public class AddressController : ApiController
     {

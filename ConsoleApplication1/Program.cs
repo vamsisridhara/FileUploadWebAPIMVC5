@@ -23,6 +23,7 @@ using n1;
 using System.Runtime.CompilerServices;
 using Admin.empty;
 using System.Globalization;
+using Admin;
 
 namespace custommetadata
 {
@@ -31,6 +32,44 @@ namespace custommetadata
 }
 namespace Admin
 {
+    public class Group
+    {
+        public int ID { get; set; }
+        public int? ParentID { get; set; }
+        public List<Group> Children { get; set; }
+    }
+    public static class GroupEnumerable
+    {
+        public static IList<Group> BuildTree(this IEnumerable<Group> source)
+        {
+            var groups = source.GroupBy(i => i.ParentID);
+            var roots = groups.FirstOrDefault(g => g.Key.HasValue == false).ToList();
+            if (roots.Count > 0)
+            {
+                var dict = groups.Where(g => g.Key.HasValue).ToDictionary(g => g.Key.Value, g => g.ToList());
+                for (int i = 0; i < roots.Count; i++)
+                {
+                    AddChildren(roots[i], dict);
+                }
+            }
+            return roots;
+        }
+        private static void AddChildren(Group node, IDictionary<int, List<Group>> source)
+        {
+            if (source.ContainsKey(node.ID))
+            {
+                node.Children = source[node.ID];
+                for (int i = 0; i < node.Children.Count; i++)
+                {
+                    AddChildren(node.Children[i], source);
+                }
+            }
+            else
+            {
+                node.Children = new List<Group>();
+            }
+        }
+    }
     public abstract class PhoneBase : IPhone
     {
         private bool isOpen;
@@ -184,7 +223,7 @@ namespace Admin
     }
     public interface IPhone
     {
-        bool FlipOpen {  set; }
+        bool FlipOpen { set; }
         PhoneCall Call(bool IsOpen, bool IsConnected, string phoneNumber);
         void Disconnect(PhoneCall activeCall);
         bool IsConnected();
@@ -200,7 +239,8 @@ namespace Admin
             Console.WriteLine("do something baes");
         }
     }
-    public class Bar : Foo {
+    public class Bar : Foo
+    {
         public override void DoSomething()
         {
             base.DoSomething();
@@ -233,7 +273,8 @@ namespace co
             throw new NotImplementedException();
         }
     }
-    struct te {
+    struct te
+    {
         public int test { get; set; }
         public void t() { }
 
@@ -806,12 +847,24 @@ namespace ConsoleApplication1
 
 
 
+            var flatList = new List<Admin.Group>() {
+                new Admin.Group() { ID = 1, ParentID = null },    // root node
+                new Admin.Group() { ID = 2, ParentID = 1 },
+                new Admin.Group() { ID = 3, ParentID = 1 },
+                new Admin.Group() { ID = 4, ParentID = 3 },
+                new Admin.Group() { ID = 5, ParentID = 4 },
+                new Admin.Group() { ID = 6, ParentID = 4 }
+            };
+
+            var tree = flatList.BuildTree();
+
+
 
             List<string> listtest = new List<string>() { "10", "20" };
             Dictionary<String, List<string>> dictst = new Dictionary<String, List<string>>()
             {
                 { "a",listtest},
-                
+
 
             };
 

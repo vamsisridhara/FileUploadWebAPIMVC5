@@ -32,4 +32,5 @@
 /// <reference path="modernizr-2.6.2.js" />
 /// <reference path="ng-map.min.js" />
 /// <reference path="respond.js" />
+/// <reference path="../servicevsfactoryvsprovider/app.js" />
 /// <reference path="../wizard/app.js" />

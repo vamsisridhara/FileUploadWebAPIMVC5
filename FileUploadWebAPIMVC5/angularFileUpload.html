@@ -3,6 +3,7 @@
 <head>
     <title></title>
     <meta charset="utf-8" />
+    <script src="Scripts/jquery-3.1.0.min.js"></script>
     <script src="Scripts/angular.min.js"></script>
     <script>
         (function () {
@@ -18,11 +19,11 @@
                         return false;
                     }
                     var extn = $('#fileUpload').val().split('.').pop().toLowerCase();
-                    if ($.inArray(extn, ['txt']) == -1) {
-                        $scope.showrequiredError = false;
-                        $scope.showvalidFileError = true;
-                        return false;
-                    }
+                    //if ($.inArray(extn, ['zip','txt']) == -1) {
+                    //    $scope.showrequiredError = false;
+                    //    $scope.showvalidFileError = true;
+                    //    return false;
+                    //}
                     var data = new FormData();
                     var uploadedFiles = '';
                     var count = 0;
@@ -31,20 +32,21 @@
                         for (var temp = 0; temp < files.length; temp++) {
                             data.append("UploadedImage" + count, files[count]);
                         }
-                        $http({
-                            url: '/api/fileupload/uploadfile',
-                            method: "POST",
-                            data: data,
-                            headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-                        }).success(function (data, status, headers, config) {
-                            $scope.listofFiles = data; 
-                        }).error(function (data, status, headers, config) {
-                            
-                        });
+                        //$http({
+                        //    url: '/FileUploadWebAPIMVC5/api/fileupload/uploadzipfiles',
+                        //    //url: '/api/fileupload/uploadfile',
+                        //    method: "POST",
+                        //    data: data,
+                        //    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+                        //}).success(function (data, status, headers, config) {
+                        //    $scope.listofFiles = data;
+                        //}).error(function (data, status, headers, config) {
+
+                        //});
 
                         var ajaxRequest = $.ajax({
                             type: "POST",
-                            url: "/api/fileupload/uploadfile",
+                            url: '/FileUploadWebAPIMVC5/api/fileupload/uploadzipfiles',
                             contentType: false,
                             processData: false,
                             data: data
@@ -71,13 +73,8 @@
 
 
                 };
-
-
             }
-
-
         }());
-
     </script>
 </head>
 <body>

@@ -1,0 +1,309 @@
+web.config
+---
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <configSections>
+    <!-- For more information on Entity Framework configuration, visit http://go.microsoft.com/fwlink/?LinkID=237468 -->
+    <section name="entityFramework" type="System.Data.Entity.Internal.ConfigFile.EntityFrameworkSection, EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" requirePermission="false" />
+  </configSections>
+  <connectionStrings>
+    <add name="SchoolContext" connectionString="Data Source=(LocalDb)\v11.0;Initial Catalog=ContosoUniversity;Integrated Security=SSPI;" providerName="System.Data.SqlClient" />
+    <add name="NorthwindEntities" connectionString="metadata=res://*/Nwind.csdl|res://*/Nwind.ssdl|res://*/Nwind.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=VAMSISRIDHARA\SQLEXPRESS;initial catalog=Northwind;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" providerName="System.Data.EntityClient" />
+  </connectionStrings>
+  <appSettings>
+    <add key="aspnet:UseTaskFriendlySynchronizationContext" value="true" />
+  </appSettings>
+  <system.web>
+    <compilation debug="true" targetFramework="4.5.1" />
+    <httpRuntime targetFramework="4.5.1" />
+  </system.web>
+  <system.serviceModel>
+    <behaviors>
+      <serviceBehaviors>
+        <behavior>
+          <!-- To avoid disclosing metadata information, set the values below to false before deployment -->
+          <serviceMetadata httpGetEnabled="true" httpsGetEnabled="true" />
+          <!-- To receive exception details in faults for debugging purposes, set the value below to true.  Set to false before deployment to avoid disclosing exception information -->
+          <serviceDebug includeExceptionDetailInFaults="false" />
+        </behavior>
+      </serviceBehaviors>
+    </behaviors>
+    <protocolMapping>
+      <add binding="basicHttpsBinding" scheme="https" />
+    </protocolMapping>
+    <serviceHostingEnvironment aspNetCompatibilityEnabled="true" multipleSiteBindingsEnabled="true" />
+  </system.serviceModel>
+  <system.webServer>
+    <modules runAllManagedModulesForAllRequests="true" />
+    <!--
+        To browse web app root directory during debugging, set the value below to true.
+        Set to false before deployment to avoid disclosing web app folder information.
+      -->
+    <directoryBrowse enabled="true" />
+  </system.webServer>
+  <entityFramework>
+    <contexts>
+      <context type="studentservice.SchoolContext, studentservice">
+        <databaseInitializer type="studentservice.SchoolInitializer, studentservice" />
+      </context>
+    </contexts>
+    <defaultConnectionFactory type="System.Data.Entity.Infrastructure.SqlConnectionFactory, EntityFramework" />
+    <providers>
+      <provider invariantName="System.Data.SqlClient" type="System.Data.Entity.SqlServer.SqlProviderServices, EntityFramework.SqlServer" />
+    </providers>
+  </entityFramework>
+</configuration>
+-----
+Schoolinitializer.cs
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace studentservice
+{
+    public class SchoolInitializer : System.Data.Entity.DropCreateDatabaseIfModelChanges<SchoolContext>
+    {
+        protected override void Seed(SchoolContext context)
+        {
+            var students = new List<Student>
+            {
+            new Student{FirstMidName="Carson",LastName="Alexander",EnrollmentDate=DateTime.Parse("2005-09-01")},
+            new Student{FirstMidName="Meredith",LastName="Alonso",EnrollmentDate=DateTime.Parse("2002-09-01")},
+            new Student{FirstMidName="Arturo",LastName="Anand",EnrollmentDate=DateTime.Parse("2003-09-01")},
+            new Student{FirstMidName="Gytis",LastName="Barzdukas",EnrollmentDate=DateTime.Parse("2002-09-01")},
+            new Student{FirstMidName="Yan",LastName="Li",EnrollmentDate=DateTime.Parse("2002-09-01")},
+            new Student{FirstMidName="Peggy",LastName="Justice",EnrollmentDate=DateTime.Parse("2001-09-01")},
+            new Student{FirstMidName="Laura",LastName="Norman",EnrollmentDate=DateTime.Parse("2003-09-01")},
+            new Student{FirstMidName="Nino",LastName="Olivetto",EnrollmentDate=DateTime.Parse("2005-09-01")}
+            };
+
+            students.ForEach(s => context.Students.Add(s));
+            context.SaveChanges();
+            var courses = new List<Course>
+            {
+            new Course{CourseID=1050,Title="Chemistry",Credits=3,},
+            new Course{CourseID=4022,Title="Microeconomics",Credits=3,},
+            new Course{CourseID=4041,Title="Macroeconomics",Credits=3,},
+            new Course{CourseID=1045,Title="Calculus",Credits=4,},
+            new Course{CourseID=3141,Title="Trigonometry",Credits=4,},
+            new Course{CourseID=2021,Title="Composition",Credits=3,},
+            new Course{CourseID=2042,Title="Literature",Credits=4,}
+            };
+            courses.ForEach(s => context.Courses.Add(s));
+            context.SaveChanges();
+            var enrollments = new List<Enrollment>
+            {
+            new Enrollment{StudentID=1,CourseID=1050,Grade=Grade.A},
+            new Enrollment{StudentID=1,CourseID=4022,Grade=Grade.C},
+            new Enrollment{StudentID=1,CourseID=4041,Grade=Grade.B},
+            new Enrollment{StudentID=2,CourseID=1045,Grade=Grade.B},
+            new Enrollment{StudentID=2,CourseID=3141,Grade=Grade.F},
+            new Enrollment{StudentID=2,CourseID=2021,Grade=Grade.F},
+            new Enrollment{StudentID=3,CourseID=1050},
+            new Enrollment{StudentID=4,CourseID=1050,},
+            new Enrollment{StudentID=4,CourseID=4022,Grade=Grade.F},
+            new Enrollment{StudentID=5,CourseID=4041,Grade=Grade.C},
+            new Enrollment{StudentID=6,CourseID=1045},
+            new Enrollment{StudentID=7,CourseID=3141,Grade=Grade.A},
+            };
+            enrollments.ForEach(s => context.Enrollments.Add(s));
+            context.SaveChanges();
+        }
+    }
+}
+---
+SchoolContext.cs
+using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
+using System.Linq;
+using System.Web;
+
+namespace studentservice
+{
+    public class SchoolContext : DbContext
+    {
+
+        public SchoolContext()
+            : base("SchoolContext")
+        {
+        }
+
+        public DbSet<Student> Students
+        {
+            get;
+            set;
+        }
+        public DbSet<Enrollment> Enrollments
+        {
+            get;
+            set;
+        }
+        public DbSet<Course> Courses
+        {
+            get;
+            set;
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+        }
+    }
+}
+---
+productmodel.cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.Text;
+
+namespace studentservice
+{
+    [DataContract]
+    public class ProductModel
+    {
+        [DataMember]
+        public int ProductID
+        {
+            get;
+            set;
+        }
+        [DataMember]
+        public string ProductName
+        {
+            get;
+            set;
+        }
+        [DataMember]
+        public string QuantityPerUnit
+        {
+            get;
+            set;
+        }
+        [DataMember]
+        public decimal UnitPrice
+        {
+            get;
+            set;
+        }
+        [DataMember]
+        public bool Discontinued
+        {
+            get;
+            set;
+        }
+    }
+}
+----
+IService1.cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.ServiceModel;
+using System.ServiceModel.Web;
+using System.Text;
+using studentservice.Models;
+namespace studentservice
+{
+    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IService1" in both code and config file together.
+    [ServiceContract]
+    public interface IService1
+    {
+
+        [OperationContract]
+        string GetData(int value);
+
+        [OperationContract]
+        CompositeType GetDataUsingDataContract(CompositeType composite);
+
+        // TODO: Add your service operations here
+        [OperationContract]
+        List<StudentModel> getList();
+
+        [OperationContract]
+        ProductModel getListofproducts(int id);
+
+    }
+
+
+    // Use a data contract as illustrated in the sample below to add composite types to service operations.
+    [DataContract]
+    public class CompositeType
+    {
+        bool boolValue = true;
+        string stringValue = "Hello ";
+
+        [DataMember]
+        public bool BoolValue
+        {
+            get
+            {
+                return boolValue;
+            }
+            set
+            {
+                boolValue = value;
+            }
+        }
+
+        [DataMember]
+        public string StringValue
+        {
+            get
+            {
+                return stringValue;
+            }
+            set
+            {
+                stringValue = value;
+            }
+        }
+    }
+}
+
+---
+Service1.cs
+public List<StudentModel> getList()
+        {
+            Mapper.CreateMap<Student, studentservice.Models.StudentModel>();
+            Mapper.CreateMap<Enrollment, studentservice.Models.EnrollmentModel>();
+            Mapper.CreateMap<Course, studentservice.Models.CourseModel>();
+            Mapper.CreateMap<Grade, studentservice.Models.GradeModel>();
+            List<StudentModel> lststudmodel = null;
+
+            using (SchoolContext db = new SchoolContext())
+            {
+                var dbStuList = db.Students.ToList();
+                lststudmodel = Mapper.Map<List<Student>, List<studentservice.Models.StudentModel>>(dbStuList);
+            }
+            return lststudmodel;
+        }
+
+
+        public ProductModel getListofproducts(int id)
+        {
+            NorthwindEntities context = new NorthwindEntities();
+            var productEntity = context.Products.Where(x => x.ProductID == id).FirstOrDefault<Product>();
+            ProductModel prodModel = null;
+            if (productEntity != null)
+                prodModel = TranslateProductEntityToProduct(productEntity);
+            else
+                throw new Exception("Invalid product id");
+            return prodModel;
+        }
+        private ProductModel TranslateProductEntityToProduct(Product productEntity)
+        {
+            ProductModel product = new ProductModel();
+            product.ProductID = productEntity.ProductID;
+            product.ProductName = productEntity.ProductName;
+            product.QuantityPerUnit = productEntity.QuantityPerUnit;
+            product.UnitPrice = (decimal)productEntity.UnitPrice;
+            product.Discontinued = productEntity.Discontinued;
+            return product;
+        }
