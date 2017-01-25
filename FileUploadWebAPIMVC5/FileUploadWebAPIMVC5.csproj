@@ -188,6 +188,7 @@
     <Compile Include="Controllers\PeopleController.cs" />
     <Compile Include="Controllers\PersonController.cs" />
     <Compile Include="Controllers\TemplatedController.cs" />
+    <Compile Include="Controllers\TestDelController.cs" />
     <Compile Include="Controllers\TextFileUploadController.cs" />
     <Compile Include="Controllers\UserAccountController.cs" />
     <Compile Include="Data\DistrictBL.cs" />
@@ -276,6 +277,7 @@
     <Content Include="CRUD\user-creation.html" />
     <Content Include="CRUD\user-detail.html" />
     <Content Include="CRUD\user-list.html" />
+    <Content Include="deletedids.html" />
     <Content Include="downloadcsv.html" />
     <Content Include="dropdown\index.html" />
     <Content Include="dropdown\userRepoService.js" />

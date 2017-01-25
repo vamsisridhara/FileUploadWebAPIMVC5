@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="Scripts/angular.min.js"></script>
+    <script>
+        (function () {
+            'use strict';
+            var app = angular.module('app', []);
+            app.factory('demoFactory', ['$http', '$q', demoFactoryFunction]);
+            function demoFactoryFunction($http, $q) {
+                return {
+                    deleteIds: deleteIds
+                };
+                function deleteIds(userId, ids) {
+                    var defer = $q.defer();
+                    $http({
+                        method: 'POST',
+                        url: '/FileUploadWebAPIMVC5/api/testdel/deleteall/' + userId,
+                        data: ids
+                    }).success(function (data, status) {
+                        defer.resolve(data);
+                    }).error(function (data, status) {
+                        defer.reject('error in posting data');
+                    });
+                    return defer.promise;
+                }
+            }
+            app.controller('demoCtrl', ['$scope', 'demoFactory', demoCtrlfunction]);
+            function demoCtrlfunction($scope, demoFactory) {
+                var vm = this;
+                vm.deleteIds = function () {
+                    var ids = [20, 30];
+                    var userId = 'vamsi';
+                    demoFactory.deleteIds(userId, ids).then(function success(data) {
+                        alert('successfully deleted ids');
+                    },
+                    function error(data) {
+                        console.log('failed in deleting ids');
+                    })
+                };
+            }
+        }());
+    </script>
+</head>
+<body>
+    <div class="container" ng-controller="demoCtrl as vm">
+        <div class="row">
+            <div class="col-md-5">
+                <button type="button" id="btnDelete"
+                        class="btn btn-primary"
+                        ng-click="vm.deleteIds()">
+                    Delete Ids
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -83,7 +83,6 @@ namespace ConsoleApplication1
                     });
                 }
             }
-            
         }
         private IEntity getbyid(NameValueCollection page)
         {
@@ -117,7 +116,6 @@ namespace ConsoleApplication1
                     });
                 }
             }
-            
         }
     }
 }

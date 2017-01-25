@@ -6,3 +6,4 @@ C:\GitHub\FileUploadWebAPIMVC5\WindowsFormsApplication1\obj\Debug\WindowsFormsAp
 C:\GitHub\FileUploadWebAPIMVC5\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache
 C:\GitHub\FileUploadWebAPIMVC5\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
 C:\GitHub\FileUploadWebAPIMVC5\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
+C:\GitHub\FileUploadWebAPIMVC5\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csprojResolveAssemblyReference.cache
