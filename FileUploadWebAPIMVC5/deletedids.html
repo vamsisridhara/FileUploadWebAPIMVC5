@@ -31,6 +31,12 @@
             app.controller('demoCtrl', ['$scope', 'demoFactory', demoCtrlfunction]);
             function demoCtrlfunction($scope, demoFactory) {
                 var vm = this;
+                vm.init = function () {
+                    vm.disablediv = true;
+                    vm.testp = '';
+                    vm.testm = '';
+
+                }
                 vm.deleteIds = function () {
                     var ids = [20, 30];
                     var userId = 'vamsi';
@@ -41,6 +47,14 @@
                         console.log('failed in deleting ids');
                     })
                 };
+                vm.disableP = function (input) {
+                    if (input === "portfolio") {
+                        vm.disablediv = false;
+                    } else {
+                        vm.disablediv = true;
+                    }
+                };
+                vm.init();
             }
         }());
     </script>
@@ -54,7 +68,33 @@
                         ng-click="vm.deleteIds()">
                     Delete Ids
                 </button>
+                <label class="control-label" for="portfolio">
+                    <input type="radio"
+                           id="portfolio"
+                           ng-model="vm.testp"
+                           name="radiotest"
+                           value="portfolio"
+                           ng-click="vm.disableP(vm.testp)" />Port
+                </label>
+                <label class="control-label" for="market">
+                    <input type="radio"
+                           id="market"
+                           name="radiotest"
+                           ng-model="vm.testm"
+                           value="market"
+                           ng-click="vm.disableP(vm.testm)" />Mak
+                </label>
             </div>
+            <fieldset ng-disabled="vm.disablediv">
+                <div class="col-md-5">
+                    <button type="button" id="btnDelete"
+                            class="btn btn-primary"
+                            ng-click="vm.deleteIds()">
+                        Delete Ids
+                    </button>
+                </div>
+            </fieldset>
+
         </div>
     </div>
 </body>
