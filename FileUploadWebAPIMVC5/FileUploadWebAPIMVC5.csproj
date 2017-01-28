@@ -230,6 +230,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\tether.min.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -278,6 +279,7 @@
     <Content Include="CRUD\user-detail.html" />
     <Content Include="CRUD\user-list.html" />
     <Content Include="deletedids.html" />
+    <Content Include="deleteid.js" />
     <Content Include="downloadcsv.html" />
     <Content Include="dropdown\index.html" />
     <Content Include="dropdown\userRepoService.js" />
@@ -328,6 +330,7 @@
     <Content Include="Scripts\jquery-ui-1.12.0.js" />
     <Content Include="Scripts\jquery-ui-1.12.0.min.js" />
     <Content Include="Scripts\ng-map.min.js" />
+    <Content Include="Scripts\tether.min.js" />
     <Content Include="servicevsfactoryvsprovider\app.js" />
     <Content Include="servicevsfactoryvsprovider\index.html" />
     <Content Include="shadecity.html" />

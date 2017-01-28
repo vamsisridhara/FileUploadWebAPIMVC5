@@ -3,61 +3,9 @@
 <head>
     <title></title>
     <meta charset="utf-8" />
-    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="Content/bootstrap.min.css" />
     <script src="Scripts/angular.min.js"></script>
-    <script>
-        (function () {
-            'use strict';
-            var app = angular.module('app', []);
-            app.factory('demoFactory', ['$http', '$q', demoFactoryFunction]);
-            function demoFactoryFunction($http, $q) {
-                return {
-                    deleteIds: deleteIds
-                };
-                function deleteIds(userId, ids) {
-                    var defer = $q.defer();
-                    $http({
-                        method: 'POST',
-                        url: '/FileUploadWebAPIMVC5/api/testdel/deleteall/' + userId,
-                        data: ids
-                    }).success(function (data, status) {
-                        defer.resolve(data);
-                    }).error(function (data, status) {
-                        defer.reject('error in posting data');
-                    });
-                    return defer.promise;
-                }
-            }
-            app.controller('demoCtrl', ['$scope', 'demoFactory', demoCtrlfunction]);
-            function demoCtrlfunction($scope, demoFactory) {
-                var vm = this;
-                vm.init = function () {
-                    vm.disablediv = true;
-                    vm.testp = '';
-                    vm.testm = '';
-
-                }
-                vm.deleteIds = function () {
-                    var ids = [20, 30];
-                    var userId = 'vamsi';
-                    demoFactory.deleteIds(userId, ids).then(function success(data) {
-                        alert('successfully deleted ids');
-                    },
-                    function error(data) {
-                        console.log('failed in deleting ids');
-                    })
-                };
-                vm.disableP = function (input) {
-                    if (input === "portfolio") {
-                        vm.disablediv = false;
-                    } else {
-                        vm.disablediv = true;
-                    }
-                };
-                vm.init();
-            }
-        }());
-    </script>
+    <script src="deleteid.js"></script>
 </head>
 <body>
     <div class="container" ng-controller="demoCtrl as vm">
@@ -96,6 +44,56 @@
             </fieldset>
 
         </div>
+        <div class="row">
+            <div class="form-group">
+                <div class="col-md-4">
+                    <label class="control-label" for="selectco">Co:</label>
+                    <select class="form-control" id="selectco">
+                        <option>Please select</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <div class="col-md-8">
+                    <div class="radio-inline" ng-repeat="pt in vm.radioOptions">
+                        <label class="control-label">
+                            <input type="radio"
+                                   id="radio_{{pt.id}}"
+                                   name="rdopt"
+                                   ng-model="vm.radioselected"
+                                   ng-value="pt.name"
+                                   ng-click="vm.toggle()" />
+                            {{pt.name}}
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+        <fieldset ng-disabled="vm.disablePort">
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-8">
+                        <div class="checkbox-inline"
+                             ng-repeat="pt in vm.portCheckOptions">
+                            <label class="control-label">
+                                <input type="checkbox"
+                                       id="radio_{{pt.id}}"
+                                       name="rdopt"
+                                       ng-model="pt.selected"
+                                       ng-value="pt.name" />
+                                {{pt.name}}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
     </div>
 </body>
 </html>
