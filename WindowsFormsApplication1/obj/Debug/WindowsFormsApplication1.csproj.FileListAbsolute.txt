@@ -1,9 +1,9 @@
 C:\GitHub\FileUploadWebAPIMVC5\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe.config
 C:\GitHub\FileUploadWebAPIMVC5\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe
 C:\GitHub\FileUploadWebAPIMVC5\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.pdb
+C:\GitHub\FileUploadWebAPIMVC5\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csprojResolveAssemblyReference.cache
 C:\GitHub\FileUploadWebAPIMVC5\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form1.resources
 C:\GitHub\FileUploadWebAPIMVC5\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Properties.Resources.resources
 C:\GitHub\FileUploadWebAPIMVC5\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache
 C:\GitHub\FileUploadWebAPIMVC5\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
 C:\GitHub\FileUploadWebAPIMVC5\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
-C:\GitHub\FileUploadWebAPIMVC5\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csprojResolveAssemblyReference.cache

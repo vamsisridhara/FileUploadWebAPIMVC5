@@ -1,0 +1,2 @@
+C:\GitHub\FileUploadWebAPIMVC5\TheBoard\obj\Debug\TheBoard.njsprojResolveAssemblyReference.cache
+C:\GitHub\FileUploadWebAPIMVC5\TheBoard\bin\Microsoft.NodejsTools.WebRole.dll

@@ -1,0 +1,13 @@
+{
+  "name": "the-board",
+  "version": "0.0.0",
+  "description": "TheBoard",
+  "main": "server.js",
+  "author": {
+    "name": "Vamsi"
+  },
+  "dependencies": {
+    "express": "^4.14.1",
+    "jade": "^1.11.0"
+  }
+}
