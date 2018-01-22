@@ -5,17 +5,12 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Web.Script.Serialization;
-using AssessmentTest;
 using AutoMapper;
-using AutoMapper.QueryableExtensions;
 using AutoMapper.Mappers;
-using AutoMapper.Configuration.Conventions;
 using Newtonsoft.Json;
 using System.Collections;
 using System.Diagnostics;
@@ -24,7 +19,22 @@ using System.Runtime.CompilerServices;
 using Admin.empty;
 using System.Globalization;
 using Admin;
-
+namespace CSLibrary
+{
+    public class Class1 { }
+    class Class2
+    {
+        class Class3 { }
+    }
+}
+namespace NotCSLibrary
+{
+    class Class4 { }
+}
+namespace NotInCSLibrary
+{
+    class Class5 { }
+}
 namespace custommetadata
 {
     public enum pri { high, medium, low }
@@ -32,6 +42,17 @@ namespace custommetadata
 }
 namespace Admin
 {
+    //
+    //delegate with input as double,output is double
+    //extension class / method
+    public static class Circle
+    {
+        public static double circumference(double radius)
+        {
+            return 2 * radius * PI;
+        }
+    }
+
     public class Group
     {
         public int ID { get; set; }
@@ -828,6 +849,59 @@ namespace ConsoleApplication1
                 return queries.Sum(q => q.Count());
             }
         }
+        static ManualResetEvent MyEvent;
+        static void Worker()
+        {
+            while (true)
+            {
+                Thread.Sleep(1000);
+                Console.WriteLine("working");
+                MyEvent.WaitOne();
+            }
+        }
+        static void update()
+        {
+            Console.WriteLine("sun moon stars");
+        }
+        enum weekoff { sunday = 1, saturday = 2 };
+
+        //static IEnumerable Squares(this int from, int to)
+        //{
+        //    for (int i = from; i <= to; i++)
+        //    {
+        //        yield return (int)i * 1;
+
+        //    }
+
+        //}
+
+        static void A_1() {
+            try { B_1(); }
+            catch (Exception ex)
+            {
+                throw ex;
+
+            }
+
+        }
+        static void B_1()
+        {
+            try { c_1(); }
+            catch (Exception ex)
+            {
+                throw ex;
+
+            }
+
+        }
+
+        static void c_1()
+        {
+            throw new InvalidOperationException();
+
+        }
+
+
         //static void foo(int i = 0, DateTime dt = DateTime.Now)
         //{
         //    if (i == 0)
@@ -835,17 +909,140 @@ namespace ConsoleApplication1
         //        Console.Write(date)
         //    }
         //}
+        delegate int Calc(int m, int n);
         /// <summary>
         /// 
         /// </summary>
         /// <param name="args"></param>
         static void Main(string[] args)
         {
+            try
+            {
+                A_1();
+            }
+            catch (Exception ex) {
+                Console.WriteLine(ex.StackTrace);
+
+            }
+
+
+
+            var _vl = new List<int>();
+            _vl.Add(1);
+            _vl.Add(5);
+            _vl.Add(15);
+            _vl.Add(11);
+
+            var _query_Re = from i_val in _vl
+                            where i_val > 10
+                            select i_val;
+            _vl[1] = 20;
+            foreach (var item in _query_Re)
+            {
+                Console.WriteLine(item);
+            }
+
+            string s_c = "collect";
+            foreach (char item in s_c)
+            {
+                if (s_c.IndexOf(item) == 2)
+                {
+                    Console.WriteLine("*");
+                }
+                else {
+                    Console.WriteLine(item);
+
+                }
+            }
+
+
+
+            Calc c_l = new Calc((n, m) => n + m);
+            c_l += new Calc((n, m) => n * m);
+            Console.WriteLine(c_l(c_l(2, 5), 4));
+
+
+            int ijk_u = 0;
+            ijk_u *= 1 + 1 * 2 - 1 / 3;
+            Console.WriteLine(ijk_u);
+            weekoff woff = weekoff.saturday;
+            woff = (weekoff)5;
+            Console.WriteLine(woff.ToString());
+
+            Thread th = new Thread(new ThreadStart(update));
+            th.Start();
+
+            foreach (Match m in Regex.Matches("Ninety Six Thousand and Ninety Stars", @"\bN\S*"))
+            {
+                Console.WriteLine(m.Value);
+                Console.ReadKey();
+
+            }
+
+
+            int _count = 0;
+            int _i = 0;
+            try
+            {
+                _count++;
+                _count = _count / _i;
+                _count++;
+            }
+            catch (Exception ex) { }
+            _count++;
+            Console.WriteLine(_count.ToString());
 
 
 
 
+            MyEvent = new ManualResetEvent(true);
+            ThreadStart mythr = new ThreadStart(worker);
+            Thread myth = new Thread(mythr);
+            myth.Start();
+            Console.ReadKey();
 
+
+
+
+            String t_1 = "abc";
+            String t_2 = "def";
+            t_1 = t_1 + t_2;
+            Console.WriteLine(t_1);
+
+            Console.WriteLine(String.Concat(t_1, t_2));
+
+
+            try
+            {
+                try
+                {
+                    int x = 0;
+                    int y = 5 / x;
+
+                }
+                catch (DivideByZeroException exp)
+                {
+                    Console.WriteLine("inner divide by zero");
+                    throw;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("inner ");
+                    throw;
+                }
+            }
+            catch (DivideByZeroException ex)
+            {
+                Console.WriteLine("inner divide by zero");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("outer");
+            }
+            int xxx = 10;
+            int? yyy = 20;
+            int? zzz = null;
+            Console.WriteLine(xxx + zzz ?? yyy);
 
             var flatList = new List<Admin.Group>() {
                 new Admin.Group() { ID = 1, ParentID = null },    // root node
@@ -858,14 +1055,10 @@ namespace ConsoleApplication1
 
             var tree = flatList.BuildTree();
 
-
-
             List<string> listtest = new List<string>() { "10", "20" };
             Dictionary<String, List<string>> dictst = new Dictionary<String, List<string>>()
             {
                 { "a",listtest},
-
-
             };
 
 

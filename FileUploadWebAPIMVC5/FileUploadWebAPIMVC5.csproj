@@ -176,6 +176,7 @@
     <Compile Include="Controllers\ChildController.cs" />
     <Compile Include="Controllers\CommuteController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\DBValuesController.cs" />
     <Compile Include="Controllers\demoController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
@@ -183,6 +184,8 @@
     <Compile Include="Controllers\FileDownloadController.cs" />
     <Compile Include="Controllers\FileUploadController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ImageController.cs" />
+    <Compile Include="Controllers\LeadController.cs" />
     <Compile Include="Controllers\loginController.cs" />
     <Compile Include="Controllers\ParentController.cs" />
     <Compile Include="Controllers\PeopleController.cs" />
@@ -206,6 +209,7 @@
     <Compile Include="Models\CsvHelper.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\Filter.cs" />
+    <Compile Include="Models\ImageConverter.cs" />
     <Compile Include="Models\Managers.cs" />
     <Compile Include="Models\NinjectDependencyResolver.cs" />
     <Compile Include="Models\Person.cs" />
@@ -401,6 +405,8 @@
     <Content Include="Views\Booking\Completed.cshtml" />
     <Content Include="Views\People\Index.cshtml" />
     <Content Include="Views\People\GetPeople.cshtml" />
+    <Content Include="Views\Lead\Index.cshtml" />
+    <Content Include="Views\Shared\_Comments.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

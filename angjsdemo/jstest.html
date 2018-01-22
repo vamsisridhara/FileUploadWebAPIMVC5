@@ -1,0 +1,186 @@
+﻿<html>
+
+<head>
+    <script>
+
+var arr1 = "john".split('');
+var arr2 = arr1.reverse();
+var arr3 = "jones".split('');
+arr2.push(arr3);
+console.log("array 1: length=" + arr1.length + " last=" + arr1.slice(-1));
+console.log("array 2: length=" + arr2.length + " last=" + arr2.slice(-1));
+
+		function Dog() {
+			this.tail = true;
+		}
+
+		var b = new Dog();
+		var d = new Dog();
+		Dog.prototype.say = function () {
+			return 'Woof!';
+		};
+		p(b.say());
+
+		Dog.prototype = {
+			paws: 4,
+			hair: true
+		};
+		p(b.paws);
+
+		var monkey = {
+			hair: true,
+			feeds: 'bananas',
+			breathes: 'air'
+		};
+		function Human() {
+			//this.name = name;
+		}
+		Human.prototype = monkey;
+
+		var george = new Human();
+		//console.log(monkey.isPrototypeOf(george));
+		//console.log(Object.getPrototypeOf(george) === monkey);
+
+		var developer = new Human();
+		developer.feeds = "pizza";
+		developer.breathes = "Javascript";
+		p(developer.feeds);
+
+		function p(input) {
+			console.log(input);
+		}
+	/*function F() {
+		var arr = [], i;
+		for (i = 0; i < 3; i++) {
+			arr[i] = (function (x) {
+				return function () {
+					return x;
+				};
+			}(i));
+		}
+		return arr;
+	}
+
+	var global = 1;
+	function outer() {
+		var outer_local = 2;
+		function inner() {
+			var inner_local = 3;
+			return inner_local + outer_local + global;
+		}
+		return inner();
+	}
+	console.log(outer());
+
+	var all = (function () {
+		function someSetup() {
+			var setup = 'done';
+		}
+		function actualWork() {
+			alert('Worky-worky');
+		}
+		someSetup();
+		return actualWork;
+	}());
+	all();
+
+	function a() {
+		alert('A!');
+		a = function () {
+			alert('B!');
+		};
+		return a();
+	}
+	a()();
+	(function(){
+	var a = 1;
+	function f() {
+		function n() {
+			alert(a);
+		}
+		n();
+		var a = 2;
+	}
+	f();
+		function Gadget(name, color){
+			this.name = name;
+			this.color = color;
+			this.whatAreYou = function () {
+				return 'I am a ' + this.color + ' ' + this.name;
+			};
+		}
+		Gadget.prototype = {
+			price: 100,
+			rating: 3,
+			getInfo : function () {
+				return 'Rating: ' + this.rating + ', price: ' + this.price;
+			},
+			get : function(prop){
+				return this[prop];
+			}
+		};
+
+		var newtoy = new Gadget('webcam', 'black');
+		console.log(newtoy.whatAreYou());
+		console.log(newtoy.getInfo());
+		console.log(newtoy.get('price'));
+		console.log(newtoy.toString());
+
+	var same_obj = {
+		name: 'Ninja',
+		say: function (who) {
+			return 'Haya ' + who + ', I am a ' + this.name;
+		}
+	};
+	console.log(same_obj);
+	var myobj = { name : 'vamsi' };
+	console.log(same_obj.say.call(myobj,'test','test2'));
+	console.log(same_obj.say.apply(myobj,['test','test2']));
+
+	var arr1  = ['10','20','30'];
+	console.log(arr1.slice(0,1));
+	console.log(arr1.splice(0));
+	console.log(arr1);
+	function setup(x) {
+		var i = 0;
+		return function () {
+			return x[i++];
+		};
+	}
+	var next = setup(['a', 'b', 'c']);
+	console.log(next());
+	console.log(next());
+	console.log(next());
+	var getValue, setValue;
+	(function () {
+		var secret = 0;
+		getValue = function () {
+			return secret;
+		};
+		setValue = function (v) {
+			if (typeof v === "number") {
+				secret = v;
+			}
+		};
+	}());
+		function F(){
+			let arr=[];
+			for(let i=0;i<3;i++){
+				arr[i] = (function(x){
+					return function(){
+						return x;
+					};
+				}(i));
+			}
+			return arr;
+		}
+		var arr = F();
+		console.log(arr[0]());
+		console.log(arr[1]());
+		console.log(arr[2]());
+	*/
+    </script>
+
+</head>
+
+</html>

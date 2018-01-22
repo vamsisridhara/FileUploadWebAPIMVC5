@@ -3,3 +3,4 @@ C:\GitHub\FileUploadWebAPIMVC5\angjsdemo\bin\angjsdemo.dll
 C:\GitHub\FileUploadWebAPIMVC5\angjsdemo\bin\angjsdemo.pdb
 C:\GitHub\FileUploadWebAPIMVC5\angjsdemo\obj\Debug\angjsdemo.dll
 C:\GitHub\FileUploadWebAPIMVC5\angjsdemo\obj\Debug\angjsdemo.pdb
+C:\GitHub\FileUploadWebAPIMVC5\angjsdemo\obj\Debug\angjsdemo.csprojResolveAssemblyReference.cache

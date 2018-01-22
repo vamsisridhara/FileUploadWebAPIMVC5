@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="Scripts/jquery-1.10.2.js"></script>
+    <script>
+        $(window).load(function () {
+            loadFunction(function () {
+                alert("calling back from load");
+            });
+        });
+
+        function domFunction(callback) {
+            alert("call back to dom");
+            callback();
+        }
+
+        function loadFunction(callback) {
+            alert("call back to load");
+            callback();
+        }
+
+        $(document).ready(function () {
+            domFunction(function () {
+                alert("calling back from dom");
+            });
+        });
+
+
+        //function Function1() { alert("Alert1"); }
+        //(function () { Function1(); })();
+        //(function () { alert('2'); })();
+        //(function () { alert('3'); })();
+    </script>
+</head>
+<body>
+
+</body>
+</html>

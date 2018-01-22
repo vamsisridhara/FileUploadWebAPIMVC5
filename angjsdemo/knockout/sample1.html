@@ -1,0 +1,163 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="../scripts/jquery-3.1.1.min.js"></script>
+    <script src="../scripts/jquery-ui-1.12.1.min.js"></script>
+    <script src="../scripts/knockout-3.4.2.js"></script>
+    <script src="../scripts/knockout-3.4.2.debug.js"></script>
+    <script src="../scripts/bootstrap.min.js"></script>
+    <script src="../scripts/jquery.validate.min.js"></script>
+    <script src="../scripts/jquery.validate.unobtrusive.min.js"></script>
+    <link rel="stylesheet" href="../Content/bootstrap.min.css" />
+    <link rel="stylesheet" href="../Content/bootstrap-theme.min.css" />
+</head>
+<body>
+    <form>
+        <div class="container">
+            <div class="jumbotron">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <select data-bind="options: availableCountries, optionsText: 'name',optionsValue: 'id', optionsCaption: 'Select a country...',value: selectedCountry"></select>
+                            <select data-bind="options: availableStates, optionsText: 'name', optionsValue: 'id' , value: selectedState, visible: availableStates().length >
+                                0"
+                                    style="display:none"></select>
+                        </div>
+                        <div class="col-md-6">
+                            <img id="current_book" />
+                            <ul>
+                                <!-- ko foreach: books -->
+                                <li data-bind="text: title, event: { mouseover: $parent.loadImage }"></li>
+                                <!-- /ko -->
+                            </ul>
+                            <textarea data-bind="textInput: myText" class="form-control"></textarea>
+                            <br />
+                            Characters remaining:
+                            <span data-bind="text: charactersRemaining"></span>
+                            <br />
+                            <input type="text" class="form-control" required data-bind="value: firstName" />
+                            <input type="text" class="form-control" required data-bind="value: lastName" />
+                            <p><input data-bind="value: fullName"></p>
+
+                            <p> <span data-bind="text: upperFullName"> </span> </p>
+                            <button type="submit">Click</button>
+                        </div>
+                        <div class="col-md-12">
+                            <table class="table table-responsive table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Title</th>
+                                        <th>ISBN</th>
+                                        <th>Published</th>
+                                    </tr>
+                                </thead>
+                                <tbody data-bind="template: { name: 'book-template', foreach: booksList }"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/html" id="book-template">
+        <tr>
+            <td data-bind="text: title"></td>
+            <td data-bind="text: isbn"></td>
+            <td data-bind="text: $parent.formatDate(publishedDate)"></td>
+        </tr>
+    </script>
+    <script>
+        function ViewModel() {
+            var self = this;
+            self.booksList = [
+                    {
+                        title: 'Rapid Application Development With CakePHP',
+                        isbn: '1460954394',
+                        publishedDate: '2011-02-17'
+                    }, {
+                        title: '20 Recipes for Programming MVC 3:Faster, Smarter Web Development',
+                        isbn: '1449309860',
+                        publishedDate: '2011-10-14'
+                    }, {
+                        title: '20 Recipes for Programming PhoneGap:Cross-Platform Mobile Development for Android and iPhone',
+                        isbn: '1449319548',
+                        publishedDate: '2012-04-06'
+                    }
+            ];
+            self.formatDate = function (dateToFormat) {
+                var months = new Array("January", "February", "March", "April",
+                                    "May", "June", "July", "August", "September", "October",
+                                    "November", "December");
+                var d = new Date(dateToFormat);
+                return months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
+            };
+            self.firstName = ko.observable('');
+            self.lastName = ko.observable('');
+            self.fullName = ko.computed(function () {
+                return self.firstName() + ' ' + self.lastName();
+            });
+            self.upperFullName = ko.computed(function () {
+                return self.fullName().toUpperCase();
+            });
+
+            self.myText = ko.observable('');
+            self.maxCharacters = 140;
+            self.charactersRemaining = ko.computed(function () {
+                return self.maxCharacters - self.myText().length;
+            });
+            self.books = [
+                        {
+                            title: 'Rapid Application Development With CakePHP',
+                            image:
+                            'http://ecx.images-amazon.com/images/I/41JC54HEroL._AA160_.jpg'
+                        }, {
+                            title: '20 Recipes for Programming MVC 3:Faster, Smarter Web Development',
+                            image:
+                            'http://ecx.images-amazon.com/images/I/51LpqnDq8-L._AA160_.jpg'
+                        }, {
+                            title: '20 Recipes for Programming PhoneGap:Cross-Platform Mobile Development for Android and iPhone',
+                            image:
+                        'http://ecx.images-amazon.com/images/I/51AkFkNeUxL._AA160_.jpg'
+                        }
+            ];
+            self.loadImage = function (data, event) {
+                $('#current_book').attr('src', data.image);
+            };
+
+            self.selectedCountry = ko.observable();
+            self.selectedState = ko.observable();
+            self.availableCountries = ko.observableArray([
+            {
+                id: 1, name: 'United States',
+                states: [{ id: 1, name: 'Alabama' }]
+            },
+            {
+                id: 2, name: 'Canada', states: [
+                { id: 53, name: 'Alberta' },
+                // ...
+                ]
+            }
+            ]);
+
+            self.availableStates = ko.observableArray([]);
+            self.selectedCountry.subscribe(function () {
+                self.availableStates([]);
+                for (var i = 0; i < self.availableCountries().length; i++) {
+                    if (self.availableCountries()[i].id == self.selectedCountry()) {
+                        self.availableStates(self.availableCountries()[i].states);
+                        break;
+                    }
+                }
+            });
+            self.validate = function (form) {
+                return $(form).validate();
+            };
+        };
+        var vm = new ViewModel();
+        ko.applyBindings(vm);
+
+    </script>
+</body>
+</html>

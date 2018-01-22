@@ -19,3 +19,5 @@ C:\GitHub\FileUploadWebAPIMVC5\ConsoleApplication1\bin\Debug\System.Web.Http.Cor
 C:\GitHub\FileUploadWebAPIMVC5\ConsoleApplication1\obj\Debug\ConsoleApplication1.csprojResolveAssemblyReference.cache
 C:\GitHub\FileUploadWebAPIMVC5\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
 C:\GitHub\FileUploadWebAPIMVC5\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb
+C:\GitHub\FileUploadWebAPIMVC5\ConsoleApplication1\bin\Debug\EPPlus.dll
+C:\GitHub\FileUploadWebAPIMVC5\ConsoleApplication1\bin\Debug\EPPlus.xml
