@@ -1,0 +1,8 @@
+C:\GitHub\FileUploadWebAPIMVC5\TimeService\bin\Debug\TimeService.exe.config
+C:\GitHub\FileUploadWebAPIMVC5\TimeService\bin\Debug\TimeService.exe
+C:\GitHub\FileUploadWebAPIMVC5\TimeService\bin\Debug\TimeService.pdb
+C:\GitHub\FileUploadWebAPIMVC5\TimeService\obj\Debug\TimeService.FileWriteService.resources
+C:\GitHub\FileUploadWebAPIMVC5\TimeService\obj\Debug\TimeService.csproj.GenerateResource.Cache
+C:\GitHub\FileUploadWebAPIMVC5\TimeService\obj\Debug\TimeService.exe
+C:\GitHub\FileUploadWebAPIMVC5\TimeService\obj\Debug\TimeService.pdb
+C:\GitHub\FileUploadWebAPIMVC5\TimeService\obj\Debug\TimeService.ProjectInstaller.resources

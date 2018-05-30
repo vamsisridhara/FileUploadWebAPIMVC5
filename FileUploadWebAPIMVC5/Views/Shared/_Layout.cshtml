@@ -8,94 +8,14 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
     <link rel="stylesheet" href="~/Content/bootstrap-theme.min.css" />
-    <script src="~/Scripts/jquery-2.1.1.min.js"></script>
-    <script src="~/Scripts/jquery-ui-1.11.4.js"></script>
-    <script src="~/Scripts/jquery.validate.min.js"></script>
-    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 
-    <link rel="stylesheet" href="https://datcp.wi.gov/_catalogs/masterpage/AgencyTemplate1/css/styles.css" />
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
-    <style>
-
-        label {
-            display: inline-block;
-            width: 100px;
-        }
-
-        div.dataElem {
-            margin: 5px;
-        }
-
-        h2 > label {
-            width: inherit;
-        }
-
-        .editor-label, .editor-field {
-            float: left;
-            margin-top: 10px;
-        }
-
-            .editor-field input {
-                height: 20px;
-            }
-
-        .editor-label {
-            clear: left;
-        }
-
-        .editor-field {
-            margin-left: 10px;
-        }
-
-        input[type=submit] {
-            float: left;
-            clear: both;
-            margin-top: 10px;
-        }
-
-        .column {
-            float: left;
-            margin: 10px;
-        }
-
-        table, td, th {
-            border: thin solid black;
-            border-collapse: collapse;
-            padding: 5px;
-            background-color: lemonchiffon;
-            text-align: left;
-            margin: 10px 0;
-        }
-
-        div.load {
-            color: red;
-            margin: 10px 0;
-            font-weight: bold;
-        }
-
-        div.ajaxLink {
-            margin-top: 10px;
-            margin-right: 5px;
-            float: left;
-        }
-    </style>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    @RenderSection("scripts", false)
 </head>
 <body>
-    <div class="container" id="banner">
-        <div class="dots"></div>
-        <div class="row">
-            <div class="col-sm-1">
-                <img src="~/images/dcgov_logo.jpg" style="width:90px;height:60px;" />
-            </div>
-            <div class="col-md-6">
-                <h3>Department of Employment Services</h3>
-            </div>
-        </div>
-    </div>
+   
     <div class="navbar navbar-default navbar-static-top">
         
         <div class="container">
@@ -106,65 +26,18 @@
                     <span class="icon-bar"></span>
                 </button>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Manage Employee Time", "EmployeeTime", "Home")</li>
-                    <li>@Html.ActionLink("Payroll Resolution", "Payroll", "Home")</li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li>@Html.ActionLink("Log in", "Login", "Home")</li>
-                </ul>
-            </div>
+            
         </div>
     </div>
     <div class="container body-content">
         @RenderBody()
         <hr />
     </div>
-    <footer>
-        <div class="text-center center-block">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-4">
 
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                        <label>Wisconsin Department of Agriculture</label>
-                        <label>2811 Agriculture Dr.</label>
-                        <label>P.O. Box 8911</label>
-                        <label>Madison, WI 53708-8911</label>
-                        <br />
-                        <label>(608) 224-5012</label><br />
-                        <label>(608) 224-5058(TDD)</label>
-                    </div>
-
-                </div>
-
-            </div>
-
-
-        </div>
-
-
-    </footer>
-    <div class="text-center center-block">
-        <a href="https://www.facebook.com">
-            <i id="social-fb" class="fa fa-facebook-square fa-3x social">
-            </i>
-        </a>
-        <a href="https://twitter.com">
-            <i id="social-tw" class="fa fa-twitter-square fa-3x social">
-
-            </i>
-        </a>
-        <a href="https://plus.google.com">
-            <i id="social-gp" class="fa fa-google-plus-square fa-3x social">
-
-            </i>
-        </a>
-    </div>
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/bootstrap")
+
+    @RenderSection("scripts", required: false)
 </body>
 </html>

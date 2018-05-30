@@ -1,0 +1,12 @@
+Name,MaxWeight,MinVolume,MaxVolume,AcceptsFragile
+Pallets,340,1,25,FALSE
+Boxes,100,26,34,TRUE
+Crates,250,40,60,TRUE
+Totes,500,61,101,FALSE
+Bricks,9000,102,499,FALSE
+Barrels,32,500,750,FALSE
+Poles,873.23,751,760,TRUE
+Loose,682.123,761,780,FALSE
+Cartons,3.14,781,795,TRUE
+Drums,486,796,800,FALSE
+Cases,1253,1000,1200,FALSE

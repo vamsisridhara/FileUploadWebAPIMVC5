@@ -19,6 +19,70 @@ using System.Runtime.CompilerServices;
 using Admin.empty;
 using System.Globalization;
 using Admin;
+using System.IO.IsolatedStorage;
+using System.Reflection;
+using Admin.Empty;
+
+
+public class BC : IDisposable
+{
+    public BC()
+    {
+        Console.WriteLine("BC created");
+    }
+
+    public void Dispose()
+    {
+        // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+        Console.WriteLine("BC Disposed");
+        // TODO: uncomment the following line if the finalizer is overridden above.
+        // GC.SuppressFinalize(this);
+    }
+}
+public class DC : BC {
+    public DC() : base()
+    {
+        Console.WriteLine("DC");
+    }
+    public void Dispose()
+    {
+        (this as IDisposable).Dispose();
+        Console.WriteLine("DC disposed");
+    }
+}
+public interface I_A { }
+public interface I_B { }
+public class C_C : I_A { }
+public class C_D : I_B { }
+public class C_E : C_C { }
+
+namespace Admin
+{
+    namespace Fill
+    {
+        interface Bin
+        {
+            void Add();
+        }
+    }
+    namespace Empty
+    {
+        interface Bin
+        {
+            void Add();
+        }
+    }
+}
+namespace Company
+{
+    class CompanyWaste : Bin
+    {
+        void Bin.Add()
+        {
+            throw new NotImplementedException();
+        }
+    }
+}
 namespace CSLibrary
 {
     public class Class1 { }
@@ -875,7 +939,8 @@ namespace ConsoleApplication1
 
         //}
 
-        static void A_1() {
+        static void A_1()
+        {
             try { B_1(); }
             catch (Exception ex)
             {
@@ -901,6 +966,49 @@ namespace ConsoleApplication1
 
         }
 
+        public interface IRiskService
+        {
+            Task<decimal> GetRisk(decimal homeValue, decimal desiredAmount, decimal loanToValueRatio);
+        }
+        public class RiskService : IRiskService
+        {
+            public Task<decimal> GetRisk(decimal homeValue, decimal desiredAmount, decimal loanToValueRatio)
+            {
+                Task<decimal> returnvalue = Task<decimal>.Factory.StartNew(() => homeValue + desiredAmount + loanToValueRatio);
+                return returnvalue;
+            }
+        }
+
+        public interface IApprovalService
+        {
+            Task<bool> IsApproved(int homeValue, int amountOwed, int amountDesired);
+        }
+
+        public class ApprovalService : IApprovalService
+        {
+            IRiskService _riskService;
+            public ApprovalService()
+            {
+                this._riskService = new RiskService();
+            }
+            public ApprovalService(IRiskService riskService)
+            {
+
+            }
+
+            public Task<bool> IsApproved(int homeValue, int amountOwed, int amountDesired)
+            {
+                Task<decimal> _value = this._riskService.GetRisk(homeValue, amountOwed, amountDesired);
+                if (_value.Result > 5.0m)
+                {
+                    return Task<bool>.Factory.StartNew(() => false);
+                }
+                else
+                {
+                    return Task<bool>.Factory.StartNew(() => true);
+                }
+            }
+        }
 
         //static void foo(int i = 0, DateTime dt = DateTime.Now)
         //{
@@ -910,7 +1018,378 @@ namespace ConsoleApplication1
         //    }
         //}
         delegate int Calc(int m, int n);
-        /// <summary>
+        static bool workDone;
+        static object locker = new object();
+        static void Dowork()
+        {
+            lock (locker)
+            {
+                if (!workDone)
+                {
+                    Console.WriteLine("result");
+                    workDone = true;
+                }
+            }
+        }
+        public class Test
+        {
+            public double getresulet()
+            {
+                return 0;
+            }
+        }
+        abstract class Testa
+        {
+            public abstract double getres();
+        }
+
+        static string Addnumbers(string first, string second)
+        {
+            int firstint = 0, secondint = 0;
+            try
+            {
+                return Int32.TryParse(first, out secondint).ToString();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("exception");
+            }
+            return secondint.ToString();
+        }
+
+        public class Instrument
+        {
+            public virtual void Playsound()
+            {
+
+                Console.WriteLine("silence");
+            }
+
+        }
+        public class Horn : Instrument
+        {
+            public override void Playsound()
+            {
+                Console.WriteLine("beep");
+            }
+        }
+
+        public class Drum : Instrument
+        {
+            new public void Playsound()
+            {
+
+                Console.WriteLine("bang");
+            }
+        }
+
+        struct mystruct
+        {
+            public int dataint;
+            public string datastr;
+        }
+
+        static void myfunction(mystruct a)
+        {
+            a.dataint = 6;
+            a.datastr = "six";
+        }
+
+        class MyClass
+        {
+            private static MyClass instance = null;
+            private string classValue;
+            private MyClass(string newValue) { classValue = newValue; }
+            public string Value
+            {
+                get
+                {
+                    return classValue;
+                }
+                set
+                {
+                    classValue = value;
+                }
+            }
+            public static MyClass NewInstance(string value)
+            {
+                if (instance == null) instance = new MyClass(value);
+                return instance;
+            }
+
+        }
+        interface iSquare
+        {
+            int x { get; }
+        }
+        interface IRectangle
+        {
+            int X();
+        }
+
+        public static class StaticCl
+        {
+            static StaticCl()
+            {
+                throw new Exception();
+            }
+            public static string mymethod()
+            {
+                return "y sdf";
+            }
+        }
+
+        static void foo(string s)
+        {
+            Console.WriteLine("string");
+        }
+        static void foo(int i)
+        {
+            Console.WriteLine("integer");
+        }
+        static void foo(object o)
+        {
+            Console.WriteLine("object");
+        }
+        class TextAdder
+        {
+            public StringBuilder addText(StringBuilder inputString)
+            {
+                inputString.Append("Text");
+                StringBuilder returnValue = new StringBuilder(inputString.ToString());
+                inputString = null;
+                return returnValue;
+            }
+        }
+        static void foo(int x = 0, int y = 1, string s = "abc")
+        {
+            Console.WriteLine(x + " " + y + " " + s);
+        }
+        public static class MyClass1
+        {
+            static MyClass1()
+            {
+                throw new Exception();
+            }
+            public static string MyMethod()
+            {
+                return "My Method";
+            }
+        }
+
+        static Func<int, int> X(Func<int, int, int> f)
+        {
+            Console.WriteLine(f.Method.Name);
+            return a => f(a, 4);
+        }
+        static int Sum(int x, int y)
+        {
+            return x + y;
+        }
+
+        static string AddNumbers(string first, string second)
+        {
+            int firstint = 0, secondint = 0;
+            try
+            {
+                return Int32.TryParse(first, out secondint).ToString();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("exception");
+            }
+            return secondint.ToString();
+        }
+
+        static void writeoutput(object o)
+        {
+            if (o == null) Console.WriteLine("null");
+            else Console.WriteLine(o.ToString());
+        }
+
+        static int solutionMissingInteger(int[] A)
+        {
+            int solution = 1;
+            HashSet<int> hashSet = new HashSet<int>();
+
+            for (int i = 0; i < A.Length; ++i)
+            {
+                if (A[i] < 1) continue;
+                if (hashSet.Add(A[i]))
+                {
+                    //this int was not handled before
+                    while (hashSet.Contains(solution))
+                    {
+                        solution++;
+                    }
+                }
+            }
+
+            return solution;
+        }
+
+        static string solution(string S)
+        {
+            //Extensions
+            List<String> musicEtxn = new List<String>() { ".mp3", ".aac", ".flac" };//Music extension
+            List<String> imageEtxn = new List<String>() { ".jpg", ".bmp", ".gif" };//Movie extension
+            List<String> movieEtxn = new List<String>() { ".mp4", ".avi", ".mkv" };//Image extension
+            List<String> othersEtxn = new List<String>() { ".exe", ".txt", ".zip" };//Others extension
+
+            //size
+            int musicSize = 0;
+            int movieSize = 0;
+            int imageSize = 0;
+            int otherSize = 0;
+
+            var finalstr = S.Split('\n');
+            foreach (var filestr in finalstr)
+            {
+                var extn = filestr.LastIndexOf('.');
+                var substr = filestr.Substring(extn).Split(' ');
+                if (musicEtxn.Contains(substr[0]))
+                {
+                    musicSize += Convert.ToInt32(Regex.Match(substr[1], @"\d+").Value);
+                }
+                else if (movieEtxn.Contains(substr[0]))
+                {
+                    movieSize += Convert.ToInt32(Regex.Match(substr[1], @"\d+").Value);
+                }
+                else if (imageEtxn.Contains(substr[0]))
+                {
+                    imageSize += Convert.ToInt32(Regex.Match(substr[1], @"\d+").Value);
+                }
+                else if (othersEtxn.Contains(substr[0]))
+                {
+                    otherSize += Convert.ToInt32(Regex.Match(substr[1], @"\d+").Value);
+                }
+            }
+            String finalString = "music " + musicSize + "b\nimages " + imageSize + "b\nmovies " + movieSize + "b\nother " + otherSize + "b";
+            Console.WriteLine(finalString);
+            return finalString;
+        }
+        class Pet
+        {
+            public virtual void speak()
+            {
+                Console.WriteLine("not implemented");
+            }
+        }
+        class Cat : Pet
+        {
+            public override void speak()
+            {
+                Console.WriteLine("Meow");
+            }
+        }
+        class Dog : Pet
+        {
+            public new void speak()
+            {
+                Console.WriteLine("woof");
+            }
+        }
+        class Bird : Pet
+        {
+            public void speak()
+            {
+                Console.WriteLine("tweet");
+            }
+        }
+        public class Account_Test
+        {
+            public static void calculate()
+            {
+                Console.WriteLine("calculate");
+            }
+            public Account_Test()
+            {
+                Account_Test.calculate();
+            }
+        }
+        public static class MyClass_Test
+        {
+            static MyClass_Test()
+            {
+                throw new Exception();
+            }
+            public static string MyMethod()
+            {
+                return "my method";
+            }
+        }
+        static void MyMethod(out ushort A, out ushort B)
+        {
+            A = B = 0;
+            try
+            {
+                A = unchecked((ushort)(A - 10));
+            }
+            catch (OverflowException ex)
+            {
+                Console.WriteLine("cant calculate A");
+            }
+            try
+            {
+                B = unchecked((ushort)(B - 10));
+            }
+            catch (OverflowException ex)
+            {
+                Console.WriteLine("cant calculate B");
+            }
+        }
+
+        public class BaseClass
+        {
+            public virtual void Test()
+            {
+                Console.WriteLine("From baseclass");
+            }
+        }
+
+        public class DerivedClass : BaseClass
+        {
+            public override void Test()
+            {
+                Console.WriteLine("From derivedclass");
+            }
+        }
+        static void foo_test(int x = 0, int y = 1, string s = "abc")
+        {
+            Console.WriteLine(x + "" + y + s);
+        }
+
+
+        public static void testmethod()
+        {
+            throw new ApplicationException("someething wrong");
+        }
+        static void write_output(object o)
+        {
+            if (o == null)
+            {
+                Console.WriteLine("null");
+            }
+            else
+                Console.WriteLine(o.ToString());
+        }
+
+        static string Add_Numbers(string first, string second)
+        {
+            int firstInt = 0, secondInt = 0;
+            try
+            {
+                return Int32.TryParse(first, out secondInt).ToString();
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.Message);
+            }
+            return secondInt.ToString();
+        }
+
+
+
         /// 
         /// </summary>
         /// <param name="args"></param>
@@ -918,9 +1397,437 @@ namespace ConsoleApplication1
         {
             try
             {
+                EmailHelper.sendEmail("Hello");
+
+                Console.WriteLine(Add_Numbers("1", "tow"));
+
+                double _doubleVal = 10 / 4;
+                int _intVal = 10 / 4;
+                var resultVal = _doubleVal + _intVal;
+                Console.WriteLine(resultVal + " " + resultVal.GetType());
+
+
+                bool? _a1 = null, _b1 = null;
+                write_output(_a1 & _b1);
+                write_output(_a1 | _b1);
+                _a1 = true;
+                write_output(_a1 & _b1);
+                write_output(_a1 | _b1);
+                _b1 = false;
+                write_output(_a1 & _b1);
+                write_output(_a1 | _b1);
+                Console.Read();
+
+                //DateTime dt1 = new DateTime(2000, 12, 1);
+                //DateTime dt2 = new DateTime(2000, 12, 1);
+                //object o1 = dt1;
+                //dynamic o2 = dt1;
+                //Console.WriteLine(dt1 == dt2);
+                //Console.WriteLine(dt1.Equals(dt2));
+                //Console.WriteLine(o1.Equals(dt1));
+                //Console.WriteLine(object.ReferenceEquals(o1, o2));
+
+                System.IO.StreamWriter _file = new StreamWriter(@"c:\test.txt");
+                //_file.WriteLine("mytest");
+                //_file.Close();
+                //_file.Dispose();
+
+                //bool running = true;
+                //try
+                //{
+                //    testmethod(); ;
+                //}
+                //catch (Exception ex)
+                //{
+                //    Console.WriteLine(ex.Message);
+                //    return;
+                //}
+                //finally
+                //{
+                //    Console.WriteLine("quitting");
+                //    running = false;
+                //}
+                //Console.WriteLine(string.Format("Running = {0}", running));
+
+
+                string _s = "\\My Test\\\\";
+                int _ii = _s.LastIndexOf(@"\\");
+
+                int _a = 1;
+                do
+                {
+                    _a++;
+                    if (_a != 2)
+                    {
+                        continue;
+                    }
+                    Console.WriteLine(_a);
+                } while (_a < 6);
+
+
+
+                foo_test();
+                C_C objc = new C_E();
+                I_A ia = new C_E();
+                I_A iia = new C_C();
+
+                List<String> myCollection = new List<string>();
+                myCollection.Add("One");
+                myCollection.Add("Two");
+                myCollection.Add("Three");
+                myCollection.Sort();
+                myCollection.Insert(1, "Four");
+                myCollection.RemoveAt(2);
+                foreach (var item in myCollection)
+                {
+                    Console.WriteLine(item);
+                }
+                int? a = null;
+                int b = (int)a;
+
+
+                DerivedClass dc = new ConsoleApplication1.Program.DerivedClass();
+                dc.Test();
+                BaseClass bc = (BaseClass)dc;
+                bc.Test();
+
+
+                //ushort a = 0, b = 0;
+                //MyMethod(out a, out b);
+                //Console.WriteLine("A={0}, B={1}", a, b);
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+
+
+            Account_Test acc = new ConsoleApplication1.Program.Account_Test();
+
+
+
+            List<Pet> pets = new List<Pet>();
+            pets.Add(new Cat());
+            pets.Add(new Dog());
+            pets.Add(new Bird());
+
+
+            foreach (Pet _p in pets)
+            {
+                _p.speak();
+            }
+
+
+            string[] _colors = { "House", "Room", "Building", "Street" };
+            var _output = _colors.Max(x => x.Length);
+
+
+            UInt16 indata = 0xFFFF;
+            byte[] bytes = BitConverter.GetBytes(indata);
+            Int32 outdata = BitConverter.ToInt16(bytes, 0);
+
+            //Int32 myint32 = 123;
+            //double mydouble = 123;
+            //decimal mydecimal = 123;
+            //UInt16 unit16 = 123;
+            //byte mybyte = 123;
+
+            //mydecimal = mybyte;
+            //mydouble = mydecimal;
+            //myint32 = unit16;
+            //mydouble = myint32;
+            //myint32 = mydouble;
+
+
+
+
+            Assembly sample;
+            var c1 = new CSLibrary.Class1();
+            sample = Assembly.GetAssembly(c1.GetType());
+            var types = sample.GetTypes();
+            foreach (Type t_x in types)
+            {
+                Console.WriteLine(t_x);
+            }
+
+
+
+            try
+            {
+                try
+                {
+                    int x = 0;
+                    int y = 5 / x;
+
+                }
+                catch (DivideByZeroException dex)
+                {
+                    Console.WriteLine("caught inner divide by zero ex");
+                }
+                catch (Exception exi)
+                {
+                    Console.WriteLine("caught inner ex");
+                }
+
+            }
+            catch (DivideByZeroException dex)
+            {
+                Console.WriteLine("caught outer divide by zero ex");
+            }
+            catch (Exception exi)
+            {
+                Console.WriteLine("caught outer ex");
+            }
+            Console.Read();
+
+
+
+            try
+            {
+                string test_1 = "abc";
+                string test_2 = "def";
+                test_1 = test_1 + test_2;
+
+                //Test String
+                String myString = "my.song.mp3 11b\n" +
+                        "greatSong.flac 1000b\n" +
+                        "not3.txt 5b\n" +
+                        "video.mp4 200b\n" +
+                        "game.exe 100b\n" +
+                        "mov!e.mkv 10000b";
+                myString = "my.song.mp3 11b\ngreatSong.flac 1000b\nnot3.txt 5b\nvideo.mp4 200b\ngame.exe 100b\nmov!e.mkv 10000b";
+                solution(myString);
+
+                var arr = new int[] { 1, 3, 6, 4, 1, 2 };
+                Console.WriteLine(solutionMissingInteger(arr));
+
+
+
+                int[][] array1 = new int[][] {
+                    new int[] { 1,1,1 },
+                    new int[] {1,1,2},
+                    new int[] {  2,2,3},
+                    new int[] {2,2,2}
+                };
+                try
+                {
+                    for (int icount = 0; icount < array1[0].Length; icount++)
+                    {
+                        for (int jcount = 0; jcount < array1.Length; jcount++)
+                        {
+                            if (array1[icount][jcount] == 2)
+                            {
+                                continue;
+                            }
+                            else if (array1[icount][jcount] == 3)
+                            {
+                                break;
+                            }
+                            Console.Write("{0} , {1}", icount, jcount);
+                        }
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.GetType().ToString());
+                }
+
+
+
+
+
+
+                bool? ax_bx = null, bx_yb = null;
+                writeoutput(ax_bx & bx_yb);
+                writeoutput(ax_bx | bx_yb);
+                ax_bx = true;
+                writeoutput(ax_bx & bx_yb);
+                writeoutput(ax_bx | bx_yb);
+                bx_yb = false;
+                writeoutput(ax_bx & bx_yb);
+                writeoutput(ax_bx | bx_yb);
+
+                Console.ReadLine();
+
+
+
+
+                Console.WriteLine(Addnumbers("1", "Two"));
+                String mystring = "New York";
+                mystring.ToUpper();
+                mystring.ToLowerInvariant();
+                mystring += "er";
+                Console.WriteLine(mystring);
+
+
+                double doubleVal1 = 10 / 4;
+                int intVal1 = 10 / 4;
+
+                var resultVal = doubleVal1 + intVal1;
+                Console.WriteLine(resultVal + " " + resultVal.GetType());
+
+
+                Func<int, int> f = X(Sum);
+                var re = f(5);
+                Console.WriteLine(re);
+
+                Console.WriteLine(MyClass1.MyMethod());
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.GetType().ToString());
+            }
+
+
+
+            foo();
+
+            int a_xs = 1, b_xs = 2;
+            if (++a_xs == 1)
+            {
+                Console.WriteLine(a_xs++ + b_xs * 2);
+            }
+            else
+            {
+                Console.WriteLine(a_xs-- * b_xs);
+            }
+
+            try
+            {
+
+                List<String> mycollection = new List<string>();
+                mycollection.Add("One");
+                mycollection.Add("Two");
+                mycollection.Add("Three");
+                mycollection.Sort();
+                mycollection.Insert(1, "Four");
+                mycollection.RemoveAt(2);
+                foreach (String nextItem in mycollection)
+                {
+                    Console.Write(nextItem);
+                }
+
+
+
+
+                int? a_x = null;
+                int b = (int)a_x;
+
+                StringBuilder text1 = new StringBuilder("John");
+                StringBuilder text2 = new TextAdder().addText(text1);
+                Console.WriteLine(text2);
+                Console.WriteLine(text1);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.GetType().ToString());
+            }
+
+
+            object x_x = "string";
+            foo(x_x);
+            dynamic y_y = "String";
+            foo(y_y);
+
+
+            string st_s = "\\My Test\\\\";
+            int i_s = st_s.LastIndexOf(@"\\");
+            Console.WriteLine(i_s);
+
+
+            try
+            {
+                Console.WriteLine(StaticCl.mymethod());
+            }
+            catch (Exception ex1)
+            {
+                Console.Write(ex1.GetType().ToString());
+            }
+
+
+
+            int? a_1 = null;
+            int b_1 = (int)a_1;
+
+
+            int temp_a = 1;
+            do
+            {
+                temp_a++;
+                if (temp_a != 2)
+                {
+                    continue;
+                }
+                Console.WriteLine(temp_a);
+
+            } while (temp_a < 6);
+
+
+
+
+
+            double doubleVal = 10 / 4;
+            int intVal = 10 / 4;
+            var resultval = doubleVal + intVal;
+            Console.WriteLine(resultval + " " + resultval.GetType());
+
+
+
+
+            IsolatedStorageFile userStore = IsolatedStorageFile.GetUserStoreForAssembly();
+            IsolatedStorageFileStream userSTream = new IsolatedStorageFileStream("Mydomain.john",
+                System.IO.FileMode.Create, userStore);
+            StreamWriter userwriter = new StreamWriter(userSTream);
+            userwriter.Write("red/write");
+            userwriter.Close();
+
+            for (int counter = 0; counter < 3; counter++)
+            {
+                System.IO.StreamWriter sw = new StreamWriter("c:\\test_f.txt", true, Encoding.ASCII);
+                sw.Write("line:");
+                sw.WriteLine(counter);
+                sw.Close();
+            }
+
+
+
+
+
+            object[] array = new string[10];
+            array[0] = 10;
+
+
+            //mystruct struct_my;
+            //struct_my.dataint = 5;
+            //struct_my.datastr = "five";
+            //myfunction(struct_my);
+            //Console.WriteLine(struct_my);
+
+
+
+
+            Instrument i11 = new Horn();
+            Instrument i22 = new Drum();
+            i11.Playsound();
+            i22.Playsound();
+            Console.WriteLine(Addnumbers("1", "tow"));
+            int[] data1 = { 1, 2, 3 };
+            var rs = from x in data1 select x;
+            Console.WriteLine(rs);
+
+
+            new Thread(Dowork).Start();
+            Dowork();
+
+            try
+            {
                 A_1();
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 Console.WriteLine(ex.StackTrace);
 
             }
@@ -949,7 +1856,8 @@ namespace ConsoleApplication1
                 {
                     Console.WriteLine("*");
                 }
-                else {
+                else
+                {
                     Console.WriteLine(item);
 
                 }
@@ -1171,10 +2079,10 @@ namespace ConsoleApplication1
                 n1.Point p = new n1.Point() { X = 100, Y = 200 };
                 Myext.Add(p, new n1.Point() { X = 100, Y = 200 });
 
-                n1.Instrument i111 = new Horn();
-                n1.Instrument i211 = new Drum();
-                i111.Playsound();
-                i211.Playsound();
+                //n1.Instrument i111 = new Horn();
+                //n1.Instrument i211 = new Drum();
+                //i111.Playsound();
+                //i211.Playsound();
 
 
                 // AppDomain appdom = AppDomain.CreateDomain("");
@@ -1559,16 +2467,16 @@ namespace ConsoleApplication1
                 }
             }
 
-            List<Pet> lst = new List<Pet>();
-            lst.Add(new cat());
-            lst.Add(new dog());
-            lst.Add(new bird());
-            foreach (var item in lst)
-            {
-                item.speak();
+            //List<Pet> lst = new List<Pet>();
+            //lst.Add(new cat());
+            //lst.Add(new dog());
+            //lst.Add(new bird());
+            //foreach (var item in lst)
+            //{
+            //    item.speak();
 
-            }
-            Console.WriteLine();
+            //}
+            //Console.WriteLine();
 
             //myevent = new ManualResetEvent(true);
             //ThreadStart mythred = new ThreadStart(worker);
@@ -1678,10 +2586,6 @@ namespace ConsoleApplication1
             //threadTest.ProcessWriteMult();
             //Console.Read();
         }
-    }
-
-    internal class ConfigurationManager
-    {
     }
 
     //create a class 

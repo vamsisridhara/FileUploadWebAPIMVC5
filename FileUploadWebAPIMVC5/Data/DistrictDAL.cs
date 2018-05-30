@@ -29,7 +29,7 @@ namespace FileUploadWebAPIMVC5.Data
                 {
                     listFileNames.Add(fileStream.Name);
                     DateTime dt1 = DateTime.Now;
-                    CsvHelper.ToCsv<District>(ienum, fileStream);
+                    // CsvHelper.ToCsv<District>(ienum, fileStream);
                     DateTime dt2 = DateTime.Now;
                     TimeSpan ts = dt2 - dt1;
                     var timest = ts.TotalMinutes;

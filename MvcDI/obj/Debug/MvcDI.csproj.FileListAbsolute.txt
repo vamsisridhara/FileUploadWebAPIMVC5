@@ -87,6 +87,5 @@ C:\GitHub\FileUploadWebAPIMVC5\MvcDI\bin\Microsoft.Owin.Security.OAuth.xml
 C:\GitHub\FileUploadWebAPIMVC5\MvcDI\bin\Microsoft.Owin.Security.Google.xml
 C:\GitHub\FileUploadWebAPIMVC5\MvcDI\bin\Microsoft.Owin.Security.Twitter.xml
 C:\GitHub\FileUploadWebAPIMVC5\MvcDI\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\GitHub\FileUploadWebAPIMVC5\MvcDI\obj\Debug\MvcDI.csprojResolveAssemblyReference.cache
 C:\GitHub\FileUploadWebAPIMVC5\MvcDI\obj\Debug\MvcDI.dll
 C:\GitHub\FileUploadWebAPIMVC5\MvcDI\obj\Debug\MvcDI.pdb

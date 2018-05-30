@@ -16,8 +16,8 @@ C:\GitHub\FileUploadWebAPIMVC5\ConsoleApplication1\bin\Debug\Newtonsoft.Json.xml
 C:\GitHub\FileUploadWebAPIMVC5\ConsoleApplication1\bin\Debug\System.Net.Http.Formatting.xml
 C:\GitHub\FileUploadWebAPIMVC5\ConsoleApplication1\bin\Debug\System.Web.Http.xml
 C:\GitHub\FileUploadWebAPIMVC5\ConsoleApplication1\bin\Debug\System.Web.Http.Cors.xml
-C:\GitHub\FileUploadWebAPIMVC5\ConsoleApplication1\obj\Debug\ConsoleApplication1.csprojResolveAssemblyReference.cache
 C:\GitHub\FileUploadWebAPIMVC5\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
 C:\GitHub\FileUploadWebAPIMVC5\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb
 C:\GitHub\FileUploadWebAPIMVC5\ConsoleApplication1\bin\Debug\EPPlus.dll
 C:\GitHub\FileUploadWebAPIMVC5\ConsoleApplication1\bin\Debug\EPPlus.xml
+C:\GitHub\FileUploadWebAPIMVC5\ConsoleApplication1\obj\Debug\ConsoleApplication1.csprojResolveAssemblyReference.cache

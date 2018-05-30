@@ -40,6 +40,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CsvHelper, Version=6.0.0.0, Culture=neutral, PublicKeyToken=8c4959082be5c823, processorArchitecture=MSIL">
+      <HintPath>..\packages\CsvHelper.6.1.1\lib\net45\CsvHelper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Dapper">
       <HintPath>..\packages\Dapper.1.37\lib\net45\Dapper.dll</HintPath>
     </Reference>
@@ -194,6 +198,7 @@
     <Compile Include="Controllers\TestDelController.cs" />
     <Compile Include="Controllers\TextFileUploadController.cs" />
     <Compile Include="Controllers\UserAccountController.cs" />
+    <Compile Include="Controllers\WebValidationController.cs" />
     <Compile Include="Data\DistrictBL.cs" />
     <Compile Include="Data\DistrictDAL.cs" />
     <Compile Include="Global.asax.cs">
@@ -215,6 +220,7 @@
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Student.cs" />
+    <Compile Include="Models\WebValidationModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -324,6 +330,7 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="realestate\plainjquery\zipcode.json" />
     <Content Include="Listing_Json.Json" />
+    <Content Include="App_Data\BusinessRules.csv" />
     <None Include="Scripts\jquery-3.1.0.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -407,9 +414,9 @@
     <Content Include="Views\People\GetPeople.cshtml" />
     <Content Include="Views\Lead\Index.cshtml" />
     <Content Include="Views\Shared\_Comments.cshtml" />
+    <Content Include="Views\WebValidation\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="UploadedFiles\" />
     <Folder Include="Views\Commute\" />
   </ItemGroup>

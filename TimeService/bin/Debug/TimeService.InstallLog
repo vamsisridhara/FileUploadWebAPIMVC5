@@ -1,0 +1,75 @@
+﻿Installing assembly 'C:\GitHub\FileUploadWebAPIMVC5\TimeService\bin\Debug\TimeService.exe'.
+Affected parameters are:
+   i = 
+   logfile = C:\GitHub\FileUploadWebAPIMVC5\TimeService\bin\Debug\TimeService.InstallLog
+   assemblypath = C:\GitHub\FileUploadWebAPIMVC5\TimeService\bin\Debug\TimeService.exe
+   logtoconsole = 
+No public installers with the RunInstallerAttribute.Yes attribute could be found in the C:\GitHub\FileUploadWebAPIMVC5\TimeService\bin\Debug\TimeService.exe assembly.
+Committing assembly 'C:\GitHub\FileUploadWebAPIMVC5\TimeService\bin\Debug\TimeService.exe'.
+Affected parameters are:
+   i = 
+   logfile = C:\GitHub\FileUploadWebAPIMVC5\TimeService\bin\Debug\TimeService.InstallLog
+   assemblypath = C:\GitHub\FileUploadWebAPIMVC5\TimeService\bin\Debug\TimeService.exe
+   logtoconsole = 
+No public installers with the RunInstallerAttribute.Yes attribute could be found in the C:\GitHub\FileUploadWebAPIMVC5\TimeService\bin\Debug\TimeService.exe assembly.
+Remove InstallState file because there are no installers.
+Installing assembly 'C:\GitHub\FileUploadWebAPIMVC5\TimeService\bin\Debug\TimeService.exe'.
+Affected parameters are:
+   i = 
+   logfile = C:\GitHub\FileUploadWebAPIMVC5\TimeService\bin\Debug\TimeService.InstallLog
+   assemblypath = C:\GitHub\FileUploadWebAPIMVC5\TimeService\bin\Debug\TimeService.exe
+   logtoconsole = 
+No public installers with the RunInstallerAttribute.Yes attribute could be found in the C:\GitHub\FileUploadWebAPIMVC5\TimeService\bin\Debug\TimeService.exe assembly.
+Committing assembly 'C:\GitHub\FileUploadWebAPIMVC5\TimeService\bin\Debug\TimeService.exe'.
+Affected parameters are:
+   i = 
+   logfile = C:\GitHub\FileUploadWebAPIMVC5\TimeService\bin\Debug\TimeService.InstallLog
+   assemblypath = C:\GitHub\FileUploadWebAPIMVC5\TimeService\bin\Debug\TimeService.exe
+   logtoconsole = 
+No public installers with the RunInstallerAttribute.Yes attribute could be found in the C:\GitHub\FileUploadWebAPIMVC5\TimeService\bin\Debug\TimeService.exe assembly.
+Remove InstallState file because there are no installers.
+Installing assembly 'C:\GitHub\FileUploadWebAPIMVC5\TimeService\bin\Debug\TimeService.exe'.
+Affected parameters are:
+   i = 
+   logfile = C:\GitHub\FileUploadWebAPIMVC5\TimeService\bin\Debug\TimeService.InstallLog
+   assemblypath = C:\GitHub\FileUploadWebAPIMVC5\TimeService\bin\Debug\TimeService.exe
+   logtoconsole = 
+No public installers with the RunInstallerAttribute.Yes attribute could be found in the C:\GitHub\FileUploadWebAPIMVC5\TimeService\bin\Debug\TimeService.exe assembly.
+Committing assembly 'C:\GitHub\FileUploadWebAPIMVC5\TimeService\bin\Debug\TimeService.exe'.
+Affected parameters are:
+   i = 
+   logfile = C:\GitHub\FileUploadWebAPIMVC5\TimeService\bin\Debug\TimeService.InstallLog
+   assemblypath = C:\GitHub\FileUploadWebAPIMVC5\TimeService\bin\Debug\TimeService.exe
+   logtoconsole = 
+No public installers with the RunInstallerAttribute.Yes attribute could be found in the C:\GitHub\FileUploadWebAPIMVC5\TimeService\bin\Debug\TimeService.exe assembly.
+Remove InstallState file because there are no installers.
+Installing assembly 'C:\GitHub\FileUploadWebAPIMVC5\TimeService\bin\Debug\TimeService.exe'.
+Affected parameters are:
+   i = 
+   logfile = C:\GitHub\FileUploadWebAPIMVC5\TimeService\bin\Debug\TimeService.InstallLog
+   assemblypath = C:\GitHub\FileUploadWebAPIMVC5\TimeService\bin\Debug\TimeService.exe
+   logtoconsole = 
+No public installers with the RunInstallerAttribute.Yes attribute could be found in the C:\GitHub\FileUploadWebAPIMVC5\TimeService\bin\Debug\TimeService.exe assembly.
+Committing assembly 'C:\GitHub\FileUploadWebAPIMVC5\TimeService\bin\Debug\TimeService.exe'.
+Affected parameters are:
+   i = 
+   logfile = C:\GitHub\FileUploadWebAPIMVC5\TimeService\bin\Debug\TimeService.InstallLog
+   assemblypath = C:\GitHub\FileUploadWebAPIMVC5\TimeService\bin\Debug\TimeService.exe
+   logtoconsole = 
+No public installers with the RunInstallerAttribute.Yes attribute could be found in the C:\GitHub\FileUploadWebAPIMVC5\TimeService\bin\Debug\TimeService.exe assembly.
+Remove InstallState file because there are no installers.
+Installing assembly 'C:\GitHub\FileUploadWebAPIMVC5\TimeService\bin\Debug\TimeService.exe'.
+Affected parameters are:
+   i = 
+   logfile = C:\GitHub\FileUploadWebAPIMVC5\TimeService\bin\Debug\TimeService.InstallLog
+   assemblypath = C:\GitHub\FileUploadWebAPIMVC5\TimeService\bin\Debug\TimeService.exe
+   logtoconsole = 
+Installing service TimerService...
+Service TimerService has been successfully installed.
+Creating EventLog source TimerService in log Application...
+Committing assembly 'C:\GitHub\FileUploadWebAPIMVC5\TimeService\bin\Debug\TimeService.exe'.
+Affected parameters are:
+   i = 
+   logfile = C:\GitHub\FileUploadWebAPIMVC5\TimeService\bin\Debug\TimeService.InstallLog
+   assemblypath = C:\GitHub\FileUploadWebAPIMVC5\TimeService\bin\Debug\TimeService.exe
+   logtoconsole = 
